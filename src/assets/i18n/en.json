@@ -12,6 +12,15 @@
 	  "TITLE": "It's a Manifesto to be Worn!",
 	  "DESCRIPTION": "Compound is a statement to wear, it's ink; it's an act of verbal responsibility; it's the indelible polysemy of the character we have imprinted and carry with us.",
 	  "READ_MORE": "Read More"
-	}
+	},
+	"FOOTER": {
+    "FOLLOW_US": "Follow Us",
+    "INFORMATION": "Information",
+    "TERMS": "Terms & Conditions",
+    "PRIVACY": "Privacy Policy",
+    "COOKIES": "Cookie Policy",
+    "WE_ACCEPT": "We Accept",
+    "COMPANY_INFO": "Compound Ltd. | VAT: 123456789 | Address: 123 E-commerce St., Milan, Italy"
+  }
   }
   

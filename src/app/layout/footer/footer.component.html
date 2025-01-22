@@ -1,7 +1,8 @@
 <footer class="bg-gray-100 border-t border-gray-300 py-4 px-6">
-	<div class="max-w-7xl mx-auto grid grid-cols-3 gap-8">
-	  <div>
-		<h4 class="text-lg font-semibold text-gray-800 mb-4 text-center">Follow Us</h4>
+	<div class="max-w-7xl mx-auto grid grid-cols-12 gap-8">
+	  <!-- Sezione Social -->
+	  <div class="col-span-3">
+		<h4 class="text-lg font-semibold text-gray-800 mb-4 text-center">{{ 'FOOTER.FOLLOW_US' | translate }}</h4>
 		<ul class="flex justify-center space-x-4">
 		  <li>
 			<a href="https://www.instagram.com" target="_blank" aria-label="Instagram" class="text-gray-600 hover:text-blue-600">
@@ -25,16 +26,18 @@
 		  </li>
 		</ul>
 	  </div>
-	  <div>
-		<h4 class="text-lg font-semibold text-gray-800 mb-4 text-center">Information</h4>
+	  <!-- Sezione Informazioni -->
+	  <div class="col-span-6">
+		<h4 class="text-lg font-semibold text-gray-800 mb-4 text-center">{{ 'FOOTER.INFORMATION' | translate }}</h4>
 		<div class="flex justify-center space-x-6">
-		  <a href="/terms" class="text-gray-600 hover:text-blue-600">Terms & Conditions</a>
-		  <a href="/privacy" class="text-gray-600 hover:text-blue-600">Privacy Policy</a>
-		  <a href="/cookies" class="text-gray-600 hover:text-blue-600">Cookie Policy</a>
+		  <a href="/terms" class="text-gray-600 hover:text-blue-600">{{ 'FOOTER.TERMS' | translate }}</a>
+		  <a href="/privacy" class="text-gray-600 hover:text-blue-600">{{ 'FOOTER.PRIVACY' | translate }}</a>
+		  <a href="/cookies" class="text-gray-600 hover:text-blue-600">{{ 'FOOTER.COOKIES' | translate }}</a>
 		</div>
 	  </div>
-	  <div>
-		<h4 class="text-lg font-semibold text-gray-800 mb-4 text-center">We Accept</h4>
+	  <!-- Sezione Metodi di Pagamento -->
+	  <div class="col-span-3">
+		<h4 class="text-lg font-semibold text-gray-800 mb-4 text-center">{{ 'FOOTER.WE_ACCEPT' | translate }}</h4>
 		<ul class="flex justify-center space-x-4 text-2xl text-gray-600">
 		  <li>
 			<fa-icon [icon]="['fab', 'cc-visa']"></fa-icon>
@@ -56,7 +59,7 @@
 	</div>
 	<div class="mt-2 border-t border-gray-300 pt-4 text-center">
 	  <p class="text-sm text-gray-600">
-		Compound Ltd. | VAT: 123456789 | Address: 123 E-commerce St., Milan, Italy
+		{{ 'FOOTER.COMPANY_INFO' | translate }}
 	  </p>
 	</div>
   </footer>

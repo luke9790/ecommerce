@@ -12,6 +12,15 @@
 	  "TITLE": "¡Es un manifiesto para llevar puesto!",
 	  "DESCRIPTION": "Compound es una declaración para vestir, es tinta; es un acto de responsabilidad verbal; es la polisemia indeleble del carácter que hemos impreso y que llevamos con nosotros.",
 	  "READ_MORE": "Leer más"
-	}
+	},
+	"FOOTER": {
+    "FOLLOW_US": "Síguenos",
+    "INFORMATION": "Información",
+    "TERMS": "Términos y Condiciones",
+    "PRIVACY": "Política de Privacidad",
+    "COOKIES": "Política de Cookies",
+    "WE_ACCEPT": "Aceptamos",
+    "COMPANY_INFO": "Compound Ltd. | IVA: 123456789 | Dirección: 123 Calle E-commerce, Milán, Italia"
+  	}
   }
   

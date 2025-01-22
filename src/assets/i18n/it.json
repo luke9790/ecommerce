@@ -12,6 +12,15 @@
 	  "TITLE": "È un manifesto da indossare!",
 	  "DESCRIPTION": "Compound è una dichiarazione da indossare, è inchiostro; è un atto di responsabilità verbale; è polisemìa indelebile del carattere che abbiamo impresso e che ci portiamo addosso.",
 	  "READ_MORE": "Leggi di più"
-	}
+	},
+	"FOOTER": {
+    "FOLLOW_US": "Seguici",
+    "INFORMATION": "Informazioni",
+    "TERMS": "Termini e Condizioni",
+    "PRIVACY": "Politica sulla Privacy",
+    "COOKIES": "Politica sui Cookie",
+    "WE_ACCEPT": "Accettiamo",
+    "COMPANY_INFO": "Compound Srl | P.IVA: 123456789 | Indirizzo: 123 Via E-commerce, Milano, Italia"
+  }
   }
   
