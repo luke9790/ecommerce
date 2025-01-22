@@ -1,0 +1,62 @@
+<header class="bg-gray-100 border-b border-gray-300 py-4 px-6 flex items-center justify-between shadow-md">
+	<!-- Logo -->
+	<a class="text-3xl font-bold text-gray-800 hover:text-blue-600" routerLink="/">
+	  MyEcommerce
+	</a>
+  
+	<!-- Navigazione -->
+	<nav class="flex-1 mx-8">
+	  <ul class="flex justify-center space-x-8">
+		<li><a class="text-gray-700 hover:text-blue-600 font-medium" routerLink="/">{{ 'HEADER.HOME' | translate }}</a></li>
+		<li><a class="text-gray-700 hover:text-blue-600 font-medium" routerLink="/shop">{{ 'HEADER.SHOP' | translate }}</a></li>
+		<li><a class="text-gray-700 hover:text-blue-600 font-medium" routerLink="/about">{{ 'HEADER.ABOUT' | translate }}</a></li>
+		<li><a class="text-gray-700 hover:text-blue-600 font-medium" routerLink="/contact">{{ 'HEADER.CONTACT' | translate }}</a></li>
+	  </ul>
+	</nav>
+  
+	<!-- Azioni -->
+	<div class="flex items-center space-x-6">
+	  <!-- Selettore Lingua -->
+	  <div class="relative">
+		<button
+		  (click)="toggleDropdown()"
+		  class="flex items-center space-x-2 px-3 py-2 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200"
+		  [attr.aria-expanded]="isDropdownOpen"
+		  aria-label="Change language"
+		>
+		  <span [class]="'fi ' + selectedLanguage.class" class="w-6 h-4"></span>
+		  <span>{{ selectedLanguage.title }}</span>
+		</button>
+  
+		<!-- Menu a tendina -->
+		<div
+		  *ngIf="isDropdownOpen"
+		  class="absolute z-10 mt-2 bg-white border border-gray-300 rounded-md shadow-lg w-40"
+		>
+		  <ul class="py-2">
+			<li
+			  *ngFor="let lang of languages"
+			  (click)="changeLanguage(lang)"
+			  class="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer"
+			>
+			  <span [class]="'fi ' + lang.class" class="w-6 h-4"></span>
+			  <span class="ml-2">{{ lang.title }}</span>
+			</li>
+		  </ul>
+		</div>
+	  </div>
+  
+	  <!-- Preferiti -->
+	  <a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2" routerLink="/favorites">
+		<fa-icon [icon]="['fas', 'heart']"></fa-icon>
+		<span>{{ 'HEADER.FAVORITES' | translate }}</span>
+	  </a>
+  
+	  <!-- Carrello -->
+	  <a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2" routerLink="/cart">
+		<fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+		<span>{{ 'HEADER.CART' | translate }}</span>
+	  </a>
+	</div>
+  </header>
+  
