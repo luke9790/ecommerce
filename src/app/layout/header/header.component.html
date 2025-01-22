@@ -1,26 +1,30 @@
 <header class="bg-gray-100 border-b border-gray-300 py-4 px-6 flex items-center justify-between shadow-md">
-	<!-- Logo -->
-	<a class="text-3xl font-bold text-gray-800 hover:text-blue-600" routerLink="/">
+	<a class="text-3xl font-bold text-gray-800 hover:text-blue-600 font-fjalla" routerLink="/">
 	  MyEcommerce
 	</a>
   
-	<!-- Navigazione -->
 	<nav class="flex-1 mx-8">
 	  <ul class="flex justify-center space-x-8">
-		<li><a class="text-gray-700 hover:text-blue-600 font-medium" routerLink="/">{{ 'HEADER.HOME' | translate }}</a></li>
-		<li><a class="text-gray-700 hover:text-blue-600 font-medium" routerLink="/shop">{{ 'HEADER.SHOP' | translate }}</a></li>
-		<li><a class="text-gray-700 hover:text-blue-600 font-medium" routerLink="/about">{{ 'HEADER.ABOUT' | translate }}</a></li>
-		<li><a class="text-gray-700 hover:text-blue-600 font-medium" routerLink="/contact">{{ 'HEADER.CONTACT' | translate }}</a></li>
+		<li>
+		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/">{{ 'HEADER.HOME' | translate }}</a>
+		</li>
+		<li>
+		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/shop">{{ 'HEADER.SHOP' | translate }}</a>
+		</li>
+		<li>
+		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/about">{{ 'HEADER.ABOUT' | translate }}</a>
+		</li>
+		<li>
+		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/contact">{{ 'HEADER.CONTACT' | translate }}</a>
+		</li>
 	  </ul>
 	</nav>
   
-	<!-- Azioni -->
 	<div class="flex items-center space-x-6">
-	  <!-- Selettore Lingua -->
 	  <div class="relative">
 		<button
 		  (click)="toggleDropdown()"
-		  class="flex items-center space-x-2 px-3 py-2 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200"
+		  class="flex items-center space-x-2 px-3 py-2 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 font-roboto"
 		  [attr.aria-expanded]="isDropdownOpen"
 		  aria-label="Change language"
 		>
@@ -28,7 +32,6 @@
 		  <span>{{ selectedLanguage.title }}</span>
 		</button>
   
-		<!-- Menu a tendina -->
 		<div
 		  *ngIf="isDropdownOpen"
 		  class="absolute z-10 mt-2 bg-white border border-gray-300 rounded-md shadow-lg w-40"
@@ -46,14 +49,12 @@
 		</div>
 	  </div>
   
-	  <!-- Preferiti -->
-	  <a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2" routerLink="/favorites">
+	  <a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2 font-roboto" routerLink="/favorites">
 		<fa-icon [icon]="['fas', 'heart']"></fa-icon>
 		<span>{{ 'HEADER.FAVORITES' | translate }}</span>
 	  </a>
   
-	  <!-- Carrello -->
-	  <a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2" routerLink="/cart">
+	  <a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2 font-roboto" routerLink="/cart">
 		<fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
 		<span>{{ 'HEADER.CART' | translate }}</span>
 	  </a>

@@ -14,9 +14,15 @@ import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http'
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
+import { ContactComponent } from './components/contact/contact.component';
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { CartComponent } from './components/cart/cart.component';
+import { ShopComponent } from './components/shop/shop.component';
+import { IntroSectionComponent } from './components/intro-section/intro-section.component';
+import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
+import { CompanyInfosComponent } from './components/company-infos/company-infos.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  console.log('Loading translations from:', './assets/i18n/');
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
@@ -28,7 +34,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ContactsComponent
+    ContactsComponent,
+    ContactComponent,
+    FavoritesComponent,
+    CartComponent,
+    ShopComponent,
+    IntroSectionComponent,
+    FeaturedProductsComponent,
+    CompanyInfosComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +49,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     RouterModule,
     CommonModule,
     FontAwesomeModule,
+    CommonModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
