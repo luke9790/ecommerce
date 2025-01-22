@@ -1,55 +1,62 @@
-/* Sezione generale */
 section {
+	background: linear-gradient(to bottom, #fff6aa, #ffffff); 
+	padding: 4rem 1.5rem; 
 	.grid {
-	  display: grid;
-	  grid-template-columns: 1fr 1fr 1fr; /* Layout con 3 colonne */
-	  gap: 2rem; /* Spaziatura tra gli elementi */
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr; 
+		gap: 2rem;
 	}
   
 	.text-center {
-	  text-align: center;
-	  h4 {
-		text-transform: uppercase;
-		font-weight: 600;
-		color: #4b5563; /* Tailwind gray-600 */
-		letter-spacing: 0.05em;
-	  }
-  
-	  h1 {
-		font-size: 3rem; /* Tailwind text-5xl */
-		font-weight: 800;
-		color: #1f2937; /* Tailwind gray-800 */
-		margin-top: 1rem;
-	  }
-  
-	  p {
-		font-size: 1.125rem; /* Tailwind text-lg */
-		margin-top: 1.5rem;
-		color: #4b5563;
-	  }
-  
-	  button {
-		background-color: #dc2626; /* Tailwind red-600 */
-		&:hover {
-		  background-color: #b91c1c; /* Tailwind red-500 */
+		text-align: center;
+		h4 {
+			text-transform: uppercase;
+			font-weight: 600;
+			color: #4b5563;
+			letter-spacing: 0.05em;
 		}
-	  }
+		h1 {
+			font-size: 3rem; 
+			font-weight: 800;
+			color: #1f2937;
+			margin-top: 1rem;
+		}
+		p {
+			font-size: 1.125rem;
+			margin-top: 1.5rem;
+			color: #4b5563;
+		}
+		button {
+			background-color: #dc2626; 
+			&:hover {
+				background-color: #b91c1c;
+			}
+		}
 	}
   
 	.relative {
-	  position: relative;
-	  width: 100%;
-	  height: 10rem; /* Altezza delle immagini */
-	  overflow: hidden;
-	  border-radius: 0.5rem; /* Tailwind rounded-lg */
-	  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tailwind shadow-md */
-  
-	  img {
-		position: absolute;
+		position: relative;
 		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	  }
-	}
-  }
+		height: 10rem;
+		overflow: hidden;
+		border-radius: 0.5rem; 
+		box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+		transition: transform 0.3s ease, box-shadow 0.3s ease;
   
+		img {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.3s ease;
+		}
+  
+		&:hover {
+			transform: scale(1.05);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+		}
+		img:hover {
+			transform: scale(1.1);
+		}
+	}
+}

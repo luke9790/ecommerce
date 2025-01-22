@@ -2,10 +2,16 @@
 	"HEADER": {
 	  "HOME": "Home",
 	  "SHOP": "Negozio",
-	  "ABOUT": "Chi siamo",
+	  "ABOUT": "Informazioni",
 	  "CONTACT": "Contatti",
 	  "FAVORITES": "Preferiti",
 	  "CART": "Carrello"
+	},
+	"CONTENT": {
+	  "SUBTITLE": "Non è solo una maglietta",
+	  "TITLE": "È un manifesto da indossare!",
+	  "DESCRIPTION": "Compound è una dichiarazione da indossare, è inchiostro; è un atto di responsabilità verbale; è polisemìa indelebile del carattere che abbiamo impresso e che ci portiamo addosso.",
+	  "READ_MORE": "Leggi di più"
 	}
   }
   

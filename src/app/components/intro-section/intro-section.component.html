@@ -1,7 +1,7 @@
 <section class="bg-gray-50 py-16 px-6">
 	<div class="max-w-7xl mx-auto grid grid-cols-3 gap-8 items-center">
-	  <!-- Left Image Section -->
-	  <div class="grid grid-cols-2 grid-rows-2 gap-4">
+
+		<div class="grid grid-cols-2 grid-rows-2 gap-4">
 		<div
 		  *ngFor="let image of leftImages"
 		  class="relative overflow-hidden rounded-lg shadow-md"
@@ -16,26 +16,23 @@
 		</div>
 	  </div>
   
-	  <!-- Text Section -->
 	  <div class="text-center col-span-1">
 		<h4 class="text-sm font-semibold uppercase tracking-wide text-gray-600">
-		  IT'S NOT JUST A T-SHIRT
+		  {{ 'CONTENT.SUBTITLE' | translate }}
 		</h4>
 		<h1 class="text-5xl font-extrabold text-gray-800 mt-4">
-		  It's a Manifesto <br />
-		  to be Worn!
+		  {{ 'CONTENT.TITLE' | translate }}
 		</h1>
 		<p class="text-lg text-gray-600 mt-6">
-		  Wortees è una dichiarazione da indossare, è inchiostro; è un atto di
-		  responsabilità verbale; è polisemìa indelebile del carattere che abbiamo
-		  impresso e che ci portiamo addosso.
+		  {{ 'CONTENT.DESCRIPTION' | translate }}
 		</p>
-		<button class="mt-6 px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-500">
-		  LEGGI DI PIÙ
+		<button
+		  class="mt-6 px-8 py-3 bg-red-600 text-white font-semibold rounded-lg shadow-md hover:bg-red-500"
+		>
+		  {{ 'CONTENT.READ_MORE' | translate }}
 		</button>
 	  </div>
   
-	  <!-- Right Image Section -->
 	  <div class="grid grid-cols-3 grid-rows-3 gap-4">
 		<div
 		  *ngFor="let image of rightImages"

@@ -15,7 +15,6 @@ export class IntroSectionComponent {
     { src: 'assets/images/intro-section/image3.jpg', alt: 'Model 3', span: 'col-span-1 row-span-1', position: 'center' }
   ];
 
-  // Immagini a destra
   rightImages = [
     { src: 'assets/images/intro-section/image4.jpg', alt: 'Model 4', span: 'col-span-1 row-span-2', position: 'center' },
     { src: 'assets/images/intro-section/image5.jpg', alt: 'Model 5', span: 'col-span-2 row-span-1', position: 'bottom' },

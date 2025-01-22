@@ -6,6 +6,12 @@
 	  "CONTACT": "Contacto",
 	  "FAVORITES": "Favoritos",
 	  "CART": "Carrito"
+	},
+	"CONTENT": {
+	  "SUBTITLE": "No es solo una camiseta",
+	  "TITLE": "¡Es un manifiesto para llevar puesto!",
+	  "DESCRIPTION": "Compound es una declaración para vestir, es tinta; es un acto de responsabilidad verbal; es la polisemia indeleble del carácter que hemos impreso y que llevamos con nosotros.",
+	  "READ_MORE": "Leer más"
 	}
   }
   
