@@ -16,10 +16,49 @@
 	"FEATURED": {
 	  "TITLE": "Featured Products",
 	  "DESCRIPTION": "Check out our top picks for you!",
-	  "VIEW_ALL": "View All"
+	  "VIEW_ALL": "View All",
+	  "LOADING_PRODUCTS": "Loading featured products, please wait..."
+	},
+	"STOCK": {
+		"AVAILABLE": "Available",
+    	"OUT_OF_STOCK": "Out of Stock"
 	},
 	"BUTTON": {
 	  "ADD_TO_CART": "Add to Cart"
+	},
+	"FILTERS": {
+    "TITLE": "Filters",
+    "CATEGORY": "Category",
+    "ALL_CATEGORIES": "All",
+    "TYPE": "Gender",
+    "ALL_TYPES": "All",
+    "TYPE_MALE": "Male",
+    "TYPE_FEMALE": "Female",
+    "TYPE_UNISEX": "Unisex",
+    "PRICE": "Price",
+    "MIN_PRICE": "Min",
+    "MAX_PRICE": "Max",
+    "HAS_DISCOUNT": "Has Discount",
+    "BRAND": "Brand",
+    "ALL_BRANDS": "All",
+    "IS_FEATURED": "Featured",
+    "EXCLUDE_OUT_OF_STOCK": "Exclude Out of Stock"
+  	},
+	"GENERAL": {
+		"LOADING": "Loading..."
+	},
+	"RESULTS": {
+		"FOUND": "Products found"
+	},
+	"SORT": {
+		"PRICE_ASC": "Price: low to high",
+		"PRICE_DESC": "Price: high to low",
+		"NAME_ASC": "Name: A-Z",
+		"NAME_DESC": "Name: Z-A"
+	},
+	"PAGINATION": {
+		"PREVIOUS": "Previous",
+		"NEXT": "Next"
 	},
 	"COMPANY": {
 	"FACTS_TITLE": "3 Facts About Compound",

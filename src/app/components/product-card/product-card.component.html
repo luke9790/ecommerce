@@ -1,5 +1,5 @@
 <div
-  class="relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col group"
+  class="relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[24rem] flex flex-col group"
 >
   <span
     class="absolute top-2 right-2 bg-gray-800 text-white text-xs font-semibold uppercase tracking-wide px-2 py-1 rounded"
@@ -7,7 +7,7 @@
     {{ label }}
   </span>
 
-  <div class="h-48 flex-shrink-0 overflow-hidden">
+  <div class="h-48 overflow-hidden">
     <img
       [src]="imageSrc"
       [alt]="name"
@@ -16,22 +16,40 @@
   </div>
 
   <div class="p-4 flex flex-col flex-grow">
-    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-red-600 transition-colors duration-300">
-      {{ name }}
-    </h3>
-    <p class="text-sm text-gray-600 mt-2 flex-grow">
+    <div class="flex items-center justify-between">
+      <h3
+        class="text-lg font-semibold group-hover:text-red-600 transition-colors duration-300"
+        [class.line-through]="stock === 0"
+      >
+        {{ name }}
+      </h3>
+      <span
+        class="text-xs font-medium uppercase"
+        [class.text-green-600]="stock > 0"
+        [class.text-red-600]="stock === 0"
+      >
+      {{ stock > 0 ? ('STOCK.AVAILABLE' | translate) : ('STOCK.OUT_OF_STOCK' | translate) }}
+      </span>
+    </div>
+
+    <p class="text-sm text-gray-600 mt-2 flex-grow line-clamp-3">
       {{ description }}
     </p>
 
-    <div class="flex items-center justify-between mt-4">
+    <div class="mt-1 flex items-center space-x-2">
+      <span *ngIf="discount" class="text-sm text-gray-500 line-through">
+        {{ originalPrice.toFixed(2) }} {{ currency }}
+      </span>
+
       <span class="text-lg font-bold text-red-600">
         {{ price.toFixed(2) }} {{ currency }}
       </span>
-      <button
-        class="bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-500 transition-colors duration-300"
-      >
-        {{ 'BUTTON.ADD_TO_CART' | translate }}
-      </button>
     </div>
+
+    <button
+      class="mt-auto bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-500 transition-colors duration-300"
+    >
+      {{ 'BUTTON.ADD_TO_CART' | translate }}
+    </button>
   </div>
 </div>

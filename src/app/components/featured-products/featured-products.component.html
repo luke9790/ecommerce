@@ -1,28 +1,57 @@
 <div class="sezione pb-6 px-6 rounded-lg shadow-lg">
-	<div class="text-center mb-8">
-	  <h2 class="text-3xl font-extrabold text-gray-800">{{ 'FEATURED.TITLE' | translate }}</h2>
-	  <p class="text-lg text-gray-600 mt-4">{{ 'FEATURED.DESCRIPTION' | translate }}</p>
-	</div>
-  
-	<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
-	  <app-product-card
-		*ngFor="let product of products"
-		[name]="product.name"
-		[description]="product.description"
-		[price]="product.price"
-		[currency]="product.currency"
-		[imageSrc]="product.image"
-		[label]="product.label"
-		[routerLink]="['/product', product.id]"
-	  ></app-product-card>
-	</div>
-  
-	<div class="mt-8 text-center">
-	  <button
-		class="px-6 py-3 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-500 transition-colors duration-300"
-	  >
-		{{ 'FEATURED.VIEW_ALL' | translate }}
-	  </button>
-	</div>
+  <div class="text-center mb-8">
+    <h2 class="text-3xl font-extrabold text-gray-800">{{ 'FEATURED.TITLE' | translate }}</h2>
+    <p class="text-lg text-gray-600 mt-4">{{ 'FEATURED.DESCRIPTION' | translate }}</p>
   </div>
-  
+
+  <div *ngIf="isLoading" class="text-center mb-4">
+    <p class="text-lg font-medium text-gray-600">
+      {{ 'FEATURED.LOADING_PRODUCTS' | translate }}
+    </p>
+  </div>
+
+  <div *ngIf="isLoading" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
+    <div *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8]" class="relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col group">
+      <span class="absolute top-2 right-2 bg-gray-300 text-gray-300 text-xs font-semibold uppercase tracking-wide px-2 py-1 rounded">
+        Label
+      </span>
+
+      <div class="h-48 flex-shrink-0 overflow-hidden bg-gray-300"></div>
+
+      <div class="p-4 flex flex-col flex-grow">
+        <div class="h-5 bg-gray-300 rounded w-3/4 mb-4"></div>
+        <div class="h-3 bg-gray-300 rounded w-full mb-2"></div>
+        <div class="h-3 bg-gray-300 rounded w-5/6"></div>
+
+        <div class="flex items-center justify-between mt-4">
+          <div class="h-5 bg-gray-300 rounded w-1/4"></div>
+          <div class="h-8 bg-gray-300 rounded w-1/3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
+    <app-product-card
+    *ngFor="let product of products"
+    [name]="product.name"
+    [description]="product.description"
+    [price]="product.price"
+    [currency]="product.currency"
+    [imageSrc]="product.image"
+    [label]="product.label"
+    [stock]="product.stock"
+    [brand]="product.brand"
+    [discount]="product.discount"
+    [routerLink]="['/product', product.id]"
+    ></app-product-card>
+  </div>
+
+  <div *ngIf="!isLoading" class="mt-8 text-center">
+    <button
+      class="px-6 py-3 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-500 transition-colors duration-300"
+    >
+      {{ 'FEATURED.VIEW_ALL' | translate }}
+    </button>
+  </div>
+</div>

@@ -22,6 +22,7 @@ import { IntroSectionComponent } from './components/intro-section/intro-section.
 import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
 import { CompanyInfosComponent } from './components/company-infos/company-infos.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { FormsModule } from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -50,6 +51,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     RouterModule,
     CommonModule,
+    FormsModule,
     FontAwesomeModule,
     CommonModule,
     TranslateModule.forRoot({

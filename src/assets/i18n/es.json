@@ -16,10 +16,49 @@
 	"FEATURED": {
 	  "TITLE": "Productos Destacados",
 	  "DESCRIPTION": "¡Descubre nuestras mejores selecciones para ti!",
-	  "VIEW_ALL": "Ver Todos"
+	  "VIEW_ALL": "Ver Todos",
+	  "LOADING_PRODUCTS": "Cargando productos destacados, por favor espera..."	  
 	},
+	"STOCK": {
+    "AVAILABLE": "Disponible",
+    "OUT_OF_STOCK": "Agotado"
+  	},
 	"BUTTON": {
 	  "ADD_TO_CART": "Añadir al Carrito"
+	},
+	"FILTERS": {
+    "TITLE": "Filtros",
+    "CATEGORY": "Categoría",
+    "ALL_CATEGORIES": "Todas",
+    "TYPE": "Tipo",
+    "ALL_TYPES": "Todos",
+    "TYPE_MALE": "Masculino",
+    "TYPE_FEMALE": "Femenino",
+    "TYPE_UNISEX": "Unisex",
+    "PRICE": "Precio",
+    "MIN_PRICE": "Mínimo",
+    "MAX_PRICE": "Máximo",
+    "HAS_DISCOUNT": "Con descuento",
+    "BRAND": "Marca",
+    "ALL_BRANDS": "Todas las marcas",
+    "IS_FEATURED": "Destacado",
+    "EXCLUDE_OUT_OF_STOCK": "Excluir agotados"
+  	},
+	"GENERAL": {
+		"LOADING": "Cargando..."
+	},
+	"RESULTS": {
+		"FOUND": "Productos encontrados"
+	},
+	"SORT": {
+		"PRICE_ASC": "Precio: ascendente",
+		"PRICE_DESC": "Precio: descendente",
+		"NAME_ASC": "Nombre: A-Z",
+		"NAME_DESC": "Nombre: Z-A"
+	},
+	"PAGINATION": {
+		"PREVIOUS": "Anterior",
+		"NEXT": "Siguiente"
 	},
 	"COMPANY": {
 	"FACTS_TITLE": "3 Curiosidades Sobre Compound",

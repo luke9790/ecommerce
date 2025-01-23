@@ -1,16 +1,16 @@
 export interface Product {
-	id: number; // Identificativo unico del prodotto
-	name: string; // Nome del prodotto
-	description: string; // Descrizione del prodotto
+	id: number;
+	name: string;
+	description: string;
 	label: string; // Etichetta (es. Premium, Regular)
 	brand: string; // Marca del prodotto (es. Nike)
 	stock: number; // Quantità disponibile
-	image: string; // URL dell'immagine
+	image: string;
 	categoryId: number; // Identificativo della categoria
-	type: 'male' | 'female' | 'unisex'; // Tipo del prodotto
-	isFeatured: boolean; // Indica se è in evidenza
-	price: number; // Prezzo
-	currency: string; // Valuta (es. USD, EUR)
-	discount?: number; // Percentuale di sconto (opzionale)
+	type: 'male' | 'female' | 'unisex';
+	isFeatured: boolean;
+	price: number;
+	currency: string;
+	discount?: number;
   }
   

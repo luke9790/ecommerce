@@ -11,20 +11,24 @@ import { Product } from '../../interfaces/interfaces';
 })
 export class FeaturedProductsComponent implements OnInit {
   products: Product[] = [];
+  isLoading: boolean = true;
 
   constructor(private translate: TranslateService, private shopService: ShopService) {}
 
   ngOnInit(): void {
     this.loadFeaturedProducts();
 
-    // Aggiorna i prodotti in evidenza quando cambia la lingua
     this.translate.onLangChange.subscribe(() => {
       this.loadFeaturedProducts();
     });
   }
 
   async loadFeaturedProducts(): Promise<void> {
+    this.isLoading = true;
     const currentLang = this.translate.currentLang || this.translate.defaultLang;
-    this.products = await this.shopService.getFeaturedProducts(currentLang);
+    const allFeaturedProducts = await this.shopService.getFeaturedProducts(currentLang);
+
+    this.products = allFeaturedProducts.slice(0, 8);
+    this.isLoading = false;
   }
 }
