@@ -1,7 +1,6 @@
-<section class="bg-gray-50 py-16 px-6">
-	<div class="max-w-7xl mx-auto grid grid-cols-3 gap-8 items-center">
-
-		<div class="grid grid-cols-2 grid-rows-2 gap-4">
+<section class="bg-gradient-to-b from-[#fff6aa] to-white">
+	<div class="max-w-7xl mx-auto grid grid-cols-3 gap-8 items-center pt-12 px-4 ">
+	  <div class="grid grid-cols-2 grid-rows-2 gap-4">
 		<div
 		  *ngFor="let image of leftImages"
 		  class="relative overflow-hidden rounded-lg shadow-md"
@@ -16,11 +15,11 @@
 		</div>
 	  </div>
   
-	  <div class="text-center col-span-1">
-		<h4 class="text-sm font-semibold uppercase tracking-wide text-gray-600">
+	  <div class="text-center">
+		<h4 class="uppercase font-semibold tracking-wide text-gray-600 text-sm">
 		  {{ 'CONTENT.SUBTITLE' | translate }}
 		</h4>
-		<h1 class="text-5xl font-extrabold text-gray-800 mt-4">
+		<h1 class="text-3xl font-extrabold text-gray-800 mt-4">
 		  {{ 'CONTENT.TITLE' | translate }}
 		</h1>
 		<p class="text-lg text-gray-600 mt-6">

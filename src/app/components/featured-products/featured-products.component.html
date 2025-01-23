@@ -1,1 +1,28 @@
-<p>featured-products works!</p>
+<div class="sezione pb-6 px-6 rounded-lg shadow-lg">
+	<div class="text-center mb-8">
+	  <h2 class="text-3xl font-extrabold text-gray-800">{{ 'FEATURED.TITLE' | translate }}</h2>
+	  <p class="text-lg text-gray-600 mt-4">{{ 'FEATURED.DESCRIPTION' | translate }}</p>
+	</div>
+  
+	<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
+	  <app-product-card
+		*ngFor="let product of products"
+		[name]="product.name"
+		[description]="product.description"
+		[price]="product.price"
+		[currency]="product.currency"
+		[imageSrc]="product.imageSrc"
+		[label]="product.label"
+		[routerLink]="['/product', product.name]"
+	  ></app-product-card>
+	</div>
+  
+	<div class="mt-8 text-center">
+	  <button
+		class="px-6 py-3 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-500 transition-colors duration-300"
+	  >
+		{{ 'FEATURED.VIEW_ALL' | translate }}
+	  </button>
+	</div>
+  </div>
+  

@@ -1,0 +1,37 @@
+<div
+  class="relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-full flex flex-col group"
+>
+  <span
+    class="absolute top-2 right-2 bg-gray-800 text-white text-xs font-semibold uppercase tracking-wide px-2 py-1 rounded"
+  >
+    {{ label }}
+  </span>
+
+  <div class="h-48 flex-shrink-0 overflow-hidden">
+    <img
+      [src]="imageSrc"
+      [alt]="name"
+      class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+    />
+  </div>
+
+  <div class="p-4 flex flex-col flex-grow">
+    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-red-600 transition-colors duration-300">
+      {{ name }}
+    </h3>
+    <p class="text-sm text-gray-600 mt-2 flex-grow">
+      {{ description }}
+    </p>
+
+    <div class="flex items-center justify-between mt-4">
+      <span class="text-lg font-bold text-red-600">
+        {{ price.toFixed(2) }} {{ currency }}
+      </span>
+      <button
+        class="bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-500 transition-colors duration-300"
+      >
+        {{ 'BUTTON.ADD_TO_CART' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
