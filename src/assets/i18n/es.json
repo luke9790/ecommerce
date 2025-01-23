@@ -13,6 +13,25 @@
 	  "DESCRIPTION": "Compound es una declaración para vestir, es tinta; es un acto de responsabilidad verbal; es la polisemia indeleble del carácter que hemos impreso y que llevamos con nosotros.",
 	  "READ_MORE": "Leer más"
 	},
+	"FEATURED": {
+	  "TITLE": "Productos Destacados",
+	  "DESCRIPTION": "¡Descubre nuestras mejores selecciones para ti!",
+	  "VIEW_ALL": "Ver Todos"
+	},
+	"BUTTON": {
+	  "ADD_TO_CART": "Añadir al Carrito"
+	},
+	"COMPANY": {
+	"FACTS_TITLE": "3 Curiosidades Sobre Compound",
+	"FACT_1_TITLE": "Hecho a Mano",
+	"FACT_1_DESCRIPTION": "Hecho a mano en Italia. Las imperfecciones no se consideran defectos, sino prueba de un trabajo artesanal.",
+	"FACT_2_TITLE": "Ecológico",
+	"FACT_2_DESCRIPTION": "Hecho con materiales orgánicos y naturales. La poca cantidad de plástico que encontrarás en mí es reciclada y procesada de manera sostenible.",
+	"FACT_3_TITLE": "Duradero",
+	"FACT_3_DESCRIPTION": "Hecho para durar mucho tiempo, para convertirse en tu segunda piel. Utilizo solo materiales de la más alta calidad. Cuídame.",
+	"PHILOSOPHY_TITLE": "Nuestra Promesa",
+	"PHILOSOPHY_DESCRIPTION": "Creamos prendas que hablan de ti. Cada pieza es un manifiesto ético y sostenible, diseñado para celebrar el lenguaje, respetar el planeta y perdurar en el tiempo. Porque vestirse es expresar quién eres, sin compromisos."
+	},
 	"FOOTER": {
     "FOLLOW_US": "Síguenos",
     "INFORMATION": "Información",

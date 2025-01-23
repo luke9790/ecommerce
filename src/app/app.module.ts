@@ -21,6 +21,7 @@ import { ShopComponent } from './components/shop/shop.component';
 import { IntroSectionComponent } from './components/intro-section/intro-section.component';
 import { FeaturedProductsComponent } from './components/featured-products/featured-products.component';
 import { CompanyInfosComponent } from './components/company-infos/company-infos.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -41,7 +42,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ShopComponent,
     IntroSectionComponent,
     FeaturedProductsComponent,
-    CompanyInfosComponent
+    CompanyInfosComponent,
+    ProductCardComponent
   ],
   imports: [
     BrowserModule,

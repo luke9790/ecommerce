@@ -13,6 +13,25 @@
 	  "DESCRIPTION": "Compound is a statement to wear, it's ink; it's an act of verbal responsibility; it's the indelible polysemy of the character we have imprinted and carry with us.",
 	  "READ_MORE": "Read More"
 	},
+	"FEATURED": {
+	  "TITLE": "Featured Products",
+	  "DESCRIPTION": "Check out our top picks for you!",
+	  "VIEW_ALL": "View All"
+	},
+	"BUTTON": {
+	  "ADD_TO_CART": "Add to Cart"
+	},
+	"COMPANY": {
+	"FACTS_TITLE": "3 Facts About Compound",
+	"FACT_1_TITLE": "Handcrafted",
+	"FACT_1_DESCRIPTION": "Made by hand in Italy. Any imperfections are not considered defects, but proof of artisanal craftsmanship.",
+	"FACT_2_TITLE": "Eco Friendly",
+	"FACT_2_DESCRIPTION": "Made with organic and natural materials. The small amount of plastic you will find in me is recycled and processed sustainably.",
+	"FACT_3_TITLE": "Durable",
+	"FACT_3_DESCRIPTION": "Made to last a long time, to become your second skin. I use only the highest quality materials. Take care of me.",
+	"PHILOSOPHY_TITLE": "Our Promise",
+	"PHILOSOPHY_DESCRIPTION": "We create garments that speak about you. Each piece is an ethical and sustainable manifesto, designed to celebrate language, respect the planet, and endure over time. Because dressing is expressing who you are, without compromises."
+	},
 	"FOOTER": {
     "FOLLOW_US": "Follow Us",
     "INFORMATION": "Information",

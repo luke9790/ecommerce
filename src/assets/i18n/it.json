@@ -13,6 +13,25 @@
 	  "DESCRIPTION": "Compound è una dichiarazione da indossare, è inchiostro; è un atto di responsabilità verbale; è polisemìa indelebile del carattere che abbiamo impresso e che ci portiamo addosso.",
 	  "READ_MORE": "Leggi di più"
 	},
+	"FEATURED": {
+	  "TITLE": "Prodotti in Evidenza",
+	  "DESCRIPTION": "Scopri i nostri migliori prodotti per te!",
+	  "VIEW_ALL": "Vedi Tutti"
+	},
+	"BUTTON": {
+	  "ADD_TO_CART": "Aggiungi al Carrello"
+	},
+	"COMPANY": {
+	"FACTS_TITLE": "3 Curiosità su Compound",
+	"FACT_1_TITLE": "Artigianale",
+	"FACT_1_DESCRIPTION": "Sono fatta a mano in Italia. Eventuali imperfezioni non sono da considerarsi difetti, ma dimostrazione della lavorazione artigianale.",
+	"FACT_2_TITLE": "Eco Friendly",
+	"FACT_2_DESCRIPTION": "Sono fatta con materiali organici e naturali. Quel poco di plastica che troverai in me è plastica riciclata con processi sostenibili e riciclabile.",
+	"FACT_3_TITLE": "Durevole",
+	"FACT_3_DESCRIPTION": "Sono fatta per durare a lungo, per diventare la tua seconda pelle. Utilizzo solo materiali di primissima qualità. Prenditi cura di me.",
+	"PHILOSOPHY_TITLE": "La Nostra Promessa",
+	"PHILOSOPHY_DESCRIPTION": "Creiamo capi che parlano di te. Ogni capo è un manifesto etico e sostenibile, pensato per celebrare il linguaggio, rispettare il pianeta e durare nel tempo. Perché vestirsi è esprimere chi sei, senza compromessi."
+	},
 	"FOOTER": {
     "FOLLOW_US": "Seguici",
     "INFORMATION": "Informazioni",
