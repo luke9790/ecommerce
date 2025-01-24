@@ -42,7 +42,45 @@
     "BRAND": "Brand",
     "ALL_BRANDS": "All",
     "IS_FEATURED": "Featured",
-    "EXCLUDE_OUT_OF_STOCK": "Exclude Out of Stock"
+    "EXCLUDE_OUT_OF_STOCK": "Exclude Out of Stock",
+	"RESET": "Reset Filters"
+  },
+  "CATEGORIES": {
+    "MAIN": "Categories",
+    "ALL": "All Categories",
+    "T-SHIRTS": "T-shirts",
+    "PANTS": "Pants",
+    "SHOES": "Shoes",
+    "HOODIES": "Hoodies",
+    "ACCESSORIES": "Accessories",
+    "JACKETS": "Jackets",
+    "DRESSES": "Dresses",
+	"SUB": "Subcategories",
+  	"ALL_SUB": "All Subcategories"
+  },
+  "SUBCATEGORIES": {
+    "BASIC": "Basic",
+    "FORMAL": "Formal",
+    "SPORTSWEAR": "Sportswear",
+    "JEANS": "Jeans",
+    "JOGGING PANTS": "Jogging Pants",
+    "SHORTS": "Shorts",
+    "SNEAKERS": "Sneakers",
+    "RUNNING SHOES": "Running Shoes",
+    "HIGH HEELS": "High Heels",
+    "HOODIES": "Hoodies",
+    "SWEATERS": "Sweaters",
+    "ZIPPER JACKETS": "Zipper Jackets",
+    "CAPS": "Caps",
+    "SCARVES": "Scarves",
+    "SUNGLASSES": "Sunglasses",
+    "WATCHES": "Watches",
+    "NECKLACES": "Necklaces",
+    "LEATHER JACKETS": "Leather Jackets",
+    "DENIM JACKETS": "Denim Jackets",
+    "WINTER COATS": "Winter Coats",
+    "RAIN JACKETS": "Rain Jackets",
+    "SUMMER DRESSES": "Summer Dresses"
   	},
 	"GENERAL": {
 		"LOADING": "Loading..."

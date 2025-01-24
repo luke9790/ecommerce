@@ -1,79 +1,76 @@
 <div class="flex">
-	<aside class="w-1/4 p-4 bg-gray-100">
-	  <h3 class="text-lg font-semibold mb-4">{{ 'FILTERS.TITLE' | translate }}</h3>
+	<aside class="w-1/5 p-4 bg-white shadow-md rounded-lg overflow-y-auto sticky top-4 h-screen">
+	  <h3 class="text-lg font-semibold mb-4 border-b pb-2">
+		<i class="fas fa-filter mr-2 text-gray-500"></i>{{ 'FILTERS.TITLE' | translate }}
+	  </h3>
   
-	  <div>
-		<label class="block text-sm font-medium mb-2">
-		  {{ 'FILTERS.TYPE' | translate }}
-		</label>
+	  <div class="mb-6">
+		<h4 class="text-md font-medium border-b pb-2 mb-2">
+		  <i class="fas fa-th-large mr-1 text-gray-500"></i>{{ 'CATEGORIES.MAIN' | translate }}
+		</h4>
 		<select
-		  class="w-full border-gray-300 rounded-md"
-		  [(ngModel)]="filters.type"
-		  (change)="applyFilters()"
-		>
-		  <option value="">{{ 'FILTERS.ALL_TYPES' | translate }}</option>
-		  <option value="male">{{ 'FILTERS.TYPE_MALE' | translate }}</option>
-		  <option value="female">{{ 'FILTERS.TYPE_FEMALE' | translate }}</option>
-		  <option value="unisex">{{ 'FILTERS.TYPE_UNISEX' | translate }}</option>
-		</select>
-	  </div>
-  
-	  <div class="mt-4">
-		<label class="block text-sm font-medium mb-2">
-		  {{ 'FILTERS.CATEGORY' | translate }}
-		</label>
-		<select
-		  class="w-full border-gray-300 rounded-md"
+		  class="w-full border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
 		  [(ngModel)]="filters.categoryId"
 		  (change)="applyFilters()"
 		>
-		  <option value="">{{ 'FILTERS.ALL_CATEGORIES' | translate }}</option>
-		  <option *ngFor="let category of categories" [value]="category.id">
-			{{ category.name }}
+		  <option value="">{{ 'CATEGORIES.ALL' | translate }}</option>
+		  <option *ngFor="let category of categories | keyvalue" [value]="category.key">
+			{{ ('CATEGORIES.' + category.value.name.toUpperCase()) | translate }}
 		  </option>
 		</select>
 	  </div>
   
-	  <div class="mt-4">
-		<label class="block text-sm font-medium mb-2">
-		  {{ 'FILTERS.PRICE' | translate }}
-		</label>
+	  <div *ngIf="filters.categoryId" class="mb-6">
+		<h4 class="text-md font-medium border-b pb-2 mb-2">
+		  <i class="fas fa-th-list mr-1 text-gray-500"></i>{{ 'CATEGORIES.SUB' | translate }}
+		</h4>
+		<select
+		  class="w-full border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
+		  [(ngModel)]="filters.subCategoryId"
+		  (change)="applyFilters()"
+		>
+		  <option value="">{{ 'CATEGORIES.ALL_SUB' | translate }}</option>
+		  <option
+			*ngFor="let subCategory of categories[filters.categoryId]?.subCategories | keyvalue"
+			[value]="subCategory.key"
+		  >
+			{{ ('SUBCATEGORIES.' + subCategory.value.toUpperCase()) | translate }}
+		  </option>
+		</select>
+	  </div>
+  
+	  <div class="mb-6">
+		<h4 class="text-md font-medium border-b pb-2 mb-2">
+		  <i class="fas fa-dollar-sign mr-1 text-gray-500"></i>{{ 'FILTERS.PRICE' | translate }}
+		</h4>
 		<div class="flex gap-2">
 		  <input
 			type="number"
-			class="w-1/2 border-gray-300 rounded-md"
+			class="w-1/2 border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
 			[(ngModel)]="filters.minPrice"
-			(change)="applyFilters()"
+			(input)="debouncedApplyFilters()"
+			(keydown)="allowOnlyNumbers($event)"
 			placeholder="{{ 'FILTERS.MIN_PRICE' | translate }}"
+			min="0"
 		  />
 		  <input
 			type="number"
-			class="w-1/2 border-gray-300 rounded-md"
+			class="w-1/2 border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
 			[(ngModel)]="filters.maxPrice"
-			(change)="applyFilters()"
+			(input)="debouncedApplyFilters()"
+			(keydown)="allowOnlyNumbers($event)"
 			placeholder="{{ 'FILTERS.MAX_PRICE' | translate }}"
+			min="0"
 		  />
 		</div>
 	  </div>
   
-	  <div class="mt-4 flex items-center">
-		<input
-		  type="checkbox"
-		  class="mr-2"
-		  [(ngModel)]="filters.hasDiscount"
-		  (change)="applyFilters()"
-		/>
-		<label class="text-sm font-medium">
-		  {{ 'FILTERS.HAS_DISCOUNT' | translate }}
-		</label>
-	  </div>
-  
-	  <div class="mt-4">
-		<label class="block text-sm font-medium mb-2">
-		  {{ 'FILTERS.BRAND' | translate }}
-		</label>
+	  <div class="mb-6">
+		<h4 class="text-md font-medium border-b pb-2 mb-2">
+		  <i class="fas fa-tags mr-1 text-gray-500"></i>{{ 'FILTERS.BRAND' | translate }}
+		</h4>
 		<select
-		  class="w-full border-gray-300 rounded-md"
+		  class="w-full border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
 		  [(ngModel)]="filters.brand"
 		  (change)="applyFilters()"
 		>
@@ -84,32 +81,17 @@
 		</select>
 	  </div>
   
-	  <div class="mt-4 flex items-center">
-		<input
-		  type="checkbox"
-		  class="mr-2"
-		  [(ngModel)]="filters.isFeatured"
-		  (change)="applyFilters()"
-		/>
-		<label class="text-sm font-medium">
-		  {{ 'FILTERS.IS_FEATURED' | translate }}
-		</label>
+	  <div class="mt-6">
+		<button
+		  class="w-full py-2 bg-red-500 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+		  (click)="resetFilters()"
+		>
+		  {{ 'FILTERS.RESET' | translate }}
+		</button>
 	  </div>
+	</aside>
   
-	  <div class="mt-4 flex items-center">
-		<input
-		  type="checkbox"
-		  class="mr-2"
-		  [(ngModel)]="filters.excludeOutOfStock"
-		  (change)="applyFilters()"
-		/>
-		<label class="text-sm font-medium">
-		  {{ 'FILTERS.EXCLUDE_OUT_OF_STOCK' | translate }}
-		</label>
-	  </div>
-	</aside>  
-  
-	<main class="w-3/4 p-4">
+	<main class="w-4/5 p-4">
 	  <div *ngIf="isLoading" class="text-center">
 		<p>{{ 'GENERAL.LOADING' | translate }}</p>
 	  </div>
@@ -119,7 +101,7 @@
 		  {{ 'RESULTS.FOUND' | translate }}: {{ filteredProducts.length }}
 		</span>
 		<select
-		  class="border-gray-300 rounded-md"
+		  class="border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
 		  [(ngModel)]="sorting"
 		  (change)="applyFilters()"
 		>

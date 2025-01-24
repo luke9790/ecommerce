@@ -7,6 +7,7 @@ export interface Product {
 	stock: number; // Quantità disponibile
 	image: string;
 	categoryId: number; // Identificativo della categoria
+	subCategoryId: number; 
 	type: 'male' | 'female' | 'unisex';
 	isFeatured: boolean;
 	price: number;

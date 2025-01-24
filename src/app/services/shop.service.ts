@@ -20,7 +20,8 @@ export class ShopService {
       brand: 'Nike',
       stock: 50,
       image: 'https://via.placeholder.com/150',
-      categoryId: 1,
+      categoryId: 1, // T-shirts
+      subCategoryId: 101, // Basic T-shirts
       type: 'male',
       isFeatured: true,
       price: 19.99,
@@ -35,7 +36,8 @@ export class ShopService {
       brand: 'Levi’s',
       stock: 30,
       image: 'https://via.placeholder.com/150',
-      categoryId: 2,
+      categoryId: 2, // Pants
+      subCategoryId: 201, // Jeans
       type: 'male',
       isFeatured: false,
       price: 49.99,
@@ -49,7 +51,8 @@ export class ShopService {
       brand: 'Adidas',
       stock: 20,
       image: 'https://via.placeholder.com/150',
-      categoryId: 3,
+      categoryId: 3, // Shoes
+      subCategoryId: 301, // Sneakers
       type: 'unisex',
       isFeatured: true,
       price: 89.99,
@@ -64,7 +67,8 @@ export class ShopService {
       brand: 'Zara',
       stock: 40,
       image: 'https://via.placeholder.com/150',
-      categoryId: 4,
+      categoryId: 4, // Hoodies
+      subCategoryId: 401, // Hoodies with Hood
       type: 'female',
       isFeatured: false,
       price: 39.99,
@@ -78,7 +82,8 @@ export class ShopService {
       brand: 'Puma',
       stock: 25,
       image: 'https://via.placeholder.com/150',
-      categoryId: 5,
+      categoryId: 2, // Pants
+      subCategoryId: 202, // Jogging Pants
       type: 'unisex',
       isFeatured: false,
       price: 29.99,
@@ -92,7 +97,8 @@ export class ShopService {
       brand: 'New Era',
       stock: 60,
       image: 'https://via.placeholder.com/150',
-      categoryId: 6,
+      categoryId: 6, // Accessories
+      subCategoryId: 601, // Caps
       type: 'unisex',
       isFeatured: true,
       price: 14.99,
@@ -107,7 +113,8 @@ export class ShopService {
       brand: 'Gucci',
       stock: 15,
       image: 'https://via.placeholder.com/150',
-      categoryId: 7,
+      categoryId: 7, // Jackets
+      subCategoryId: 701, // Leather Jackets
       type: 'male',
       isFeatured: true,
       price: 299.99,
@@ -121,7 +128,8 @@ export class ShopService {
       brand: 'H&M',
       stock: 35,
       image: 'https://via.placeholder.com/150',
-      categoryId: 8,
+      categoryId: 8, // Dresses
+      subCategoryId: 801, // Summer Dresses
       type: 'female',
       isFeatured: false,
       price: 49.99,
@@ -135,7 +143,8 @@ export class ShopService {
       brand: 'Burberry',
       stock: 40,
       image: 'https://via.placeholder.com/150',
-      categoryId: 9,
+      categoryId: 6, // Accessories
+      subCategoryId: 602, // Scarves
       type: 'unisex',
       isFeatured: true,
       price: 39.99,
@@ -150,7 +159,8 @@ export class ShopService {
       brand: 'Asics',
       stock: 25,
       image: 'https://via.placeholder.com/150',
-      categoryId: 10,
+      categoryId: 3, // Shoes
+      subCategoryId: 302, // Running Shoes
       type: 'male',
       isFeatured: false,
       price: 99.99,
@@ -164,7 +174,8 @@ export class ShopService {
       brand: 'Levi’s',
       stock: 30,
       image: 'https://via.placeholder.com/150',
-      categoryId: 7,
+      categoryId: 7, // Jackets
+      subCategoryId: 702, // Denim Jackets
       type: 'male',
       isFeatured: true,
       price: 69.99,
@@ -178,7 +189,8 @@ export class ShopService {
       brand: 'Jimmy Choo',
       stock: 20,
       image: 'https://via.placeholder.com/150',
-      categoryId: 8,
+      categoryId: 3, // Shoes
+      subCategoryId: 303, // High Heels
       type: 'female',
       isFeatured: false,
       price: 149.99,
@@ -192,7 +204,8 @@ export class ShopService {
       brand: 'The North Face',
       stock: 20,
       image: 'https://via.placeholder.com/150',
-      categoryId: 4,
+      categoryId: 7, // Jackets
+      subCategoryId: 703, // Winter Coats
       type: 'unisex',
       isFeatured: false,
       price: 199.99,
@@ -206,7 +219,8 @@ export class ShopService {
       brand: 'Ray-Ban',
       stock: 45,
       image: 'https://via.placeholder.com/150',
-      categoryId: 6,
+      categoryId: 6, // Accessories
+      subCategoryId: 603, // Sunglasses
       type: 'unisex',
       isFeatured: true,
       price: 129.99,
@@ -220,7 +234,8 @@ export class ShopService {
       brand: 'Tommy Hilfiger',
       stock: 30,
       image: 'https://via.placeholder.com/150',
-      categoryId: 1,
+      categoryId: 1, // T-shirts
+      subCategoryId: 102, // Formal Shirts
       type: 'male',
       isFeatured: false,
       price: 59.99,
@@ -234,7 +249,8 @@ export class ShopService {
       brand: 'Hollister',
       stock: 0,
       image: 'https://via.placeholder.com/150',
-      categoryId: 5,
+      categoryId: 2, // Pants
+      subCategoryId: 203, // Shorts
       type: 'male',
       isFeatured: true,
       price: 34.99,
@@ -248,7 +264,8 @@ export class ShopService {
       brand: 'Nike',
       stock: 35,
       image: 'https://via.placeholder.com/150',
-      categoryId: 3,
+      categoryId: 1, // T-shirts
+      subCategoryId: 103, // Sportswear
       type: 'female',
       isFeatured: false,
       price: 29.99,
@@ -262,7 +279,8 @@ export class ShopService {
       brand: 'Rolex',
       stock: 10,
       image: 'https://via.placeholder.com/150',
-      categoryId: 11,
+      categoryId: 6, // Accessories
+      subCategoryId: 604, // Watches
       type: 'unisex',
       isFeatured: true,
       price: 4999.99,
@@ -276,7 +294,8 @@ export class ShopService {
       brand: 'Columbia',
       stock: 25,
       image: 'https://via.placeholder.com/150',
-      categoryId: 4,
+      categoryId: 7, // Jackets
+      subCategoryId: 704, // Rain Jackets
       type: 'unisex',
       isFeatured: false,
       price: 89.99,
@@ -290,13 +309,15 @@ export class ShopService {
       brand: 'Tiffany & Co.',
       stock: 15,
       image: 'https://via.placeholder.com/150',
-      categoryId: 12,
+      categoryId: 6, // Accessories
+      subCategoryId: 605, // Necklaces
       type: 'female',
       isFeatured: true,
       price: 299.99,
       currency: 'USD',
     },
   ];
+  
   
 
   constructor() {}
