@@ -6,17 +6,21 @@ import { Router } from '@angular/router';
   selector: 'app-register',
   standalone: false,
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
   email = '';
   password = '';
   confirmPassword = '';
   errorMessage = '';
+  successMessage = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
   onRegister(): void {
+    this.errorMessage = '';
+    this.successMessage = '';
+
     // Controlla che le password combacino
     if (this.password !== this.confirmPassword) {
       this.errorMessage = 'Le password non combaciano.';
@@ -26,13 +30,22 @@ export class RegisterComponent {
     // Chiama il servizio di registrazione
     this.authService.register(this.email, this.password).subscribe({
       next: () => {
-        alert('Registrazione completata! Puoi effettuare il login.');
-        this.router.navigate(['/login']);
+        this.successMessage = 'Registrazione completata! Puoi effettuare il login.';
+        alert(this.successMessage);
+        setTimeout(() => {
+          this.router.navigate(['/login']); // Reindirizza dopo un breve intervallo
+        }, 2000);
       },
       error: (err) => {
         console.error(err);
-        this.errorMessage = 'Errore durante la registrazione. Riprova più tardi.';
-      }
+
+        // Usa il messaggio di errore restituito dall'API, se disponibile
+        if (err.error && err.error.message) {
+          this.errorMessage = err.error.message;
+        } else {
+          this.errorMessage = 'Errore durante la registrazione. Riprova più tardi.';
+        }
+      },
     });
   }
 }

@@ -7,7 +7,7 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = '/api'; // Base URL dell'API
+  private apiUrl = 'http://localhost:5000/api/auth'; // Base URL dell'API
   private isAuthenticated = new BehaviorSubject<boolean>(this.isLoggedIn());
   isAuthenticated$ = this.isAuthenticated.asObservable();
 

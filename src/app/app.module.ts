@@ -6,7 +6,6 @@ import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
-import { ContactsComponent } from './components/contacts/contacts.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -14,7 +13,6 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@a
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
-import { ContactComponent } from './components/contact/contact.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ShopComponent } from './components/shop/shop.component';
@@ -25,7 +23,8 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { TokenInterceptor } from './services/token.interceptor'; // Importa l'interceptor
+import { TokenInterceptor } from './services/token.interceptor';
+import { ProfileComponent } from './components/profile/profile.component'; // Importa l'interceptor
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,8 +37,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     HomeComponent,
     AboutComponent,
-    ContactsComponent,
-    ContactComponent,
     FavoritesComponent,
     CartComponent,
     ShopComponent,
@@ -49,6 +46,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductCardComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

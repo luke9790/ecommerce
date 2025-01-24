@@ -1,0 +1,83 @@
+<div class="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-lg mt-8">
+	<!-- Titolo della pagina -->
+	<h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Il Tuo Profilo</h1>
+  
+	<!-- Messaggio di errore -->
+	<div
+	  *ngIf="errorMessage"
+	  class="bg-red-100 text-red-800 border border-red-400 rounded p-4 mb-6"
+	>
+	  {{ errorMessage }}
+	</div>
+  
+	<!-- Dati utente -->
+	<div *ngIf="user" class="space-y-4">
+	  <div class="flex items-center justify-between">
+		<span class="font-bold text-gray-700">Email:</span>
+		<span class="text-gray-600">{{ user.email }}</span>
+	  </div>
+	  <div class="flex items-center justify-between">
+		<span class="font-bold text-gray-700">Nome:</span>
+		<span class="text-gray-600">{{ user.first_name || 'Non specificato' }}</span>
+	  </div>
+	  <div class="flex items-center justify-between">
+		<span class="font-bold text-gray-700">Cognome:</span>
+		<span class="text-gray-600">{{ user.last_name || 'Non specificato' }}</span>
+	  </div>
+	  <div class="flex items-center justify-between">
+		<span class="font-bold text-gray-700">Cliente da:</span>
+		<span class="text-gray-600">{{ user.created_at | date: 'MMMM yyyy' }}</span>
+	  </div>
+	</div>
+  
+	<!-- Form per modificare i dati -->
+	<div class="mt-8">
+	  <h2 class="text-xl font-semibold text-gray-800 mb-4">Modifica Dati</h2>
+	  <form (ngSubmit)="onUpdateProfile()" class="space-y-4">
+		<!-- Nome -->
+		<div>
+		  <label for="firstName" class="block text-sm font-medium text-gray-700">Nome</label>
+		  <input
+			type="text"
+			id="firstName"
+			[(ngModel)]="editFirstName"
+			name="firstName"
+			class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+			placeholder="Inserisci il tuo nome"
+		  />
+		</div>
+		<!-- Cognome -->
+		<div>
+		  <label for="lastName" class="block text-sm font-medium text-gray-700">Cognome</label>
+		  <input
+			type="text"
+			id="lastName"
+			[(ngModel)]="editLastName"
+			name="lastName"
+			class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+			placeholder="Inserisci il tuo cognome"
+		  />
+		</div>
+		<!-- Pulsante Salva -->
+		<div class="text-center">
+		  <button
+			type="submit"
+			class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition"
+		  >
+			Salva Modifiche
+		  </button>
+		</div>
+	  </form>
+	</div>
+  
+	<!-- Pulsante Logout -->
+	<div class="text-center mt-8">
+	  <button
+		(click)="onLogout()"
+		class="bg-red-600 text-white px-6 py-2 rounded-lg shadow hover:bg-red-700 transition"
+	  >
+		Logout
+	  </button>
+	</div>
+  </div>
+  
