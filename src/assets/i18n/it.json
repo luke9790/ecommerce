@@ -5,7 +5,9 @@
 	  "ABOUT": "Informazioni",
 	  "CONTACT": "Contatti",
 	  "FAVORITES": "Preferiti",
-	  "CART": "Carrello"
+	  "CART": "Carrello",
+	  "LOGIN": "Accedi",
+	  "REGISTER": "Registrati"
 	},
 	"CONTENT": {
 	  "SUBTITLE": "Non è solo una maglietta",
@@ -117,6 +119,30 @@
     "COOKIES": "Politica sui Cookie",
     "WE_ACCEPT": "Accettiamo",
     "COMPANY_INFO": "Compound Srl | P.IVA: 123456789 | Indirizzo: 123 Via E-commerce, Milano, Italia"
-  }
+	},
+	"REGISTER": {
+	"TITLE": "Registrati",
+	"EMAIL_LABEL": "Email",
+	"EMAIL_PLACEHOLDER": "Inserisci la tua email",
+	"PASSWORD_LABEL": "Password",
+	"PASSWORD_PLACEHOLDER": "Inserisci la tua password",
+	"CONFIRM_PASSWORD_LABEL": "Conferma Password",
+	"CONFIRM_PASSWORD_PLACEHOLDER": "Reinserisci la tua password",
+	"BUTTON": "Registrati",
+	"ALREADY_HAVE_ACCOUNT": "Hai già un account?",
+	"LOGIN_LINK": "Accedi"
+	},
+	"LOGIN": {
+	"TITLE": "Accedi",
+	"EMAIL_LABEL": "Email",
+	"EMAIL_PLACEHOLDER": "Inserisci la tua email",
+	"PASSWORD_LABEL": "Password",
+	"PASSWORD_PLACEHOLDER": "Inserisci la tua password",
+	"BUTTON": "Accedi",
+	"NO_ACCOUNT": "Non hai un account?",
+	"REGISTER_LINK": "Registrati"
+	}
+
+
   }
   

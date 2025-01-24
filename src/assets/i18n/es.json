@@ -5,7 +5,9 @@
 	  "ABOUT": "Acerca de",
 	  "CONTACT": "Contacto",
 	  "FAVORITES": "Favoritos",
-	  "CART": "Carrito"
+	  "CART": "Carrito",
+	  "LOGIN": "Iniciar sesión",
+	  "REGISTER": "Registrarse"
 	},
 	"CONTENT": {
 	  "SUBTITLE": "No es solo una camiseta",
@@ -117,6 +119,30 @@
     "COOKIES": "Política de Cookies",
     "WE_ACCEPT": "Aceptamos",
     "COMPANY_INFO": "Compound Ltd. | IVA: 123456789 | Dirección: 123 Calle E-commerce, Milán, Italia"
-  	}
+  	},
+	"REGISTER": {
+	"TITLE": "Regístrate",
+	"EMAIL_LABEL": "Correo electrónico",
+	"EMAIL_PLACEHOLDER": "Introduce tu correo electrónico",
+	"PASSWORD_LABEL": "Contraseña",
+	"PASSWORD_PLACEHOLDER": "Introduce tu contraseña",
+	"CONFIRM_PASSWORD_LABEL": "Confirma la contraseña",
+	"CONFIRM_PASSWORD_PLACEHOLDER": "Vuelve a introducir tu contraseña",
+	"BUTTON": "Regístrate",
+	"ALREADY_HAVE_ACCOUNT": "¿Ya tienes una cuenta?",
+	"LOGIN_LINK": "Inicia sesión"
+	},
+	"LOGIN": {
+	"TITLE": "Iniciar sesión",
+	"EMAIL_LABEL": "Correo electrónico",
+	"EMAIL_PLACEHOLDER": "Introduce tu correo electrónico",
+	"PASSWORD_LABEL": "Contraseña",
+	"PASSWORD_PLACEHOLDER": "Introduce tu contraseña",
+	"BUTTON": "Iniciar sesión",
+	"NO_ACCOUNT": "¿No tienes una cuenta?",
+	"REGISTER_LINK": "Regístrate"
+	}
+
+
   }
   

@@ -5,7 +5,9 @@
 	  "ABOUT": "About",
 	  "CONTACT": "Contact",
 	  "FAVORITES": "Favorites",
-	  "CART": "Cart"
+	  "CART": "Cart",
+	  "LOGIN": "Login",
+	  "REGISTER": "Register"
 	},
 	"CONTENT": {
 	  "SUBTITLE": "It's not just a T-shirt",
@@ -117,6 +119,29 @@
     "COOKIES": "Cookie Policy",
     "WE_ACCEPT": "We Accept",
     "COMPANY_INFO": "Compound Ltd. | VAT: 123456789 | Address: 123 E-commerce St., Milan, Italy"
-  }
+	},
+	"REGISTER": {
+	"TITLE": "Sign Up",
+	"EMAIL_LABEL": "Email",
+	"EMAIL_PLACEHOLDER": "Enter your email",
+	"PASSWORD_LABEL": "Password",
+	"PASSWORD_PLACEHOLDER": "Enter your password",
+	"CONFIRM_PASSWORD_LABEL": "Confirm Password",
+	"CONFIRM_PASSWORD_PLACEHOLDER": "Re-enter your password",
+	"BUTTON": "Sign Up",
+	"ALREADY_HAVE_ACCOUNT": "Already have an account?",
+	"LOGIN_LINK": "Log In"
+	},
+	"LOGIN": {
+	"TITLE": "Log In",
+	"EMAIL_LABEL": "Email",
+	"EMAIL_PLACEHOLDER": "Enter your email",
+	"PASSWORD_LABEL": "Password",
+	"PASSWORD_PLACEHOLDER": "Enter your password",
+	"BUTTON": "Log In",
+	"NO_ACCOUNT": "Don't have an account?",
+	"REGISTER_LINK": "Sign Up"
+	}
+
   }
   

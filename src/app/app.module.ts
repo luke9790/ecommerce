@@ -10,7 +10,7 @@ import { ContactsComponent } from './components/contacts/contacts.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient } from '@angular/common/http';
@@ -23,11 +23,13 @@ import { FeaturedProductsComponent } from './components/featured-products/featur
 import { CompanyInfosComponent } from './components/company-infos/company-infos.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { TokenInterceptor } from './services/token.interceptor'; // Importa l'interceptor
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
-
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     IntroSectionComponent,
     FeaturedProductsComponent,
     CompanyInfosComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,8 +67,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
   ],
   providers: [
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(
+      withInterceptorsFromDi() // Consente di configurare gli interceptor tramite DI
+    ),
+    {
+      provide: HTTP_INTERCEPTORS, // Registra l'interceptor
+      useClass: TokenInterceptor,
+      multi: true, // Permette l'uso di più interceptor
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

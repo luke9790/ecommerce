@@ -1,0 +1,67 @@
+<div class="flex items-center justify-center  min-h-[75vh] py-6 bg-gray-100">
+	<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+	  <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">{{ 'REGISTER.TITLE' | translate }}</h1>
+	  <form (ngSubmit)="onRegister()" #registerForm="ngForm" class="space-y-4">
+		<!-- Email -->
+		<div>
+		  <label for="email" class="block text-sm font-medium text-gray-700 mb-1">{{ 'REGISTER.EMAIL_LABEL' | translate }}</label>
+		  <input
+			type="email"
+			id="email"
+			name="email"
+			required
+			[(ngModel)]="email"
+			class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+			placeholder="{{ 'REGISTER.EMAIL_PLACEHOLDER' | translate }}"
+		  />
+		</div>
+		
+		<!-- Password -->
+		<div>
+		  <label for="password" class="block text-sm font-medium text-gray-700 mb-1">{{ 'REGISTER.PASSWORD_LABEL' | translate }}</label>
+		  <input
+			type="password"
+			id="password"
+			name="password"
+			required
+			[(ngModel)]="password"
+			class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+			placeholder="{{ 'REGISTER.PASSWORD_PLACEHOLDER' | translate }}"
+		  />
+		</div>
+  
+		<!-- Conferma Password -->
+		<div>
+		  <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">{{ 'REGISTER.CONFIRM_PASSWORD_LABEL' | translate }}</label>
+		  <input
+			type="password"
+			id="confirmPassword"
+			name="confirmPassword"
+			required
+			[(ngModel)]="confirmPassword"
+			class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
+			placeholder="{{ 'REGISTER.CONFIRM_PASSWORD_PLACEHOLDER' | translate }}"
+		  />
+		</div>
+  
+		<!-- Errore -->
+		<div *ngIf="errorMessage" class="text-red-500 text-sm text-center">
+		  {{ errorMessage }}
+		</div>
+  
+		<!-- Pulsante Registrati -->
+		<button
+		  type="submit"
+		  [disabled]="registerForm.invalid"
+		  class="w-full bg-blue-600 text-white font-medium py-2 px-4 rounded-md shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+		>
+		  {{ 'REGISTER.BUTTON' | translate }}
+		</button>
+	  </form>
+	  <p class="mt-4 text-sm text-center text-gray-600">
+		{{ 'REGISTER.ALREADY_HAVE_ACCOUNT' | translate }}
+		<a routerLink="/login" class="text-blue-600 hover:underline">{{ 'REGISTER.LOGIN_LINK' | translate }}</a>
+	  </p>
+	</div>
+  </div>
+  
