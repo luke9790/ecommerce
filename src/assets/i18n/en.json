@@ -7,7 +7,8 @@
 	  "FAVORITES": "Favorites",
 	  "CART": "Cart",
 	  "LOGIN": "Login",
-	  "REGISTER": "Register"
+	  "REGISTER": "Register",
+	  "LOGOUT": "Logout"
 	},
 	"CONTENT": {
 	  "SUBTITLE": "It's not just a T-shirt",

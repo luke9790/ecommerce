@@ -34,6 +34,7 @@
   <div *ngIf="!isLoading" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 gap-x-8">
     <app-product-card
     *ngFor="let product of products"
+    [id]="product.id"
     [name]="product.name"
     [description]="product.description"
     [price]="product.price"

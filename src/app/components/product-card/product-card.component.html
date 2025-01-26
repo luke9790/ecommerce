@@ -1,4 +1,5 @@
-<div
+<a
+  [routerLink]="['/product', id]"
   class="relative bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 h-[24rem] flex flex-col group"
 >
   <span
@@ -28,7 +29,7 @@
         [class.text-green-600]="stock > 0"
         [class.text-red-600]="stock === 0"
       >
-      {{ stock > 0 ? ('STOCK.AVAILABLE' | translate) : ('STOCK.OUT_OF_STOCK' | translate) }}
+        {{ stock > 0 ? ('STOCK.AVAILABLE' | translate) : ('STOCK.OUT_OF_STOCK' | translate) }}
       </span>
     </div>
 
@@ -46,10 +47,23 @@
       </span>
     </div>
 
-    <button
-      class="mt-auto bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-500 transition-colors duration-300"
-    >
-      {{ 'BUTTON.ADD_TO_CART' | translate }}
-    </button>
+    <!-- Aggiungi al carrello e icona cuore -->
+    <div class="mt-4 flex items-center space-x-4">
+      <!-- Aggiungi al carrello -->
+      <button
+        (click)="addToCart()"
+        class="bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-500 transition-colors duration-300"
+      >
+        {{ 'BUTTON.ADD_TO_CART' | translate }}
+      </button>
+
+      <!-- Sezione per il cuore per aggiungere ai preferiti -->
+      <div
+        class="absolute bottom-2 right-4 text-gray-500 hover:text-red-600 cursor-pointer transition-all duration-300 transform hover:scale-125"
+        (click)="addToFavorites()"
+      >
+        <fa-icon [icon]="['fas', 'heart']" class="text-3xl"></fa-icon>
+      </div>
+    </div>
   </div>
-</div>
+</a>

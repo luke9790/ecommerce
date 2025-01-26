@@ -1,32 +1,39 @@
 <header class="bg-gray-100 border-b border-gray-300 py-4 px-6 flex items-center justify-between shadow-md">
-	<a class="text-3xl font-bold text-gray-800 hover:text-blue-600 font-fjalla" routerLink="/">
+	<!-- Logo -->
+	<a class="text-3xl font-bold text-gray-800 hover:text-blue-600 font-fjalla flex-shrink-0 w-1/4" routerLink="/">
 	  MyEcommerce
 	</a>
-  
-	<nav class="flex-1 mx-8">
-	  <ul class="flex justify-center space-x-8">
-		<li>
+	
+	<!-- Nav con link centrati -->
+	<nav class="flex w-1/2 justify-between">
+	  <ul class="flex w-full justify-between">
+		<li class="flex-1 text-center">
 		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/">{{ 'HEADER.HOME' | translate }}</a>
 		</li>
-		<li>
+		<li class="flex-1 text-center">
 		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/shop">{{ 'HEADER.SHOP' | translate }}</a>
 		</li>
-		<li>
+		<li class="flex-1 text-center">
 		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/about">{{ 'HEADER.ABOUT' | translate }}</a>
 		</li>
-		<li>
+		<li *ngIf="isAuthenticated" class="flex-1 text-center">
 		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/profile">{{ 'HEADER.ACCOUNT' | translate }}</a>
 		</li>
-		<li>
-			<a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/login">{{ 'HEADER.LOGIN' | translate }}</a>
-		  </li>
-		  <li>
-			<a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/register">{{ 'HEADER.REGISTER' | translate }}</a>
-		  </li>
+		<li *ngIf="isAuthenticated" class="flex-1 text-center">
+		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide cursor-pointer" (click)="logout()">{{ 'HEADER.LOGOUT' | translate }}</a>
+		</li>
+		<li *ngIf="!isAuthenticated" class="flex-1 text-center">
+		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/login">{{ 'HEADER.LOGIN' | translate }}</a>
+		</li>
+		<li *ngIf="!isAuthenticated" class="flex-1 text-center">
+		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/register">{{ 'HEADER.REGISTER' | translate }}</a>
+		</li>
 	  </ul>
 	</nav>
   
-	<div class="flex items-center space-x-6">
+	<!-- Cambio lingua con dropdown e Sezione Finale a Destra -->
+	<div class="flex items-center space-x-6 flex-shrink-0 ml-auto">
+	  <!-- Cambio lingua -->
 	  <div class="relative">
 		<button
 		  (click)="toggleDropdown()"
@@ -38,32 +45,28 @@
 		  <span>{{ selectedLanguage.title }}</span>
 		</button>
   
-		<div
-		  *ngIf="isDropdownOpen"
-		  class="absolute z-10 mt-2 bg-white border border-gray-300 rounded-md shadow-lg w-40"
-		>
+		<div *ngIf="isDropdownOpen" class="absolute z-10 mt-2 bg-white border border-gray-300 rounded-md shadow-lg w-40">
 		  <ul class="py-2">
-			<li
-			  *ngFor="let lang of languages"
-			  (click)="changeLanguage(lang)"
-			  class="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer"
-			>
+			<li *ngFor="let lang of languages" (click)="changeLanguage(lang)" class="flex items-center px-3 py-2 hover:bg-gray-100 cursor-pointer">
 			  <span [class]="'fi ' + lang.class" class="w-6 h-4"></span>
 			  <span class="ml-2">{{ lang.title }}</span>
 			</li>
 		  </ul>
 		</div>
 	  </div>
+	
+	  <!-- Carrello, preferiti -->
+	  <div class="flex items-center space-x-2">
+		<a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2 font-roboto w-24" routerLink="/favorites">
+		  <fa-icon [icon]="['fas', 'heart']"></fa-icon>
+		  <span>{{ 'HEADER.FAVORITES' | translate }}</span>
+		</a>
   
-	  <a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2 font-roboto" routerLink="/favorites">
-		<fa-icon [icon]="['fas', 'heart']"></fa-icon>
-		<span>{{ 'HEADER.FAVORITES' | translate }}</span>
-	  </a>
-  
-	  <a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2 font-roboto" routerLink="/cart">
-		<fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
-		<span>{{ 'HEADER.CART' | translate }}</span>
-	  </a>
+		<a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2 font-roboto w-24" routerLink="/cart">
+		  <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+		  <span>{{ 'HEADER.CART' | translate }}</span>
+		</a>
+	  </div>
 	</div>
   </header>
   

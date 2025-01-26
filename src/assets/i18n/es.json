@@ -7,7 +7,8 @@
 	  "FAVORITES": "Favoritos",
 	  "CART": "Carrito",
 	  "LOGIN": "Iniciar sesión",
-	  "REGISTER": "Registrarse"
+	  "REGISTER": "Registrarse",
+	  "LOGOUT": "Cerrar sesión"
 	},
 	"CONTENT": {
 	  "SUBTITLE": "No es solo una camiseta",

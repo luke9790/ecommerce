@@ -24,7 +24,8 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { TokenInterceptor } from './services/token.interceptor';
-import { ProfileComponent } from './components/profile/profile.component'; // Importa l'interceptor
+import { ProfileComponent } from './components/profile/profile.component';
+import { ProductComponent } from './components/product/product.component'; // Importa l'interceptor
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -47,6 +48,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
+    ProductComponent,
   ],
   imports: [
     BrowserModule,
