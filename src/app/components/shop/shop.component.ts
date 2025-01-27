@@ -23,14 +23,24 @@ export class ShopComponent implements OnInit, OnDestroy {
   filters = {
     categoryId: null as number | null,
     subCategoryId: null as number | null,
-    minPrice: null as number | null,
-    maxPrice: null as number | null,
+    minPrice: 0 as number,
+    maxPrice: 5000 as number,
     brand: '',
     label: '',
     isFeatured: false,
     discount: false,
     type: '',  
     excludeOutOfStock: false,
+  };
+
+  sliderOptions = {
+    floor: 0,
+    ceil: 5000,
+    step: 1,
+    showSelectionBar: true,
+    getSelectionBarColor: () => '#2196F3',
+    getPointerColor: () => '#2196F3',
+    
   };
 
   sorting: 'priceAsc' | 'priceDesc' | 'nameAsc' | 'nameDesc' = 'priceAsc';
@@ -70,7 +80,6 @@ export class ShopComponent implements OnInit, OnDestroy {
         this.products = allProducts;
         this.brands = Array.from(new Set(allProducts.map((product) => product.brand)));
         this.labels = Array.from(new Set(allProducts.map((product) => product.label)));
-        console.log(this.labels);
         this.isLoading = false;
         this.applyFilters();
       },
@@ -162,8 +171,8 @@ export class ShopComponent implements OnInit, OnDestroy {
     this.filters = {
       categoryId: null,
       subCategoryId: null,
-      minPrice: null,
-      maxPrice: null,
+      minPrice: 0,
+      maxPrice: 5000,
       brand: '',
       label: '',
       isFeatured: false,

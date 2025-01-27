@@ -85,33 +85,25 @@
 			{{ label }}
 		  </option>
 		</select>
-	  </div>
-  
-	  <div class="mb-6">
+	  </div>	  
+
+	 <div class="mb-6">
 		<h4 class="text-md font-medium border-b pb-2 mb-2">
 		  <i class="fas fa-dollar-sign mr-1 text-gray-500"></i>{{ 'FILTERS.PRICE' | translate }}
 		</h4>
-		<div class="flex gap-2">
-		  <input
-			type="number"
-			class="w-1/2 border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
-			[(ngModel)]="filters.minPrice"
-			(input)="debouncedApplyFilters()"
-			(keydown)="allowOnlyNumbers($event)"
-			placeholder="{{ 'FILTERS.MIN_PRICE' | translate }}"
-			min="0"
-		  />
-		  <input
-			type="number"
-			class="w-1/2 border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
-			[(ngModel)]="filters.maxPrice"
-			(input)="debouncedApplyFilters()"
-			(keydown)="allowOnlyNumbers($event)"
-			placeholder="{{ 'FILTERS.MAX_PRICE' | translate }}"
-			min="0"
-		  />
-		</div>
-	  </div>
+		<ngx-slider
+			[(value)]="filters.minPrice"
+			[(highValue)]="filters.maxPrice"
+			[options]="sliderOptions"
+			(userChangeEnd)="applyFilters()">
+		</ngx-slider>
+
+		<div class="slider-values mt-4">
+			<span style="margin-right: 60px;">{{ 'FILTERS.MIN_PRICE' | translate }}: {{ filters.minPrice | currency }}</span>
+			<span >{{ 'FILTERS.MAX_PRICE' | translate }}: {{ filters.maxPrice | currency }}</span>
+		</div>			  
+	 </div>
+
 
 	   <div class="mb-6">
 		<input
