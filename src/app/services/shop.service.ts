@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Product } from '../interfaces/interfaces';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,388 +14,76 @@ export class ShopService {
     'es': 'EUR',
   };
 
-  private products: Product[] = [
-    {
-      id: 1,
-      name: 'T-shirt Basic',
-      description: 'A simple and versatile T-shirt for everyday use.',
-      label: 'Regular',
-      brand: 'Nike',
-      stock: 50,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 1, // T-shirts
-      subCategoryId: 101, // Basic T-shirts
-      type: 'male',
-      isFeatured: true,
-      price: 19.99,
-      currency: 'USD',
-      discount: 10,
-    },
-    {
-      id: 2,
-      name: 'Jeans Slim Fit',
-      description: 'A stylish pair of slim fit jeans for a modern look.',
-      label: 'Premium',
-      brand: 'Levi’s',
-      stock: 30,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 2, // Pants
-      subCategoryId: 201, // Jeans
-      type: 'male',
-      isFeatured: false,
-      price: 49.99,
-      currency: 'USD',
-    },
-    {
-      id: 3,
-      name: 'Sneakers Classic',
-      description: 'Comfortable and stylish sneakers for daily wear.',
-      label: 'Adventure',
-      brand: 'Adidas',
-      stock: 20,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 3, // Shoes
-      subCategoryId: 301, // Sneakers
-      type: 'unisex',
-      isFeatured: true,
-      price: 89.99,
-      currency: 'USD',
-      discount: 15,
-    },
-    {
-      id: 4,
-      name: 'Hoodie Deluxe',
-      description: 'A cozy and warm hoodie for chilly days.',
-      label: 'Exclusive',
-      brand: 'Zara',
-      stock: 40,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 4, // Hoodies
-      subCategoryId: 401, // Hoodies with Hood
-      type: 'female',
-      isFeatured: false,
-      price: 39.99,
-      currency: 'USD',
-    },
-    {
-      id: 5,
-      name: 'Jogging Pants',
-      description: 'Perfect pants for running or lounging at home.',
-      label: 'Sport',
-      brand: 'Puma',
-      stock: 25,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 2, // Pants
-      subCategoryId: 202, // Jogging Pants
-      type: 'unisex',
-      isFeatured: false,
-      price: 29.99,
-      currency: 'USD',
-    },
-    {
-      id: 6,
-      name: 'Baseball Cap',
-      description: 'A classic cap to protect you from the sun in style.',
-      label: 'Classic',
-      brand: 'New Era',
-      stock: 60,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 6, // Accessories
-      subCategoryId: 601, // Caps
-      type: 'unisex',
-      isFeatured: true,
-      price: 14.99,
-      currency: 'USD',
-      discount: 5,
-    },
-    {
-      id: 7,
-      name: 'Leather Jacket',
-      description: 'A premium leather jacket for an edgy look.',
-      label: 'Luxury',
-      brand: 'Gucci',
-      stock: 15,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 7, // Jackets
-      subCategoryId: 701, // Leather Jackets
-      type: 'male',
-      isFeatured: true,
-      price: 299.99,
-      currency: 'USD',
-    },
-    {
-      id: 8,
-      name: 'Summer Dress',
-      description: 'A light and breezy dress for summer days.',
-      label: 'Elegant',
-      brand: 'H&M',
-      stock: 35,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 8, // Dresses
-      subCategoryId: 801, // Summer Dresses
-      type: 'female',
-      isFeatured: false,
-      price: 49.99,
-      currency: 'USD',
-    },
-    {
-      id: 9,
-      name: 'Woolen Scarf',
-      description: 'Stay warm with this soft and stylish scarf.',
-      label: 'Comfort',
-      brand: 'Burberry',
-      stock: 40,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 6, // Accessories
-      subCategoryId: 602, // Scarves
-      type: 'unisex',
-      isFeatured: true,
-      price: 39.99,
-      currency: 'USD',
-      discount: 10,
-    },
-    {
-      id: 10,
-      name: 'Running Shoes',
-      description: 'Shoes designed for performance and comfort.',
-      label: 'Performance',
-      brand: 'Asics',
-      stock: 25,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 3, // Shoes
-      subCategoryId: 302, // Running Shoes
-      type: 'male',
-      isFeatured: false,
-      price: 99.99,
-      currency: 'USD',
-    },
-    {
-      id: 11,
-      name: 'Denim Jacket',
-      description: 'A versatile jacket for casual wear.',
-      label: 'Vintage',
-      brand: 'Levi’s',
-      stock: 30,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 7, // Jackets
-      subCategoryId: 702, // Denim Jackets
-      type: 'male',
-      isFeatured: true,
-      price: 69.99,
-      currency: 'USD',
-    },
-    {
-      id: 12,
-      name: 'High-Heel Shoes',
-      description: 'Elegant high-heel shoes for special occasions.',
-      label: 'Exclusive',
-      brand: 'Jimmy Choo',
-      stock: 20,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 3, // Shoes
-      subCategoryId: 303, // High Heels
-      type: 'female',
-      isFeatured: false,
-      price: 149.99,
-      currency: 'USD',
-    },
-    {
-      id: 13,
-      name: 'Winter Coat',
-      description: 'Stay warm with this stylish winter coat.',
-      label: 'Premium',
-      brand: 'The North Face',
-      stock: 20,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 7, // Jackets
-      subCategoryId: 703, // Winter Coats
-      type: 'unisex',
-      isFeatured: false,
-      price: 199.99,
-      currency: 'USD',
-    },
-    {
-      id: 14,
-      name: 'Sunglasses',
-      description: 'Protect your eyes with these stylish sunglasses.',
-      label: 'Luxury',
-      brand: 'Ray-Ban',
-      stock: 45,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 6, // Accessories
-      subCategoryId: 603, // Sunglasses
-      type: 'unisex',
-      isFeatured: true,
-      price: 129.99,
-      currency: 'USD',
-    },
-    {
-      id: 15,
-      name: 'Formal Shirt',
-      description: 'A formal shirt for office or formal events.',
-      label: 'Classic',
-      brand: 'Tommy Hilfiger',
-      stock: 30,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 1, // T-shirts
-      subCategoryId: 102, // Formal Shirts
-      type: 'male',
-      isFeatured: false,
-      price: 59.99,
-      currency: 'USD',
-    },
-    {
-      id: 16,
-      name: 'Casual Shorts',
-      description: 'Lightweight shorts perfect for summer.',
-      label: 'Comfort',
-      brand: 'Hollister',
-      stock: 0,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 2, // Pants
-      subCategoryId: 203, // Shorts
-      type: 'male',
-      isFeatured: true,
-      price: 34.99,
-      currency: 'USD',
-    },
-    {
-      id: 17,
-      name: 'Sports Bra',
-      description: 'A supportive sports bra for active women.',
-      label: 'Sport',
-      brand: 'Nike',
-      stock: 35,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 1, // T-shirts
-      subCategoryId: 103, // Sportswear
-      type: 'female',
-      isFeatured: false,
-      price: 29.99,
-      currency: 'USD',
-    },
-    {
-      id: 18,
-      name: 'Elegant Watch',
-      description: 'A sleek and modern watch for all occasions.',
-      label: 'Luxury',
-      brand: 'Rolex',
-      stock: 10,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 6, // Accessories
-      subCategoryId: 604, // Watches
-      type: 'unisex',
-      isFeatured: true,
-      price: 4999.99,
-      currency: 'USD',
-    },
-    {
-      id: 19,
-      name: 'Rain Jacket',
-      description: 'Stay dry and stylish in rainy weather.',
-      label: 'Performance',
-      brand: 'Columbia',
-      stock: 25,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 7, // Jackets
-      subCategoryId: 704, // Rain Jackets
-      type: 'unisex',
-      isFeatured: false,
-      price: 89.99,
-      currency: 'USD',
-    },
-    {
-      id: 20,
-      name: 'Elegant Necklace',
-      description: 'A beautiful necklace for special occasions.',
-      label: 'Exclusive',
-      brand: 'Tiffany & Co.',
-      stock: 15,
-      image: 'https://via.placeholder.com/150',
-      categoryId: 6, // Accessories
-      subCategoryId: 605, // Necklaces
-      type: 'female',
-      isFeatured: true,
-      price: 299.99,
-      currency: 'USD',
-    },
-  ];
-  
-  
+  private apiUrl = "http://localhost:5000/api/products";
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
+  // Metodo per recuperare i prodotti con filtri
+  getProducts(language: string, currency?: string, filters?: any): Observable<Product[]> {
+    const resolvedCurrency = currency || this.getDefaultCurrency(language);
+    let apiUrlWithParams = `${this.apiUrl}?language=${language}&currency=${resolvedCurrency}`;
 
-  async getProducts(language: string, currency?: string, filters?: any): Promise<Product[]> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        let filteredProducts = [...this.products];
+    if (filters) {
+      if (filters.categoryId) {
+        apiUrlWithParams += `&categoryId=${filters.categoryId}`;
+      }
+      if (filters.subCategoryId) {
+        apiUrlWithParams += `&subCategoryId=${filters.subCategoryId}`;
+      }
+      if (filters.type) {
+        apiUrlWithParams += `&type=${filters.type}`;
+      }
+      if (filters.priceMin) {
+        apiUrlWithParams += `&priceMin=${filters.priceMin}`;
+      }
+      if (filters.priceMax) {
+        apiUrlWithParams += `&priceMax=${filters.priceMax}`;
+      }
+      if (filters.discount !== undefined) {
+        apiUrlWithParams += `&discount=${filters.discount}`;
+      }
+      if (filters.stock !== undefined) {
+        apiUrlWithParams += `&stock=${filters.stock}`;
+      }
+    }
 
-        if (filters) {
-          if (filters.categoryId) {
-            filteredProducts = filteredProducts.filter(
-              (product) => product.categoryId === filters.categoryId
-            );
-          }
-          if (filters.type) {
-            filteredProducts = filteredProducts.filter(
-              (product) => product.type === filters.type
-            );
-          }
-        }
-
-        const resolvedCurrency = currency || this.getDefaultCurrency(language);
-
-        if (resolvedCurrency !== 'USD') {
-          filteredProducts = filteredProducts.map((product) => ({
-            ...product,
-            price: this.convertCurrency(product.price, product.currency, resolvedCurrency),
-            currency: resolvedCurrency,
-          }));
-        }
-
-        resolve(filteredProducts);
-      }, 500);
-    });
+    return this.http.get<{ message: string, products: any[] }>(apiUrlWithParams).pipe(
+      map(response => response.products.map(this.transformProduct))
+    );
   }
 
+  // Metodo per recuperare i prodotti in evidenza con filtri
+  getFeaturedProducts(language: string, currency?: string): Observable<Product[]> {
+    const resolvedCurrency = currency || this.getDefaultCurrency(language);
+    const apiUrlWithParams = `${this.apiUrl}?isFeatured=true&language=${language}&currency=${resolvedCurrency}`;
 
-  async getFeaturedProducts(language: string, currency?: string): Promise<Product[]> {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        let featuredProducts = this.products.filter((product) => product.isFeatured);
-
-        const resolvedCurrency = currency || this.getDefaultCurrency(language);
-
-        if (resolvedCurrency !== 'USD') {
-          featuredProducts = featuredProducts.map((product) => ({
-            ...product,
-            price: this.convertCurrency(product.price, product.currency, resolvedCurrency),
-            currency: resolvedCurrency,
-          }));
-        }
-
-        resolve(featuredProducts);
-      }, 500);
-    });
+    return this.http.get<{ message: string, products: any[] }>(apiUrlWithParams).pipe(
+      map(response => response.products.map(this.transformProduct))
+    );
   }
 
+  // Metodo per trasformare i dati ricevuti dalla API in una struttura conforme all'interfaccia Product
+  private transformProduct(product: any): Product {
+    return {
+      id: product.id,
+      name: product.ProductTranslations[0]?.name,
+      description: product.ProductTranslations[0]?.description,
+      label: product.label,
+      brand: product.brand,
+      stock: product.stock,
+      image: product.image,
+      categoryId: product.category_id,
+      subCategoryId: product.sub_category_id,
+      type: product.type,
+      isFeatured: product.is_featured,
+      price: parseFloat(product.ProductPrices[0]?.price),
+      currency: product.ProductPrices[0]?.currency,
+      discount: product.ProductPrices[0]?.discount ? parseFloat(product.ProductPrices[0]?.discount) : undefined,
+    };
+  }
 
+  // Metodo per ottenere la valuta di default in base alla lingua
   private getDefaultCurrency(language: string): string {
     return this.defaultCurrencyByLanguage[language] || 'USD';
-  }
-
-
-  private convertCurrency(price: number, fromCurrency: string, toCurrency: string): number {
-    const exchangeRates: Record<string, number> = {
-      USD: 1,
-      EUR: 0.9,
-      GBP: 0.8,
-    };
-
-    const fromRate = exchangeRates[fromCurrency] || 1;
-    const toRate = exchangeRates[toCurrency] || 1;
-
-    return parseFloat(((price / fromRate) * toRate).toFixed(2));
   }
 }

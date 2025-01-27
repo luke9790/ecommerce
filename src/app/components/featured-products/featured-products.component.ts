@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ShopService } from '../../services/shop.service';
 import { Product } from '../../interfaces/interfaces';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-featured-products',
@@ -12,23 +13,38 @@ import { Product } from '../../interfaces/interfaces';
 export class FeaturedProductsComponent implements OnInit {
   products: Product[] = [];
   isLoading: boolean = true;
+  private langChangeSubscription: Subscription = new Subscription();
 
   constructor(private translate: TranslateService, private shopService: ShopService) {}
 
   ngOnInit(): void {
     this.loadFeaturedProducts();
-
-    this.translate.onLangChange.subscribe(() => {
+    this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
       this.loadFeaturedProducts();
     });
   }
 
-  async loadFeaturedProducts(): Promise<void> {
+  loadFeaturedProducts(): void {
     this.isLoading = true;
     const currentLang = this.translate.currentLang || this.translate.defaultLang;
-    const allFeaturedProducts = await this.shopService.getFeaturedProducts(currentLang);
+    
+    // Passa la lingua e i filtri al servizio
+    this.shopService.getFeaturedProducts(currentLang).subscribe({
+      next: (featuredProducts: Product[]) => {
+        this.products = featuredProducts.slice(0, 8); // Limita a 8 prodotti
+        this.isLoading = false;
+      },
+      error: () => {
+        this.isLoading = false;
+        // Gestisci gli errori se necessario, per esempio mostrando un messaggio all'utente
+      }
+    });
+  }
 
-    this.products = allFeaturedProducts.slice(0, 8);
-    this.isLoading = false;
+  ngOnDestroy(): void {
+    // Assicurati di annullare l'abbonamento quando il componente viene distrutto
+    if (this.langChangeSubscription) {
+      this.langChangeSubscription.unsubscribe();
+    }
   }
 }

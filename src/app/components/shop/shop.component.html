@@ -3,6 +3,22 @@
 	  <h3 class="text-lg font-semibold mb-4 border-b pb-2">
 		<i class="fas fa-filter mr-2 text-gray-500"></i>{{ 'FILTERS.TITLE' | translate }}
 	  </h3>
+
+	   <div class="mb-6">
+		<h4 class="text-md font-medium border-b pb-2 mb-2">
+		  <i class="fas fa-male mr-1 text-gray-500"></i>{{ 'FILTERS.TYPE' | translate }}
+		</h4>
+		<select
+		  class="w-full border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
+		  [(ngModel)]="filters.type"
+		  (change)="applyFilters()"
+		>
+		  <option value="">{{ 'FILTERS.ALL_TYPES' | translate }}</option>
+		  <option value="male">{{ 'FILTERS.TYPE_MALE' | translate }}</option>
+		  <option value="female">{{ 'FILTERS.TYPE_FEMALE' | translate }}</option>
+		  <option value="unisex">{{ 'FILTERS.TYPE_UNISEX' | translate }}</option>
+		</select>
+	  </div>
   
 	  <div class="mb-6">
 		<h4 class="text-md font-medium border-b pb-2 mb-2">
@@ -38,6 +54,38 @@
 		  </option>
 		</select>
 	  </div>
+
+	  <div class="mb-6">
+		<h4 class="text-md font-medium border-b pb-2 mb-2">
+		  <i class="fas fa-tags mr-1 text-gray-500"></i>{{ 'FILTERS.BRAND' | translate }}
+		</h4>
+		<select
+		  class="w-full border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
+		  [(ngModel)]="filters.brand"
+		  (change)="applyFilters()"
+		>
+		  <option value="">{{ 'FILTERS.ALL_BRANDS' | translate }}</option>
+		  <option *ngFor="let brand of brands" [value]="brand">
+			{{ brand }}
+		  </option>
+		</select>
+	  </div>
+
+	  <div class="mb-6">
+		<h4 class="text-md font-medium border-b pb-2 mb-2">
+		  <i class="fas fa-tag mr-1 text-gray-500"></i>{{ 'FILTERS.LABEL' | translate }}
+		</h4>
+		<select
+		  class="w-full border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
+		  [(ngModel)]="filters.label"
+		  (change)="applyFilters()"
+		>
+		  <option value="">{{ 'FILTERS.ALL_LABELS' | translate }}</option>
+		  <option *ngFor="let label of labels" [value]="label">
+			{{ label }}
+		  </option>
+		</select>
+	  </div>
   
 	  <div class="mb-6">
 		<h4 class="text-md font-medium border-b pb-2 mb-2">
@@ -64,21 +112,32 @@
 		  />
 		</div>
 	  </div>
+
+	   <div class="mb-6">
+		<input
+		  type="checkbox"
+		  [(ngModel)]="filters.discount"
+		  (change)="applyFilters()"
+		/>
+		{{ 'FILTERS.HAS_DISCOUNT' | translate }}
+	  </div>
   
 	  <div class="mb-6">
-		<h4 class="text-md font-medium border-b pb-2 mb-2">
-		  <i class="fas fa-tags mr-1 text-gray-500"></i>{{ 'FILTERS.BRAND' | translate }}
-		</h4>
-		<select
-		  class="w-full border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
-		  [(ngModel)]="filters.brand"
+		<input
+		  type="checkbox"
+		  [(ngModel)]="filters.isFeatured"
 		  (change)="applyFilters()"
-		>
-		  <option value="">{{ 'FILTERS.ALL_BRANDS' | translate }}</option>
-		  <option *ngFor="let brand of brands" [value]="brand">
-			{{ brand }}
-		  </option>
-		</select>
+		/>
+		{{ 'FILTERS.IS_FEATURED' | translate }}
+	  </div>
+  
+	  <div class="mb-6">
+		<input
+		  type="checkbox"
+		  [(ngModel)]="filters.excludeOutOfStock"
+		  (change)="applyFilters()"
+		/>
+		{{ 'FILTERS.EXCLUDE_OUT_OF_STOCK' | translate }}
 	  </div>
   
 	  <div class="mt-6">

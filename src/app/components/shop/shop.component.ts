@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ShopService } from '../../services/shop.service';
 import { Product } from '../../interfaces/interfaces';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-shop',
@@ -9,11 +10,12 @@ import { Product } from '../../interfaces/interfaces';
   standalone: false,
   styleUrls: ['./shop.component.scss'],
 })
-export class ShopComponent implements OnInit {
+export class ShopComponent implements OnInit, OnDestroy {
   products: Product[] = [];
   filteredProducts: Product[] = [];
   paginatedProducts: Product[] = [];
   brands: string[] = [];
+  labels: string[] = [];
   isLoading = false;
   lastAppliedCategoryId: number | null = null;
   debounceTimer: any;
@@ -24,6 +26,11 @@ export class ShopComponent implements OnInit {
     minPrice: null as number | null,
     maxPrice: null as number | null,
     brand: '',
+    label: '',
+    isFeatured: false,
+    discount: false,
+    type: '',  
+    excludeOutOfStock: false,
   };
 
   sorting: 'priceAsc' | 'priceDesc' | 'nameAsc' | 'nameDesc' = 'priceAsc';
@@ -40,7 +47,8 @@ export class ShopComponent implements OnInit {
     7: { name: 'Jackets', subCategories: { 701: 'Leather Jackets', 702: 'Denim Jackets', 703: 'Winter Coats', 704: 'Rain Jackets' } },
     8: { name: 'Dresses', subCategories: { 801: 'Summer Dresses' } },
   };
-  
+
+  private langChangeSubscription: Subscription = new Subscription();
 
   constructor(
     private translate: TranslateService,
@@ -49,53 +57,78 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadProducts();
-    this.translate.onLangChange.subscribe(() => {
+    this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
       this.loadProducts();
     });
   }
 
-  async loadProducts(): Promise<void> {
+  loadProducts(): void {
     this.isLoading = true;
     const currentLang = this.translate.currentLang || this.translate.defaultLang;
-    const allProducts = await this.shopService.getProducts(currentLang);
-
-    this.products = allProducts;
-    this.brands = Array.from(new Set(allProducts.map((product) => product.brand)));
-
-    this.isLoading = false;
-    this.applyFilters();
+    this.shopService.getProducts(currentLang).subscribe({
+      next: (allProducts: Product[]) => {
+        this.products = allProducts;
+        this.brands = Array.from(new Set(allProducts.map((product) => product.brand)));
+        this.labels = Array.from(new Set(allProducts.map((product) => product.label)));
+        console.log(this.labels);
+        this.isLoading = false;
+        this.applyFilters();
+      },
+      error: () => {
+        this.isLoading = false;
+      }
+    });
   }
 
   applyFilters(): void {
     let filtered = [...this.products];
-  
+
     if (this.filters.categoryId !== this.lastAppliedCategoryId) {
       this.filters.subCategoryId = null;
       this.lastAppliedCategoryId = this.filters.categoryId;
     }
-  
+
     if (this.filters.categoryId) {
       filtered = filtered.filter((product) => product.categoryId == this.filters.categoryId);
     }
-  
+
     if (this.filters.subCategoryId) {
       filtered = filtered.filter((product) => product.subCategoryId == this.filters.subCategoryId);
     }
-  
+
     if (this.filters.minPrice != null) {
       filtered = filtered.filter((product) => product.price >= this.filters.minPrice!);
     }
     if (this.filters.maxPrice != null) {
       filtered = filtered.filter((product) => product.price <= this.filters.maxPrice!);
     }
-  
+
     if (this.filters.brand) {
       filtered = filtered.filter((product) => product.brand === this.filters.brand);
     }
-  
+
+    if (this.filters.label) {
+      filtered = filtered.filter((product) => product.label === this.filters.label);
+    }
+
+    if (this.filters.isFeatured) {
+      filtered = filtered.filter((product) => product.isFeatured);
+    }
+
+    if (this.filters.discount) {
+      filtered = filtered.filter((product) => product.discount && product.discount > 0);
+    }
+
+    if (this.filters.type) {
+      filtered = filtered.filter((product) => product.type === this.filters.type);
+    }
+
+    if (this.filters.excludeOutOfStock) {
+      filtered = filtered.filter((product) => product.stock > 0);
+    }
+
     this.applySorting(filtered);
   }
-  
 
   applySorting(products: Product[]): void {
     const sortMap = {
@@ -132,6 +165,11 @@ export class ShopComponent implements OnInit {
       minPrice: null,
       maxPrice: null,
       brand: '',
+      label: '',
+      isFeatured: false,
+      discount: false,
+      type: '',
+      excludeOutOfStock: false,
     };
     this.currentPage = 1;
     this.applyFilters();
@@ -143,7 +181,7 @@ export class ShopComponent implements OnInit {
       'Backspace', 'ArrowLeft', 'ArrowRight', 'Delete',
       'Tab'
     ];
-  
+
     if (!allowedKeys.includes(event.key)) {
       event.preventDefault();
     }
@@ -155,6 +193,10 @@ export class ShopComponent implements OnInit {
       this.applyFilters();
     }, 300);
   }
-  
-  
+
+  ngOnDestroy(): void {
+    if (this.langChangeSubscription) {
+      this.langChangeSubscription.unsubscribe();
+    }
+  }
 }

@@ -43,7 +43,9 @@
     "MAX_PRICE": "Max",
     "HAS_DISCOUNT": "Scontati",
     "BRAND": "Marca",
+	"LABEL": "Label",
     "ALL_BRANDS": "Tutte",
+	"ALL_LABELS": "Tutte",
     "IS_FEATURED": "In evidenza",
     "EXCLUDE_OUT_OF_STOCK": "Escludi esauriti",
 	"RESET": "Resetta Filtri"
