@@ -1,1 +1,72 @@
-<p>product works!</p>
+<div *ngIf="product" class="container min-h-[75vh] mx-auto px-4 py-8">
+	<div class="flex flex-col lg:flex-row gap-8 lg:gap-16 justify-between">
+	  
+	  <!-- Sezione foto del prodotto a sinistra -->
+	  <div class="flex-1 mb-8 lg:mb-0">
+		<img *ngIf="product.image" [src]="product.image" [alt]="product.name" class="w-full h-auto rounded-lg shadow-lg" />
+	  </div>
+  
+	  <!-- Sezione dettagli del prodotto a destra, centralmente allineata -->
+	  <div class="flex-1 flex flex-col gap-8 items-center">
+		<h1 class="text-4xl font-bold text-gray-900 text-center">{{ product.name }}</h1>
+  
+		<p class="text-lg text-gray-600 text-center">{{ product.description }}</p>
+  
+		<div class="mt-6 w-full text-center">
+		  <h3 class="text-xl font-semibold text-gray-900">Misure:</h3>
+		  <p class="text-lg text-gray-600">Altezza: 30 cm | Larghezza: 25 cm | Profondità: 15 cm</p>
+		</div>
+  
+		<div class="mt-6 w-full text-center">
+		  <h3 class="text-lg font-semibold text-gray-900">Taglia:</h3>
+		  <div class="flex gap-4 mt-2 justify-center">
+			<button
+			  *ngFor="let size of ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL']"
+			  (click)="selectSize(size)"
+			  [class.bg-blue-500]="size === selectedSize"
+			  class="bg-gray-200 text-gray-700 font-semibold px-6 py-2 rounded-lg hover:bg-gray-300 transition-colors duration-300">
+			  {{ size }}
+			</button>
+		  </div>
+		</div>
+  
+		<div class="mt-6 w-full text-center">
+		  <div class="flex flex-col gap-4 lg:flex-row items-center justify-center">
+			<div class="flex flex-col items-center">
+			  <p class="text-lg text-gray-600">Prezzo originale: {{ product.price | currency: product.currency }}</p>
+  
+			  <p *ngIf="product.discount > 0" class="text-lg text-gray-600">
+				Sconto del {{ product.discount }} %
+			  </p>
+			  <p *ngIf="product.discount === 0" class="text-lg text-gray-600">Nessuno sconto attualmente</p>
+  
+			  <p class="text-2xl font-bold text-red-600">
+				Prezzo attuale: {{ originalPrice | currency: product.currency }}
+			  </p>
+			</div>
+		  </div>
+		</div>
+  
+		<div class="flex flex-col gap-4 mt-6 w-full items-center">
+		  <button
+			(click)="addToFavorites()"
+			class="bg-gray-200 text-gray-700 text-lg font-semibold px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-gray-300 transition-colors duration-300 w-[70%] lg:w-auto">
+			<fa-icon [icon]="['fas', 'heart']" class="text-lg"></fa-icon>
+			Aggiungi ai preferiti
+		  </button>
+  
+		  <button
+			(click)="addToCart()"
+			class="bg-red-600 text-white text-lg font-semibold px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-red-500 transition-colors duration-300 w-[70%] lg:w-auto mt-4">
+			<fa-icon [icon]="['fas', 'shopping-cart']" class="text-lg"></fa-icon>
+			Aggiungi al carrello
+		  </button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
+  <div *ngIf="!product" class="text-center text-red-600">
+	<p>Product not found.</p>
+  </div>
+  

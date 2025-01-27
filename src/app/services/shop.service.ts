@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../interfaces/interfaces';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +18,6 @@ export class ShopService {
 
   constructor(private http: HttpClient) {}
 
-  // Metodo per recuperare i prodotti con filtri
   getProducts(language: string, currency?: string, filters?: any): Observable<Product[]> {
     const resolvedCurrency = currency || this.getDefaultCurrency(language);
     let apiUrlWithParams = `${this.apiUrl}?language=${language}&currency=${resolvedCurrency}`;
@@ -52,7 +51,6 @@ export class ShopService {
     );
   }
 
-  // Metodo per recuperare i prodotti in evidenza con filtri
   getFeaturedProducts(language: string, currency?: string): Observable<Product[]> {
     const resolvedCurrency = currency || this.getDefaultCurrency(language);
     const apiUrlWithParams = `${this.apiUrl}?isFeatured=true&language=${language}&currency=${resolvedCurrency}`;
@@ -62,7 +60,17 @@ export class ShopService {
     );
   }
 
-  // Metodo per trasformare i dati ricevuti dalla API in una struttura conforme all'interfaccia Product
+  getProductById(language: string, id: number, currency?: string): Observable<Product> {
+    const resolvedCurrency = currency || this.getDefaultCurrency(language);
+    const apiUrlWithParams = `${this.apiUrl}/?id=${id}&language=${language}&currency=${resolvedCurrency}`;
+
+    return this.http.get<{ message: string, products: any[] }>(apiUrlWithParams).pipe(
+      map(response => {
+        return this.transformProduct(response.products[0]);
+      })
+    );
+  }
+
   private transformProduct(product: any): Product {
     return {
       id: product.id,
@@ -78,11 +86,10 @@ export class ShopService {
       isFeatured: product.is_featured,
       price: parseFloat(product.ProductPrices[0]?.price),
       currency: product.ProductPrices[0]?.currency,
-      discount: product.ProductPrices[0]?.discount ? parseFloat(product.ProductPrices[0]?.discount) : undefined,
+      discount: product.ProductPrices[0]?.discount ? parseFloat(product.ProductPrices[0]?.discount) : 0,
     };
   }
 
-  // Metodo per ottenere la valuta di default in base alla lingua
   private getDefaultCurrency(language: string): string {
     return this.defaultCurrencyByLanguage[language] || 'USD';
   }

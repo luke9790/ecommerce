@@ -12,6 +12,6 @@ export interface Product {
 	isFeatured: boolean;
 	price: number;
 	currency: string;
-	discount?: number;
+	discount: number;
   }
   
