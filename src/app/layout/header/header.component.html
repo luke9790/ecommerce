@@ -1,10 +1,8 @@
 <header class="bg-gray-100 border-b border-gray-300 py-4 px-6 flex items-center justify-between shadow-md">
-	<!-- Logo -->
 	<a class="text-3xl font-bold text-gray-800 hover:text-blue-600 font-fjalla flex-shrink-0 w-1/4" routerLink="/">
 	  MyEcommerce
 	</a>
 	
-	<!-- Nav con link centrati -->
 	<nav class="flex w-1/2 justify-between">
 	  <ul class="flex w-full justify-between">
 		<li class="flex-1 text-center">
@@ -12,9 +10,6 @@
 		</li>
 		<li class="flex-1 text-center">
 		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/shop">{{ 'HEADER.SHOP' | translate }}</a>
-		</li>
-		<li class="flex-1 text-center">
-		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/about">{{ 'HEADER.ABOUT' | translate }}</a>
 		</li>
 		<li *ngIf="isAuthenticated" class="flex-1 text-center">
 		  <a class="text-gray-700 hover:text-blue-600 font-medium uppercase tracking-wide" routerLink="/profile">{{ 'HEADER.ACCOUNT' | translate }}</a>
@@ -31,9 +26,7 @@
 	  </ul>
 	</nav>
   
-	<!-- Cambio lingua con dropdown e Sezione Finale a Destra -->
 	<div class="flex items-center space-x-6 flex-shrink-0 ml-auto">
-	  <!-- Cambio lingua -->
 	  <div class="relative">
 		<button
 		  (click)="toggleDropdown()"
@@ -55,7 +48,6 @@
 		</div>
 	  </div>
 	
-	  <!-- Carrello, preferiti -->
 	  <div class="flex items-center space-x-2">
 		<a class="text-gray-700 hover:text-blue-600 flex items-center space-x-2 font-roboto w-24" routerLink="/favorites">
 		  <fa-icon [icon]="['fas', 'heart']"></fa-icon>

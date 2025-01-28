@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
-import { AboutComponent } from './components/about/about.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -39,7 +38,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    AboutComponent,
     FavoritesComponent,
     CartComponent,
     ShopComponent,
@@ -71,12 +69,12 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     provideHttpClient(
-      withInterceptorsFromDi() // Consente di configurare gli interceptor tramite DI
+      withInterceptorsFromDi()
     ),
     {
-      provide: HTTP_INTERCEPTORS, // Registra l'interceptor
+      provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
-      multi: true, // Permette l'uso di più interceptor
+      multi: true,
     },
   ],
   bootstrap: [AppComponent],
