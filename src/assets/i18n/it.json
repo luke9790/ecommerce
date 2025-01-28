@@ -121,7 +121,7 @@
     "INFORMATION": "Informazioni",
     "TERMS": "Termini e Condizioni",
     "PRIVACY": "Politica sulla Privacy",
-    "COOKIES": "Politica sui Cookie",
+    "WITHDRAWAL": "Politica di Recesso",
     "WE_ACCEPT": "Accettiamo",
     "COMPANY_INFO": "Compound Srl | P.IVA: 123456789 | Indirizzo: 123 Via E-commerce, Milano, Italia"
 	},
@@ -163,7 +163,71 @@
 	"LOGIN_NOW": "Accedi ora",
 	"LOADING": "Caricamento del carrello in corso...",
 	"REMOVE": "Rimuovi dal carrello"
+	},
+	"TERMS": {
+		"TITLE": "Termini e Condizioni",
+		"INTRODUCTION": "Benvenuto nel nostro sito web. Accedendo o utilizzando il nostro sito, accetti i seguenti termini e condizioni.",
+		"USE_OF_SITE": {
+		"TITLE": "Utilizzo del Sito",
+		"PARAGRAPH": "Accetti di utilizzare questo sito in modo responsabile e in conformità con tutte le leggi e i regolamenti applicabili."
+		},
+		"INTELLECTUAL_PROPERTY": {
+		"TITLE": "Proprietà Intellettuale",
+		"PARAGRAPH": "Tutti i contenuti di questo sito, inclusi testi, immagini e loghi, sono protetti da leggi sul copyright e sulla proprietà intellettuale."
+		},
+		"LIMITATION_OF_LIABILITY": {
+		"TITLE": "Limitazione di Responsabilità",
+		"PARAGRAPH": "Non siamo responsabili per eventuali danni derivanti dall'uso o dall'impossibilità di utilizzare il nostro sito."
+		},
+		"MODIFICATIONS": {
+		"TITLE": "Modifiche ai Termini",
+		"PARAGRAPH": "Ci riserviamo il diritto di aggiornare questi termini in qualsiasi momento. Si prega di controllare questa pagina regolarmente."
+		},
+		"CONTACT": {
+		"TITLE": "Contattaci",
+		"PARAGRAPH": "Se hai domande su questi termini, contattaci a support@example.com."
+		}
+	},
+	"PRIVACY": {
+		"TITLE": "Informativa sulla Privacy",
+		"INTRODUCTION": "La tua privacy è importante per noi. Questa informativa spiega come raccogliamo, utilizziamo e proteggiamo i tuoi dati personali.",
+		"DATA_COLLECTION": {
+		"TITLE": "Raccolta dei Dati",
+		"PARAGRAPH": "Raccogliamo informazioni personali che ci fornisci volontariamente, come nome, email e indirizzo."
+		},
+		"DATA_USAGE": {
+		"TITLE": "Utilizzo dei Dati",
+		"PARAGRAPH": "Utilizziamo i tuoi dati personali per fornire i nostri servizi, migliorare l'esperienza utente e comunicare con te."
+		},
+		"USER_RIGHTS": {
+		"TITLE": "Diritti dell'Utente",
+		"PARAGRAPH": "Hai il diritto di accedere, correggere o eliminare i tuoi dati personali. Contattaci per maggiori informazioni."
+		},
+		"CONTACT": {
+		"TITLE": "Contattaci",
+		"PARAGRAPH": "Se hai domande sulla nostra informativa sulla privacy, contattaci a support@example.com."
+		}
+	},
+	"WITHDRAWAL": {
+		"TITLE": "Politica di Recesso",
+		"INTRODUCTION": "Hai il diritto di recedere dal contratto di acquisto entro 14 giorni senza fornire alcuna motivazione.",
+		"CONDITIONS": {
+		"TITLE": "Condizioni del Recesso",
+		"PARAGRAPH": "Il prodotto deve essere restituito integro e nella confezione originale. Le spese di spedizione sono a carico dell'acquirente."
+		},
+		"PROCEDURE": {
+		"TITLE": "Procedura per il Recesso",
+		"PARAGRAPH": "Per esercitare il diritto di recesso, contattaci via email o utilizza il modulo di recesso disponibile sul sito."
+		},
+		"CONTACT": {
+		"TITLE": "Contattaci",
+		"PARAGRAPH": "Per domande sulla nostra politica di recesso, contattaci a support@example.com."
+		}
 	}
-
+	  
+	  
+	  
+	  
+	  
   }
   

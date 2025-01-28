@@ -121,7 +121,7 @@
     "INFORMATION": "Information",
     "TERMS": "Terms & Conditions",
     "PRIVACY": "Privacy Policy",
-    "COOKIES": "Cookie Policy",
+    "WITHDRAWAL": "Withdrawal Policy",
     "WE_ACCEPT": "We Accept",
     "COMPANY_INFO": "Compound Ltd. | VAT: 123456789 | Address: 123 E-commerce St., Milan, Italy"
 	},
@@ -163,7 +163,71 @@
 	"LOGIN_NOW": "Log in now",
 	"LOADING": "Loading your cart...",
 	"REMOVE": "Remove from cart"
+	},
+	"TERMS": {
+		"TITLE": "Terms and Conditions",
+		"INTRODUCTION": "Welcome to our website. By accessing or using our site, you agree to the following terms and conditions.",
+		"USE_OF_SITE": {
+		"TITLE": "Use of the Website",
+		"PARAGRAPH": "You agree to use this site responsibly and in compliance with all applicable laws and regulations."
+		},
+		"INTELLECTUAL_PROPERTY": {
+		"TITLE": "Intellectual Property",
+		"PARAGRAPH": "All content on this site, including text, images, and logos, is protected by copyright and intellectual property laws."
+		},
+		"LIMITATION_OF_LIABILITY": {
+		"TITLE": "Limitation of Liability",
+		"PARAGRAPH": "We are not liable for any damages arising from the use or inability to use our site."
+		},
+		"MODIFICATIONS": {
+		"TITLE": "Modifications to Terms",
+		"PARAGRAPH": "We reserve the right to update these terms at any time. Please check this page regularly."
+		},
+		"CONTACT": {
+		"TITLE": "Contact Us",
+		"PARAGRAPH": "If you have any questions about these terms, please contact us at support@example.com."
+		}
+	},
+	"PRIVACY": {
+		"TITLE": "Privacy Policy",
+		"INTRODUCTION": "Your privacy is important to us. This policy explains how we collect, use, and protect your personal data.",
+		"DATA_COLLECTION": {
+		"TITLE": "Data Collection",
+		"PARAGRAPH": "We collect personal information that you voluntarily provide, such as name, email, and address."
+		},
+		"DATA_USAGE": {
+		"TITLE": "Data Usage",
+		"PARAGRAPH": "We use your personal data to provide our services, improve user experience, and communicate with you."
+		},
+		"USER_RIGHTS": {
+		"TITLE": "User Rights",
+		"PARAGRAPH": "You have the right to access, correct, or delete your personal data. Contact us for more information."
+		},
+		"CONTACT": {
+		"TITLE": "Contact Us",
+		"PARAGRAPH": "If you have any questions about our privacy policy, please contact us at support@example.com."
+		}
+	},
+	"WITHDRAWAL": {
+		"TITLE": "Withdrawal Policy",
+		"INTRODUCTION": "You have the right to withdraw from the purchase contract within 14 days without providing any reason.",
+		"CONDITIONS": {
+		"TITLE": "Withdrawal Conditions",
+		"PARAGRAPH": "The product must be returned intact and in its original packaging. Shipping costs are the responsibility of the buyer."
+		},
+		"PROCEDURE": {
+		"TITLE": "Withdrawal Procedure",
+		"PARAGRAPH": "To exercise your right of withdrawal, please contact us via email or use the withdrawal form available on the website."
+		},
+		"CONTACT": {
+		"TITLE": "Contact Us",
+		"PARAGRAPH": "If you have any questions about our withdrawal policy, please contact us at support@example.com."
+		}
 	}
+	  
+	  
+	  
+	  
 
 
 

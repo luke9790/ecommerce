@@ -26,6 +26,9 @@ import { TokenInterceptor } from './services/token.interceptor';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProductComponent } from './components/product/product.component';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { ConditionsComponent } from './components/infos/conditions/conditions.component';
+import { PrivacyComponent } from './components/infos/privacy/privacy.component';
+import { WithdrawalComponent } from './components/infos/withdrawal/withdrawal.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -49,6 +52,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     RegisterComponent,
     ProfileComponent,
     ProductComponent,
+    ConditionsComponent,
+    PrivacyComponent,
+    WithdrawalComponent,
   ],
   imports: [
     BrowserModule,

@@ -3,7 +3,7 @@ import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faShoppingCart, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
-import { Subscription } from 'rxjs';  // Importa Subscription per gestire la sottoscrizione
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -19,19 +19,18 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ];
   selectedLanguage = this.languages[0];
   isDropdownOpen = false;
-  isAuthenticated = false;  // Variabile per monitorare lo stato di autenticazione
-  private authSubscription: Subscription | null = null; ;  // Variabile per la sottoscrizione
+  isAuthenticated = false; 
+  private authSubscription: Subscription | null = null; ;
 
   constructor(
     private translate: TranslateService,
-    private authService: AuthService,  // Iniettiamo il servizio Auth
+    private authService: AuthService,
     library: FaIconLibrary
   ) {
     library.addIcons(faShoppingCart, faHeart);
   }
 
   ngOnInit(): void {
-    // Sottoscriviamo a isAuthenticated$ per monitorare lo stato di autenticazione
     this.authSubscription = this.authService.isAuthenticated$.subscribe((isAuthenticated) => {
       this.isAuthenticated = isAuthenticated;
     });
@@ -43,7 +42,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // Disiscrizione dalla sottoscrizione quando il componente viene distrutto
     if (this.authSubscription) {
       this.authSubscription.unsubscribe();
     }
@@ -61,8 +59,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Metodo per il logout
   logout(): void {
-    this.authService.logout();  // Chiamata al servizio di logout
+    this.authService.logout(); 
   }
 }

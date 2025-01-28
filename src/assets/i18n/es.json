@@ -121,7 +121,7 @@
     "INFORMATION": "Información",
     "TERMS": "Términos y Condiciones",
     "PRIVACY": "Política de Privacidad",
-    "COOKIES": "Política de Cookies",
+    "WITHDRAWAL": "Withdrawal Policy",
     "WE_ACCEPT": "Aceptamos",
     "COMPANY_INFO": "Compound Ltd. | IVA: 123456789 | Dirección: 123 Calle E-commerce, Milán, Italia"
   	},
@@ -163,7 +163,71 @@
 	"LOGIN_NOW": "Inicia sesión ahora",
 	"LOADING": "Cargando tu carrito...",
 	"REMOVE": "Eliminar del carrito"
+	},
+	"TERMS": {
+		"TITLE": "Términos y Condiciones",
+		"INTRODUCTION": "Bienvenido a nuestro sitio web. Al acceder o utilizar nuestro sitio, aceptas los siguientes términos y condiciones.",
+		"USE_OF_SITE": {
+		"TITLE": "Uso del Sitio Web",
+		"PARAGRAPH": "Aceptas usar este sitio de manera responsable y conforme a todas las leyes y regulaciones aplicables."
+		},
+		"INTELLECTUAL_PROPERTY": {
+		"TITLE": "Propiedad Intelectual",
+		"PARAGRAPH": "Todo el contenido de este sitio, incluyendo texto, imágenes y logotipos, está protegido por leyes de derechos de autor y propiedad intelectual."
+		},
+		"LIMITATION_OF_LIABILITY": {
+		"TITLE": "Limitación de Responsabilidad",
+		"PARAGRAPH": "No somos responsables por cualquier daño derivado del uso o la imposibilidad de usar nuestro sitio."
+		},
+		"MODIFICATIONS": {
+		"TITLE": "Modificaciones de los Términos",
+		"PARAGRAPH": "Nos reservamos el derecho de actualizar estos términos en cualquier momento. Por favor, revisa esta página regularmente."
+		},
+		"CONTACT": {
+		"TITLE": "Contáctanos",
+		"PARAGRAPH": "Si tienes alguna pregunta sobre estos términos, contáctanos en support@example.com."
+		}
+	},
+	"PRIVACY": {
+		"TITLE": "Política de Privacidad",
+		"INTRODUCTION": "Tu privacidad es importante para nosotros. Esta política explica cómo recopilamos, utilizamos y protegemos tus datos personales.",
+		"DATA_COLLECTION": {
+		"TITLE": "Recopilación de Datos",
+		"PARAGRAPH": "Recopilamos información personal que proporcionas voluntariamente, como nombre, correo electrónico y dirección."
+		},
+		"DATA_USAGE": {
+		"TITLE": "Uso de Datos",
+		"PARAGRAPH": "Utilizamos tus datos personales para proporcionar nuestros servicios, mejorar la experiencia del usuario y comunicarnos contigo."
+		},
+		"USER_RIGHTS": {
+		"TITLE": "Derechos del Usuario",
+		"PARAGRAPH": "Tienes derecho a acceder, corregir o eliminar tus datos personales. Contáctanos para más información."
+		},
+		"CONTACT": {
+		"TITLE": "Contáctanos",
+		"PARAGRAPH": "Si tienes preguntas sobre nuestra política de privacidad, contáctanos en support@example.com."
+		}
+	},
+	"WITHDRAWAL": {
+		"TITLE": "Política de Desistimiento",
+		"INTRODUCTION": "Tienes derecho a desistir del contrato de compra dentro de los 14 días sin necesidad de proporcionar una razón.",
+		"CONDITIONS": {
+		"TITLE": "Condiciones del Desistimiento",
+		"PARAGRAPH": "El producto debe devolverse en perfecto estado y en su embalaje original. Los gastos de envío correrán a cargo del comprador."
+		},
+		"PROCEDURE": {
+		"TITLE": "Procedimiento para el Desistimiento",
+		"PARAGRAPH": "Para ejercer el derecho de desistimiento, contáctanos por correo electrónico o utiliza el formulario de desistimiento disponible en el sitio web."
+		},
+		"CONTACT": {
+		"TITLE": "Contáctanos",
+		"PARAGRAPH": "Si tienes preguntas sobre nuestra política de desistimiento, contáctanos en support@example.com."
+		}
 	}
+	  
+	  
+	  
+	  
 
 
 

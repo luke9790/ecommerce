@@ -9,6 +9,9 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ProductComponent } from './components/product/product.component';
+import { ConditionsComponent } from './components/infos/conditions/conditions.component';
+import { PrivacyComponent } from './components/infos/privacy/privacy.component';
+import { WithdrawalComponent } from './components/infos/withdrawal/withdrawal.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -19,6 +22,9 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'product/:id', component: ProductComponent },
+  { path: 'conditions', component: ConditionsComponent },
+  { path: 'privacy', component: PrivacyComponent },
+  { path: 'withdrawal', component: WithdrawalComponent },
 
   { path: '**', redirectTo: '' }
 ];
