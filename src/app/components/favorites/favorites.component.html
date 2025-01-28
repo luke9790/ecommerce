@@ -1,12 +1,12 @@
-<div class="flex m-12">  
+<div class="flex m-12 min-h-[50vh]">  
 	<main class="w-full p-4">
-	  <h1>{{ 'FAVORITES.PRODUCTS' | translate }}</h1>
+	  <h1 class="text-4xl font-bold text-gray-800 mb-8">{{ 'FAVORITES.PRODUCTS' | translate }}</h1>
   
 	  <div *ngIf="isLoading" class="text-center">
-		<p>{{ 'GENERAL.LOADING' | translate }}</p>
+		<p class="text-lg font-medium text-gray-600">{{ 'GENERAL.LOADING' | translate }}</p>
 	  </div>
   
-	  <div *ngIf="!isLoading && favoriteProducts.length === 0" class="text-center mt-12">
+	  <div *ngIf="!isLoading && favoriteProducts.length === 0" class="text-center mt-12 flex flex-col items-center justify-center h-[75vh]">
 		<h2 class="text-2xl font-semibold text-gray-600">{{ 'FAVORITES.EMPTY_MESSAGE' | translate }}</h2>
 		<p class="text-lg text-gray-500 mt-4">{{ 'FAVORITES.EMPTY_SUBTEXT' | translate }}</p>
 		<a
@@ -33,7 +33,10 @@
 		</select>
 	  </div>
   
-	  <div *ngIf="!isLoading && favoriteProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+	  <div
+		*ngIf="!isLoading && favoriteProducts.length > 0"
+		class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[50vh]"
+	  >
 		<app-product-card
 		  *ngFor="let product of paginatedProducts"
 		  [id]="product.id"
@@ -76,5 +79,4 @@
 		</button>
 	  </div>
 	</main>
-  </div>
-  
+</div>
