@@ -1,11 +1,23 @@
 <div class="flex m-12">  
 	<main class="w-full p-4">
-		<h1>{{ 'FAVORITEPRODUCTS' | translate }}</h1>
+	  <h1>{{ 'FAVORITES.PRODUCTS' | translate }}</h1>
+  
 	  <div *ngIf="isLoading" class="text-center">
 		<p>{{ 'GENERAL.LOADING' | translate }}</p>
 	  </div>
   
-	  <div *ngIf="!isLoading" class="flex items-center justify-between mb-4">
+	  <div *ngIf="!isLoading && favoriteProducts.length === 0" class="text-center mt-12">
+		<h2 class="text-2xl font-semibold text-gray-600">{{ 'FAVORITES.EMPTY_MESSAGE' | translate }}</h2>
+		<p class="text-lg text-gray-500 mt-4">{{ 'FAVORITES.EMPTY_SUBTEXT' | translate }}</p>
+		<a
+		  routerLink="/shop"
+		  class="inline-block mt-6 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-500 transition-colors"
+		>
+		  {{ 'FAVORITES.SHOP_NOW' | translate }}
+		</a>
+	  </div>
+  
+	  <div *ngIf="!isLoading && favoriteProducts.length > 0" class="flex items-center justify-between mb-4">
 		<span class="text-sm text-gray-600">
 		  {{ 'RESULTS.FOUND' | translate }}: {{ filteredProducts.length }}
 		</span>
@@ -21,7 +33,7 @@
 		</select>
 	  </div>
   
-	  <div *ngIf="!isLoading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+	  <div *ngIf="!isLoading && favoriteProducts.length > 0" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 		<app-product-card
 		  *ngFor="let product of paginatedProducts"
 		  [id]="product.id"
@@ -34,10 +46,11 @@
 		  [stock]="product.stock"
 		  [brand]="product.brand"
 		  [discount]="product.discount"
+		  (remove)="removeFromFavorites($event)"
 		></app-product-card>
 	  </div>
   
-	  <div *ngIf="!isLoading" class="mt-6 flex justify-center">
+	  <div *ngIf="!isLoading && favoriteProducts.length > 0" class="mt-6 flex justify-center">
 		<button
 		  class="px-4 py-2 mx-1 border rounded-md"
 		  [disabled]="currentPage === 1"

@@ -43,11 +43,18 @@ export class FavoritesComponent implements OnInit, OnDestroy {
   }
   
   loadFavorites(): void {
+    this.isLoading = true;
     this.favoriteService.getFavorites().subscribe({
       next: (fav) => { 
         this.favoriteIds = fav;
-        this.loadProductDetails(this.favoriteIds);
-        this.isLoading = false;
+        if (this.favoriteIds.length === 0) {
+          this.favoriteProducts = [];
+          this.filteredProducts = [];
+          this.paginatedProducts = [];
+          this.isLoading = false;
+        } else {
+          this.loadProductDetails(this.favoriteIds);
+        }
       },
       error: (error) => {
         console.error('Errore durante il caricamento dei preferiti:', error);
@@ -56,9 +63,11 @@ export class FavoritesComponent implements OnInit, OnDestroy {
     });
   }
   
+  
   loadProductDetails(productIds: number[]): void {
     this.isLoading = true;
     const currentLang = this.translate.currentLang || this.translate.defaultLang;
+
     this.shopService.getProductsByIds(currentLang, productIds).subscribe({
       next: (allProducts: Product[]) => {
         this.favoriteProducts = allProducts;
@@ -112,4 +121,9 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       this.langChangeSubscription.unsubscribe();
     }
   }
+
+  removeFromFavorites(productId: number): void {
+    this.loadFavorites();
+  }
+  
 }

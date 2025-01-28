@@ -144,7 +144,14 @@
 	"BUTTON": "Iniciar sesión",
 	"NO_ACCOUNT": "¿No tienes una cuenta?",
 	"REGISTER_LINK": "Regístrate"
+	},	
+	"FAVORITES": {
+	"PRODUCTS": "Productos favoritos",
+	"EMPTY_MESSAGE": "No hay productos en tus favoritos.",
+	"EMPTY_SUBTEXT": "Explora nuestra tienda y añade productos a tus favoritos.",
+	"SHOP_NOW": "Ir a la tienda"
 	}
+
 
 
   }

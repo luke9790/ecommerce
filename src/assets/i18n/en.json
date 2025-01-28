@@ -144,7 +144,14 @@
 	"BUTTON": "Log In",
 	"NO_ACCOUNT": "Don't have an account?",
 	"REGISTER_LINK": "Sign Up"
+	},
+	"FAVORITES": {
+	"PRODUCTS": "Favorite Products",
+	"EMPTY_MESSAGE": "No products in your favorites.",
+	"EMPTY_SUBTEXT": "Explore our shop and add products to your favorites.",
+	"SHOP_NOW": "Go to shop"
 	}
+
 
   }
   

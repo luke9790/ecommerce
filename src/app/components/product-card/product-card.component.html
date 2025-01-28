@@ -55,9 +55,15 @@
       {{ 'BUTTON.ADD_TO_CART' | translate }}
     </button>
 
-    <div class="absolute bottom-2 right-4 text-gray-500 hover:text-red-600 cursor-pointer transition-all duration-300 transform hover:scale-125"
-  (click)="addOrRemoveFavorites()">
-    <fa-icon [icon]="['fas', 'heart']"  class="text-3xl"></fa-icon>
-    </div>
+    <div
+  class="absolute bottom-2 right-4 text-gray-500 hover:text-red-600 cursor-pointer transition-all duration-300 transform hover:scale-125"
+  (click)="toggleFavorite()"
+>
+    <fa-icon
+      [icon]="['fas', 'heart']"
+      [ngClass]="{ 'text-red-600': isFavorite, 'text-gray-500': !isFavorite }"
+      class="text-3xl"
+    ></fa-icon>
+  </div>
   </div>
 </div>
