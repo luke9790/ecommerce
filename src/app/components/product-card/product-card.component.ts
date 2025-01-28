@@ -22,7 +22,7 @@ export class ProductCardComponent {
     return this.discount ? this.price / (1 - this.discount / 100) : this.price;
   }
 
-  addToFavorites(){
+  addOrRemoveFavorites(){
     console.log("Aggiunto ai favoriti")
   }
 
