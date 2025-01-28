@@ -23,6 +23,7 @@ export class ProductCardComponent {
   @Output() remove = new EventEmitter<number>();
 
   isFavorite: boolean = false;
+  isAddedToCart: boolean = false;
 
   constructor(
     private favoritesService: FavoritesService,
@@ -58,9 +59,16 @@ export class ProductCardComponent {
 
   addToCart(): void {
     if (this.stock > 0) {
-      this.cartService.addToCart(this.id, 1)
+      this.cartService.addToCart(this.id, 1).subscribe({
+        next: () => {
+          this.isAddedToCart = true; 
+          setTimeout(() => (this.isAddedToCart = false), 2000);
+        },
+      });
     }
   }
+  
+  
 
 }
 

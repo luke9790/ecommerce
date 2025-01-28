@@ -16,7 +16,6 @@ export class CartComponent implements OnInit {
   cartQuantityMap: { [productId: number]: number } = {};
   products: Product[] = [];
   cartRetrieved: boolean = false;
-  error: string | null = null;
   private langChangeSubscription: Subscription = new Subscription();
 
   constructor(
@@ -38,11 +37,11 @@ export class CartComponent implements OnInit {
   }
 
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('accessToken');
+    const token = localStorage.getItem('accessToken');
+    return !!token;
   }
 
   loadCart(): void {
-    this.error = null;
     this.cartService.getCart().subscribe({
       next: (cart) => {
         this.cartItems = cart;
@@ -55,24 +54,7 @@ export class CartComponent implements OnInit {
           this.cartRetrieved = true;
         }
       },
-      error: (error) => {
-        console.error('Errore durante il caricamento del carrello:', error);
-        this.error = 'CART.ERROR_LOADING';
-        this.cartRetrieved = true;
-      },
-    });
-  }
-
-  loadProductDetails(productIds: number[]): void {
-    const currentLang = this.translate.currentLang || this.translate.defaultLang;
-    this.shopService.getProductsByIds(currentLang, productIds).subscribe({
-      next: (products) => {
-        this.products = products;
-        this.cartRetrieved = true;
-      },
-      error: (error) => {
-        console.error('Errore durante il caricamento dei dettagli dei prodotti:', error);
-        this.error = 'CART.ERROR_PRODUCTS';
+      error: () => {
         this.cartRetrieved = true;
       },
     });
@@ -84,6 +66,52 @@ export class CartComponent implements OnInit {
       map[item.product_id] = item.quantity;
     });
     return map;
+  }
+
+  loadProductDetails(productIds: number[]): void {
+    const currentLang = this.translate.currentLang || this.translate.defaultLang;
+
+    this.shopService.getProductsByIds(currentLang, productIds).subscribe({
+      next: (products) => {
+        this.products = products;
+        this.cartRetrieved = true;
+      },
+      error: () => {
+        this.cartRetrieved = true;
+      },
+    });
+  }
+
+  updateQuantity(productId: number, event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const newQuantity = Math.max(1, parseInt(inputElement.value, 10));
+    this.cartQuantityMap[productId] = newQuantity;
+
+    const updatedCartItems = Object.entries(this.cartQuantityMap).map(([id, quantity]) => ({
+      product_id: parseInt(id, 10),
+      quantity: quantity as number,
+    }));
+
+    this.cartService.updateCart(updatedCartItems).subscribe({
+      next: () => {
+        // Quantità aggiornata con successo
+      },
+      error: () => {
+        // Errore durante l'aggiornamento
+      },
+    });
+  }
+
+  removeProduct(productId: number): void {
+    this.cartService.removeFromCart([{ product_id: productId, quantity: this.cartQuantityMap[productId] }]).subscribe({
+      next: () => {
+        delete this.cartQuantityMap[productId];
+        this.products = this.products.filter((product) => product.id !== productId);
+      },
+      error: () => {
+        // Errore durante la rimozione
+      },
+    });
   }
 
   ngOnDestroy(): void {

@@ -28,7 +28,8 @@
   	},
 	"BUTTON": {
 	  "ADD_TO_CART": "Aggiungi al Carrello",
-	  "OUT_OF_STOCK": "Non disponibile"
+	  "OUT_OF_STOCK": "Non disponibile",
+	  "ADDED": "Aggiunto al carrello!"
 	},
 	"FILTERS": {
     "TITLE": "Filtri",
@@ -160,7 +161,8 @@
 	"LOGIN_REQUIRED": "Accesso richiesto",
 	"LOGIN_PROMPT": "Effettua il login per visualizzare il tuo carrello.",
 	"LOGIN_NOW": "Accedi ora",
-	"LOADING": "Caricamento del carrello in corso..."
+	"LOADING": "Caricamento del carrello in corso...",
+	"REMOVE": "Rimuovi dal carrello"
 	}
 
   }

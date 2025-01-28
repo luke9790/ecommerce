@@ -28,7 +28,8 @@
 	},
 	"BUTTON": {
 	  "ADD_TO_CART": "Add to Cart",
-	  "OUT_OF_STOCK": "Out of Stock"
+	  "OUT_OF_STOCK": "Out of Stock",
+	  "ADDED": "Added to the Cart!"
 	},
 	"FILTERS": {
     "TITLE": "Filters",
@@ -160,7 +161,8 @@
 	"LOGIN_REQUIRED": "Login Required",
 	"LOGIN_PROMPT": "Please log in to view your cart.",
 	"LOGIN_NOW": "Log in now",
-	"LOADING": "Loading your cart..."
+	"LOADING": "Loading your cart...",
+	"REMOVE": "Remove from cart"
 	}
 
 
