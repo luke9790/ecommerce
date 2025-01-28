@@ -2,11 +2,11 @@ export interface Product {
 	id: number;
 	name: string;
 	description: string;
-	label: string; // Etichetta (es. Premium, Regular)
-	brand: string; // Marca del prodotto (es. Nike)
-	stock: number; // Quantità disponibile
+	label: string;
+	brand: string;
+	stock: number;
 	image: string;
-	categoryId: number; // Identificativo della categoria
+	categoryId: number;
 	subCategoryId: number; 
 	type: 'male' | 'female' | 'unisex';
 	isFeatured: boolean;
@@ -14,4 +14,3 @@ export interface Product {
 	currency: string;
 	discount: number;
   }
-  

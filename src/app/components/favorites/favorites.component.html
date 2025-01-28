@@ -1,1 +1,67 @@
-<p>favorites works!</p>
+<div class="flex m-12">  
+	<main class="w-full p-4">
+		<h1>{{ 'FAVORITEPRODUCTS' | translate }}</h1>
+	  <div *ngIf="isLoading" class="text-center">
+		<p>{{ 'GENERAL.LOADING' | translate }}</p>
+	  </div>
+  
+	  <div *ngIf="!isLoading" class="flex items-center justify-between mb-4">
+		<span class="text-sm text-gray-600">
+		  {{ 'RESULTS.FOUND' | translate }}: {{ filteredProducts.length }}
+		</span>
+		<select
+		  class="border-gray-300 rounded-md focus:ring-2 focus:ring-red-500"
+		  [(ngModel)]="sorting"
+		  (change)="applyFilters()"
+		>
+		  <option value="priceAsc">{{ 'SORT.PRICE_ASC' | translate }}</option>
+		  <option value="priceDesc">{{ 'SORT.PRICE_DESC' | translate }}</option>
+		  <option value="nameAsc">{{ 'SORT.NAME_ASC' | translate }}</option>
+		  <option value="nameDesc">{{ 'SORT.NAME_DESC' | translate }}</option>
+		</select>
+	  </div>
+  
+	  <div *ngIf="!isLoading" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+		<app-product-card
+		  *ngFor="let product of paginatedProducts"
+		  [id]="product.id"
+		  [name]="product.name"
+		  [description]="product.description"
+		  [price]="product.price"
+		  [currency]="product.currency"
+		  [imageSrc]="product.image"
+		  [label]="product.label"
+		  [stock]="product.stock"
+		  [brand]="product.brand"
+		  [discount]="product.discount"
+		></app-product-card>
+	  </div>
+  
+	  <div *ngIf="!isLoading" class="mt-6 flex justify-center">
+		<button
+		  class="px-4 py-2 mx-1 border rounded-md"
+		  [disabled]="currentPage === 1"
+		  (click)="changePage(currentPage - 1)"
+		>
+		  {{ 'PAGINATION.PREVIOUS' | translate }}
+		</button>
+		<button
+		  *ngFor="let page of totalPages; let i = index"
+		  class="px-4 py-2 mx-1 border rounded-md"
+		  [class.bg-red-600]="currentPage === page"
+		  [class.text-white]="currentPage === page"
+		  (click)="changePage(page)"
+		>
+		  {{ page }}
+		</button>
+		<button
+		  class="px-4 py-2 mx-1 border rounded-md"
+		  [disabled]="currentPage === totalPages.length"
+		  (click)="changePage(currentPage + 1)"
+		>
+		  {{ 'PAGINATION.NEXT' | translate }}
+		</button>
+	  </div>
+	</main>
+  </div>
+  

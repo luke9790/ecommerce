@@ -71,6 +71,15 @@ export class ShopService {
     );
   }
 
+  getProductsByIds(language: string, productIds: number[], currency?: string): Observable<Product[]> {
+    const resolvedCurrency = currency || this.getDefaultCurrency(language);
+    const apiUrlWithParams = `${this.apiUrl}/by-ids/?language=${language}&currency=${resolvedCurrency}&ids=${productIds.join(',')}`;
+
+    return this.http.get<{ message: string, products: any[] }>(apiUrlWithParams).pipe(
+      map(response => response.products.map(this.transformProduct))
+    );
+  }
+
   private transformProduct(product: any): Product {
     return {
       id: product.id,
