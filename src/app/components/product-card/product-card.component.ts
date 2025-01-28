@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FavoritesService } from '../../services/favorites.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -23,7 +24,10 @@ export class ProductCardComponent {
 
   isFavorite: boolean = false;
 
-  constructor(private favoritesService: FavoritesService) {}
+  constructor(
+    private favoritesService: FavoritesService,
+    private cartService: CartService
+  ) {}
 
   get originalPrice(): number {
     return this.discount ? this.price / (1 - this.discount / 100) : this.price;
@@ -52,8 +56,10 @@ export class ProductCardComponent {
     }
   }
 
-  addToCart(){
-    console.log("Aggiunto al carrello")
+  addToCart(): void {
+    if (this.stock > 0) {
+      this.cartService.addToCart(this.id, 1)
+    }
   }
 
 }

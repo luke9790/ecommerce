@@ -50,10 +50,16 @@
 
   <div class="m-4 mt-0 flex items-center space-x-4">
     <button
-      (click)="addToCart()"
-      class="bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-500 transition-colors duration-300">
-      {{ 'BUTTON.ADD_TO_CART' | translate }}
-    </button>
+    (click)="addToCart()"
+    [class.bg-red-600]="stock > 0"
+    [class.hover\:bg-red-500]="stock > 0"
+    [class.bg-gray-400]="stock === 0"
+    [class.cursor-not-allowed]="stock === 0"
+    class="text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors duration-300"
+    [disabled]="stock === 0"
+  >
+    {{ stock > 0 ? ('BUTTON.ADD_TO_CART' | translate) : ('BUTTON.OUT_OF_STOCK' | translate) }}
+  </button>
 
     <div
   class="absolute bottom-2 right-4 text-gray-500 hover:text-red-600 cursor-pointer transition-all duration-300 transform hover:scale-125"

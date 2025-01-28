@@ -27,7 +27,8 @@
     	"OUT_OF_STOCK": "Out of Stock"
 	},
 	"BUTTON": {
-	  "ADD_TO_CART": "Add to Cart"
+	  "ADD_TO_CART": "Add to Cart",
+	  "OUT_OF_STOCK": "Out of Stock"
 	},
 	"FILTERS": {
     "TITLE": "Filters",
@@ -150,7 +151,19 @@
 	"EMPTY_MESSAGE": "No products in your favorites.",
 	"EMPTY_SUBTEXT": "Explore our shop and add products to your favorites.",
 	"SHOP_NOW": "Go to shop"
+	},
+	"CART": {
+	"QUANTITY": "Quantity",
+	"TITLE": "Your Cart",
+	"EMPTY_MESSAGE": "Your cart is empty.",
+	"SHOP_NOW": "Go to shop",
+	"LOGIN_REQUIRED": "Login Required",
+	"LOGIN_PROMPT": "Please log in to view your cart.",
+	"LOGIN_NOW": "Log in now",
+	"LOADING": "Loading your cart..."
 	}
+
+
 
 
   }

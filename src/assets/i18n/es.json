@@ -27,7 +27,8 @@
     "OUT_OF_STOCK": "Agotado"
   	},
 	"BUTTON": {
-	  "ADD_TO_CART": "Añadir al Carrito"
+	  "ADD_TO_CART": "Añadir al Carrito",
+	  "OUT_OF_STOCK": "Agotado"
 	},
 	"FILTERS": {
     "TITLE": "Filtros",
@@ -150,6 +151,16 @@
 	"EMPTY_MESSAGE": "No hay productos en tus favoritos.",
 	"EMPTY_SUBTEXT": "Explora nuestra tienda y añade productos a tus favoritos.",
 	"SHOP_NOW": "Ir a la tienda"
+	},
+	"CART": {
+	"QUANTITY": "Cantidad",
+	"TITLE": "Tu carrito",
+	"EMPTY_MESSAGE": "Tu carrito está vacío.",
+	"SHOP_NOW": "Ir a la tienda",
+	"LOGIN_REQUIRED": "Se requiere iniciar sesión",
+	"LOGIN_PROMPT": "Por favor, inicia sesión para ver tu carrito.",
+	"LOGIN_NOW": "Inicia sesión ahora",
+	"LOADING": "Cargando tu carrito..."
 	}
 
 
