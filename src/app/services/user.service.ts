@@ -6,17 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:5000/api/protected'; // Base URL delle rotte protette
+  private apiUrl = 'http://localhost:5000/api/protected';
 
   constructor(private http: HttpClient) {}
 
-  // Recupera il profilo dell'utente
   getUserProfile(): Observable<any> {
     return this.http.get(`${this.apiUrl}/profile`);
   }
 
-   // Modifica i dati dell'utente
-   // UserService - Aggiornamento dei dati
   updateUserProfile(updatedData: {
     first_name: string;
     last_name: string;
@@ -28,6 +25,10 @@ export class UserService {
     postal_code: string;
   }): Observable<any> {
     return this.http.put(`${this.apiUrl}/profile`, updatedData);
+  }
+
+  getUserAddresses(): Observable<any> {
+    return this.http.get(`${this.apiUrl}/profile`);
   }
 
 }
