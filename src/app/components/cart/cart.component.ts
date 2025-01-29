@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { ShopService } from '../../services/shop.service';
 import { Product } from '../../interfaces/interfaces';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../services/user.service';
+import { ShippingAddress } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-cart',
@@ -12,7 +13,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss'],
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit, OnDestroy {
   cartItems: { product_id: number; quantity: number }[] = [];
   cartQuantityMap: { [productId: number]: number } = {};
   products: Product[] = [];
@@ -20,7 +21,7 @@ export class CartComponent implements OnInit {
   totalPrice: number = 0;
   paymentMethods = ['Credit Card', 'PayPal', 'Bank Transfer', 'Amazon Pay'];
   selectedPaymentMethod: string = '';
-  shippingAddresses: string[] = []; 
+  shippingAddresses: ShippingAddress[] = [];
   private langChangeSubscription: Subscription = new Subscription();
 
   constructor(
@@ -35,7 +36,7 @@ export class CartComponent implements OnInit {
       this.loadCart();
       this.loadUserAddresses();
     }
-  
+
     this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
       if (this.isLoggedIn()) {
         this.loadCart();
@@ -55,7 +56,7 @@ export class CartComponent implements OnInit {
         this.cartItems = cart;
         this.cartQuantityMap = this.mapQuantities(cart);
         const productIds = cart.map((item) => item.product_id);
-  
+
         if (productIds.length > 0) {
           this.loadProductDetails(productIds);
         } else {
@@ -78,7 +79,7 @@ export class CartComponent implements OnInit {
 
   loadProductDetails(productIds: number[]): void {
     const currentLang = this.translate.currentLang || this.translate.defaultLang;
-  
+
     this.shopService.getProductsByIds(currentLang, productIds).subscribe({
       next: (products) => {
         this.products = products;
@@ -96,11 +97,11 @@ export class CartComponent implements OnInit {
       return total + (product.price * (this.cartQuantityMap[product.id] || 0));
     }, 0);
   }
-  
+
   loadUserAddresses(): void {
     if (this.isLoggedIn()) {
       this.userService.getUserAddresses().subscribe({
-        next: (addresses) => {
+        next: (addresses: ShippingAddress[]) => {
           this.shippingAddresses = addresses;
         },
         error: () => {
@@ -141,6 +142,11 @@ export class CartComponent implements OnInit {
       },
     });
   }
+
+  formatAddress(address: ShippingAddress): string {
+    return `${address.address_line1}, ${address.address_line2 ? address.address_line2 + ', ' : ''}${address.city}, ${address.state} ${address.postal_code}, ${address.country}`;
+  }
+  
 
   ngOnDestroy(): void {
     if (this.langChangeSubscription) {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ShippingAddress } from '../interfaces/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -27,8 +28,19 @@ export class UserService {
     return this.http.put(`${this.apiUrl}/profile`, updatedData);
   }
 
-  getUserAddresses(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/profile`);
+  getUserAddresses(): Observable<ShippingAddress[]> {
+    return this.http.get<ShippingAddress[]>(`${this.apiUrl}/shipping-address`);
+  }
+
+  addShippingAddress(addressData: ShippingAddress): Observable<{ message: string; shippingAddress: ShippingAddress }> {
+    return this.http.post<{ message: string; shippingAddress: ShippingAddress }>(
+      `${this.apiUrl}/shipping-address`, 
+      addressData
+    );
+  }
+
+  removeShippingAddress(addressId: number): Observable<{ message: string }> {
+    return this.http.delete<{ message: string }>(`${this.apiUrl}/shipping-address/${addressId}`);
   }
 
 }
