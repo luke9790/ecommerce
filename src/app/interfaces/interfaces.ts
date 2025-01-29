@@ -24,4 +24,11 @@ export interface Product {
 	postal_code: string;
 	country: string;
   }
+
+  export interface Order {
+	cartItems: { product_id: number; quantity: number; price: number }[];
+	total_price: number;
+	payment_method: string;
+	shipping_address: string;
+  }
   

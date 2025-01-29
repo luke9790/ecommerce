@@ -198,6 +198,17 @@
 		"ERROR_NO_PAYMENT": "Seleccione un método de pago.",
   		"ERROR_NO_ADDRESS": "Seleccione una dirección de envío."
 	},
+	"ORDER_SUMMARY": {
+		"TITLE": "Resumen del Pedido",
+		"LOADING": "Cargando...",
+		"ORDER_NUMBER": "Número de Pedido",
+		"DATE": "Fecha",
+		"TOTAL": "Total",
+		"PAYMENT_METHOD": "Método de Pago",
+		"SHIPPING_ADDRESS": "Dirección de Envío",
+		"PRODUCTS": "Productos",
+		"SHOP_MORE": "Seguir Comprando"
+	},
 	"TERMS": {
 		"TITLE": "Términos y Condiciones",
 		"INTRODUCTION": "Bienvenido a nuestro sitio web. Al acceder o utilizar nuestro sitio, aceptas los siguientes términos y condiciones.",

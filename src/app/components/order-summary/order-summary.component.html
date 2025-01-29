@@ -1,1 +1,33 @@
-<p>order-summary works!</p>
+<div class="container mx-auto p-6 min-h-[77vh]">
+	<div class="max-w-3xl mx-auto bg-white p-6 rounded-lg shadow-md">
+	  <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">{{ 'ORDER_SUMMARY.TITLE' | translate }}</h1>
+  
+	  <div *ngIf="loading" class="text-center text-gray-600">{{ 'ORDER_SUMMARY.LOADING' | translate }}</div>
+  
+	  <div *ngIf="errorMessage" class="text-center text-red-600">{{ errorMessage }}</div>
+  
+	  <div *ngIf="lastOrder && !loading" class="space-y-4">
+		<div class="border-b pb-4">
+		  <p class="font-bold">{{ 'ORDER_SUMMARY.ORDER_NUMBER' | translate }}: {{ lastOrder.id }}</p>
+		  <p class="text-gray-600">{{ 'ORDER_SUMMARY.DATE' | translate }}: {{ lastOrder.created_at | date: 'dd/MM/yyyy' }}</p>
+		  <p class="text-gray-600">{{ 'ORDER_SUMMARY.TOTAL' | translate }}: <span class="font-bold">{{ lastOrder.total_price | currency }}</span></p>
+		  <p class="text-gray-600">{{ 'ORDER_SUMMARY.PAYMENT_METHOD' | translate }}: {{ lastOrder.payment_method }}</p>
+		  <p class="text-gray-600">{{ 'ORDER_SUMMARY.SHIPPING_ADDRESS' | translate }}: {{ lastOrder.shipping_address }}</p>
+		</div>
+  
+		<h2 class="text-xl font-semibold">{{ 'ORDER_SUMMARY.PRODUCTS' | translate }}</h2>
+		<ul class="list-disc ml-6">
+		  <li *ngFor="let item of lastOrder.items" class="text-gray-700">
+			{{ item.quantity }}x {{ item.product.name }} - {{ item.price | currency }}
+		  </li>
+		</ul>
+  
+		<div class="text-center mt-6">
+		  <button (click)="goToShop()" class="bg-blue-600 text-white px-6 py-2 rounded-lg shadow hover:bg-blue-700 transition">
+			{{ 'ORDER_SUMMARY.SHOP_MORE' | translate }}
+		  </button>
+		</div>
+	  </div>
+	</div>
+  </div>
+  

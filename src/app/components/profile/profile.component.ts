@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { ShippingAddress } from '../../interfaces/interfaces';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class ProfileComponent implements OnInit {
   user: any = null;
   orders: any[] = [];
-  shippingAddresses: any[] = [];
+  shippingAddresses: ShippingAddress[] = [];
 
   editFirstName = '';
   editLastName = '';
@@ -24,6 +25,7 @@ export class ProfileComponent implements OnInit {
   successMessage = '';
 
   activeTab: string = 'profile';
+  showAddressForm: boolean = false;
 
   constructor(
     private userService: UserService,
@@ -34,6 +36,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUserProfile();
   }
+
+
 
   getUserProfile(): void {
     this.userService.getUserProfile().subscribe({
@@ -130,6 +134,34 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  addNewAddress(address: ShippingAddress): void {
+    this.userService.addShippingAddress(address).subscribe({
+      next: (res) => {
+        this.shippingAddresses.push(res.shippingAddress);
+        this.successMessage = 'Indirizzo aggiunto con successo!';
+        this.showAddressForm = false;
+        setTimeout(() => (this.successMessage = ''), 3000);
+      },
+      error: (err) => {
+        console.error('Errore nell\'aggiunta dell\'indirizzo:', err);
+        this.errorMessage = 'Errore durante l\'aggiunta dell\'indirizzo. Riprova.';
+      },
+    });
+  }
+
+  removeAddress(addressId: number): void {
+    this.userService.removeShippingAddress(addressId).subscribe({
+      next: () => {
+        this.shippingAddresses = this.shippingAddresses.filter(address => address.id !== addressId);
+        this.successMessage = 'Indirizzo eliminato con successo!';
+        setTimeout(() => (this.successMessage = ''), 3000);
+      },
+      error: (err) => {
+        console.error('Errore nella rimozione dell\'indirizzo:', err);
+        this.errorMessage = 'Errore durante la rimozione dell\'indirizzo. Riprova.';
+      },
+    });
+  }
 
   onLogout(): void {
     this.authService.logout();

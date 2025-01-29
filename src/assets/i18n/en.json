@@ -198,6 +198,17 @@
 		"ERROR_NO_PAYMENT": "Please select a payment method.",
 		"ERROR_NO_ADDRESS": "Please select a shipping address."
 	},
+	"ORDER_SUMMARY": {
+		"TITLE": "Order Summary",
+		"LOADING": "Loading...",
+		"ORDER_NUMBER": "Order Number",
+		"DATE": "Date",
+		"TOTAL": "Total",
+		"PAYMENT_METHOD": "Payment Method",
+		"SHIPPING_ADDRESS": "Shipping Address",
+		"PRODUCTS": "Products",
+		"SHOP_MORE": "Continue Shopping"
+	},
 	"TERMS": {
 		"TITLE": "Terms and Conditions",
 		"INTRODUCTION": "Welcome to our website. By accessing or using our site, you agree to the following terms and conditions.",

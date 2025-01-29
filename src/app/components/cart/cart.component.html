@@ -64,6 +64,7 @@
 				<!-- Se ci sono indirizzi registrati -->
 				<div *ngIf="shippingAddresses.length > 0">
 				  <select [(ngModel)]="selectedShippingAddress" class="w-full mt-2 p-2 border rounded-md">
+					<option value="" disabled selected>Seleziona un indirizzo</option>
 					<option *ngFor="let address of shippingAddresses" [value]="address.id">
 					  {{ formatAddress(address) }}
 					</option>

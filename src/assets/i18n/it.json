@@ -198,6 +198,17 @@
 		"ERROR_NO_PAYMENT": "Seleziona un metodo di pagamento.",
   		"ERROR_NO_ADDRESS": "Seleziona un indirizzo di spedizione."
 	},
+	"ORDER_SUMMARY": {
+		"TITLE": "Riepilogo Ordine",
+		"LOADING": "Caricamento in corso...",
+		"ORDER_NUMBER": "Numero Ordine",
+		"DATE": "Data",
+		"TOTAL": "Totale",
+		"PAYMENT_METHOD": "Metodo di Pagamento",
+		"SHIPPING_ADDRESS": "Indirizzo di Spedizione",
+		"PRODUCTS": "Prodotti",
+		"SHOP_MORE": "Continua lo Shopping"
+	},
 	"TERMS": {
 		"TITLE": "Termini e Condizioni",
 		"INTRODUCTION": "Benvenuto nel nostro sito web. Accedendo o utilizzando il nostro sito, accetti i seguenti termini e condizioni.",

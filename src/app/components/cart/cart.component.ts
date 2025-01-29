@@ -5,7 +5,7 @@ import { Product } from '../../interfaces/interfaces';
 import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../services/user.service';
-import { ShippingAddress } from '../../interfaces/interfaces';
+import { ShippingAddress, Order } from '../../interfaces/interfaces';
 import { Router } from '@angular/router';
 
 @Component({
@@ -160,7 +160,7 @@ export class CartComponent implements OnInit, OnDestroy {
     this.userService.addShippingAddress(address).subscribe({
       next: (response) => {
         this.shippingAddresses.push(response.shippingAddress);
-        this.showAddressForm = false; // Nasconde il form dopo il salvataggio
+        this.showAddressForm = false;
       }
     });
   }
@@ -170,29 +170,81 @@ export class CartComponent implements OnInit, OnDestroy {
   }
 
   openPaymentPopup(): void {
-    this.showPaymentPopup = true;
-
-    this.translate.get('CART.PAYMENT_ENTERING_DATA').subscribe((res) => {
-      this.paymentStatus = res;
+    if (!this.isCheckoutReady) {
+      this.checkoutErrorMessage = 'Seleziona un metodo di pagamento e un indirizzo di spedizione.';
+      return;
+    }
+  
+    this.createOrder()?.subscribe({
+      next: (response) => {
+        if (response && response.order_id) {
+          localStorage.setItem('lastOrderId', response.order_id.toString());
+  
+          this.cartService.updateCart([]);
+  
+          this.showPaymentPopup = true;
+          this.translate.get('CART.PAYMENT_ENTERING_DATA').subscribe((res) => {
+            this.paymentStatus = res;
+          });
+  
+          setTimeout(() => {
+            this.translate.get('CART.PAYMENT_VALIDATING').subscribe((res) => {
+              this.paymentStatus = res;
+            });
+          }, 1500);
+  
+          setTimeout(() => {
+            this.translate.get('CART.PAYMENT_AUTHORIZING').subscribe((res) => {
+              this.paymentStatus = res;
+            });
+          }, 3000);
+  
+          setTimeout(() => {
+            this.translate.get('CART.PAYMENT_SUCCESS').subscribe((res) => {
+              this.paymentStatus = res;
+            });
+  
+            setTimeout(() => this.redirectToOrderSummary(), 2000);
+          }, 4500);
+        } else {
+          console.error('Errore: la risposta non contiene un order_id valido.');
+        }
+      },
+      error: (err) => {
+        console.error('Errore durante la creazione dell\'ordine:', err);
+      }
     });
-    setTimeout(() => {
-      this.translate.get('CART.PAYMENT_VALIDATING').subscribe((res) => {
-        this.paymentStatus = res;
-      });
-    }, 1500);
-    setTimeout(() => {
-      this.translate.get('CART.PAYMENT_AUTHORIZING').subscribe((res) => {
-        this.paymentStatus = res;
-      });
-    }, 3000);
-    setTimeout(() => {
-      this.translate.get('CART.PAYMENT_SUCCESS').subscribe((res) => {
-        this.paymentStatus = res;
-      });
-      setTimeout(() => this.redirectToOrderSummary(), 2000);
-    }, 4500);
   }
-
+  
+  
+  createOrder() {
+    console.log("🔍 Creazione ordine...");
+  
+    const selectedAddressObj = this.shippingAddresses.find(addr => addr.id === Number(this.selectedShippingAddress));
+  
+    if (!selectedAddressObj) {
+      console.error('Indirizzo di spedizione non trovato.');
+      return;
+    }
+  
+    if (!this.cartItems || this.cartItems.length === 0) {
+      console.error("ERRORE: cartItems è vuoto o undefined!");
+      return;
+    }
+  
+    const orderData: Order = {
+      total_price: this.totalPrice,
+      payment_method: this.selectedPaymentMethod,
+      shipping_address: this.formatAddress(selectedAddressObj),
+      cartItems: this.cartItems.map(item => ({
+        product_id: item.product_id,
+        quantity: item.quantity,
+        price: this.products.find(p => p.id === item.product_id)?.price || 0
+      }))
+    };  
+    return this.userService.createOrder(orderData);
+  }
+  
 
   closePaymentPopup(): void {
     this.showPaymentPopup = false;
