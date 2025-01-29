@@ -194,7 +194,9 @@
 		"PAYMENT_ENTERING_DATA": "Inserimento dati...",
 		"PAYMENT_VALIDATING": "Verifica dei dati...",
 		"PAYMENT_AUTHORIZING": "Autorizzazione in corso...",
-		"PAYMENT_SUCCESS": "Pagamento completato! 🎉"
+		"PAYMENT_SUCCESS": "Pagamento completato! 🎉",
+		"ERROR_NO_PAYMENT": "Seleziona un metodo di pagamento.",
+  		"ERROR_NO_ADDRESS": "Seleziona un indirizzo di spedizione."
 	},
 	"TERMS": {
 		"TITLE": "Termini e Condizioni",

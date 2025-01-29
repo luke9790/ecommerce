@@ -63,7 +63,7 @@
   
 				<!-- Se ci sono indirizzi registrati -->
 				<div *ngIf="shippingAddresses.length > 0">
-				  <select class="w-full mt-2 p-2 border rounded-md">
+				  <select [(ngModel)]="selectedShippingAddress" class="w-full mt-2 p-2 border rounded-md">
 					<option *ngFor="let address of shippingAddresses" [value]="address.id">
 					  {{ formatAddress(address) }}
 					</option>
@@ -97,14 +97,20 @@
 				<app-address (addressSaved)="saveGuestAddress($event)"></app-address>
 			  </ng-template>
   
+			  <p *ngIf="checkoutErrorMessage" class="mt-2 text-red-600 text-sm">
+				{{ checkoutErrorMessage }}
+			  </p>
 			  <!-- Checkout Button -->
-			  <button
-				class="mt-6 w-full px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-500 transition-colors"
-				[disabled]="!selectedPaymentMethod"
+			  <button class="mt-6 w-full px-6 py-3 font-medium rounded-lg transition-colors"
+				[ngClass]="{
+					'bg-gray-400 cursor-not-allowed': !isCheckoutReady,
+					'bg-green-600 text-white hover:bg-green-500': isCheckoutReady
+				}"
+				[disabled]="!isCheckoutReady"
 				(click)="openPaymentPopup()"
-			  >
+				>
 				{{ 'CART.CHECKOUT' | translate }}
-			  </button>
+				</button>
 			</div>
 		  </div>
 		</div>

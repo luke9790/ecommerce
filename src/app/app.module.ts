@@ -30,6 +30,7 @@ import { ConditionsComponent } from './components/infos/conditions/conditions.co
 import { PrivacyComponent } from './components/infos/privacy/privacy.component';
 import { WithdrawalComponent } from './components/infos/withdrawal/withdrawal.component';
 import { AddressComponent } from './components/address/address.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -57,6 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PrivacyComponent,
     WithdrawalComponent,
     AddressComponent,
+    OrderSummaryComponent,
   ],
   imports: [
     BrowserModule,

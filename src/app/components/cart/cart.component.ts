@@ -25,8 +25,10 @@ export class CartComponent implements OnInit, OnDestroy {
   paymentMethods = ['Credit Card', 'PayPal', 'Bank Transfer', 'Amazon Pay'];
   selectedPaymentMethod: string = '';
   shippingAddresses: ShippingAddress[] = [];
+  selectedShippingAddress: string = ''; 
   showPaymentPopup = false;
   paymentStatus = '';
+  checkoutErrorMessage = '';
   maskedCardNumber = '**** **** **** 1234';
   maskedExpiry = '**/**';
   maskedCVV = '***';
@@ -133,10 +135,8 @@ export class CartComponent implements OnInit, OnDestroy {
 
     this.cartService.updateCart(updatedCartItems).subscribe({
       next: () => {
-        // Quantità aggiornata con successo
       },
       error: () => {
-        // Errore durante l'aggiornamento
       },
     });
   }
@@ -148,7 +148,6 @@ export class CartComponent implements OnInit, OnDestroy {
         this.products = this.products.filter((product) => product.id !== productId);
       },
       error: () => {
-        // Errore durante la rimozione
       },
     });
   }
@@ -201,6 +200,10 @@ export class CartComponent implements OnInit, OnDestroy {
 
   redirectToOrderSummary(): void {
     this.router.navigate(['/order-summary']);
+  }
+
+  get isCheckoutReady(): boolean {
+    return !!this.selectedPaymentMethod && !!this.selectedShippingAddress;
   }
 
   ngOnDestroy(): void {

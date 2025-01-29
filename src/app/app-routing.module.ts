@@ -12,6 +12,7 @@ import { ProductComponent } from './components/product/product.component';
 import { ConditionsComponent } from './components/infos/conditions/conditions.component';
 import { PrivacyComponent } from './components/infos/privacy/privacy.component';
 import { WithdrawalComponent } from './components/infos/withdrawal/withdrawal.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'conditions', component: ConditionsComponent },
   { path: 'privacy', component: PrivacyComponent },
   { path: 'withdrawal', component: WithdrawalComponent },
+  { path: 'order-summary', component: OrderSummaryComponent },
 
   { path: '**', redirectTo: '' }
 ];
