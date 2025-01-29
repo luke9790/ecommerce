@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from '../../interfaces/interfaces';
 import { ShopService } from '../../services/shop.service';
+import { FavoritesService } from '../../services/favorites.service';
+import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -13,14 +15,18 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ProductComponent implements OnInit, OnDestroy {
   product!: Product;
-  selectedSize: string = ''; // Variabile per memorizzare la taglia selezionata
+  selectedSize: string = ''; // Memorizza la taglia selezionata
   isLoading: boolean = true;
+  isFavorite: boolean = false;
+  isAddedToCart: boolean = false;
   private langChangeSubscription: Subscription = new Subscription();
 
   constructor(
     private translate: TranslateService,
     private shopService: ShopService,
-    private route: ActivatedRoute,
+    private favoritesService: FavoritesService,
+    private cartService: CartService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -37,9 +43,10 @@ export class ProductComponent implements OnInit, OnDestroy {
     const currentLang = this.translate.currentLang || this.translate.defaultLang;
 
     this.shopService.getProductById(currentLang, productId).subscribe({
-      next: (Product: Product) => {
-        this.product = Product;
+      next: (product: Product) => {
+        this.product = product;
         this.isLoading = false;
+        this.checkIfFavorite();
       },
       error: () => {
         this.isLoading = false;
@@ -51,25 +58,37 @@ export class ProductComponent implements OnInit, OnDestroy {
     return this.product.discount ? this.product.price / (1 - this.product.discount / 100) : this.product.price;
   }
 
-  // Gestisce la selezione della taglia
   selectSize(size: string): void {
-    this.selectedSize = size; // Memorizza la taglia selezionata
-    console.log('Taglia selezionata:', size);
+    this.selectedSize = size;
   }
 
-  // Aggiungi al carrello con la taglia selezionata
   addToCart(): void {
-    if (this.selectedSize) {
-      console.log(`Aggiunto al carrello: ${this.product.name}, Taglia: ${this.selectedSize}`);
-      // Aggiungi logica per aggiungere al carrello
-    } else {
-      console.log('Seleziona una taglia prima di aggiungere al carrello.');
+    if (this.product.stock > 0) {
+      this.cartService.addToCart(this.product.id, 1).subscribe({
+        next: () => {
+          this.isAddedToCart = true;
+          setTimeout(() => (this.isAddedToCart = false), 2000);
+        },
+      });
     }
   }
 
-  addToFavorites(): void {
-    console.log('Aggiunto ai preferiti:', this.product.name);
-    // Aggiungi logica per aggiungere ai preferiti
+  checkIfFavorite(): void {
+    this.favoritesService.getFavorites().subscribe((favorites) => {
+      this.isFavorite = favorites.includes(this.product.id);
+    });
+  }
+
+  toggleFavorite(): void {
+    if (this.isFavorite) {
+      this.favoritesService.removeFavorite(this.product.id).subscribe(() => {
+        this.isFavorite = false;
+      });
+    } else {
+      this.favoritesService.addFavorite(this.product.id).subscribe(() => {
+        this.isFavorite = true;
+      });
+    }
   }
 
   ngOnDestroy(): void {

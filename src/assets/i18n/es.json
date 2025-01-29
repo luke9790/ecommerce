@@ -29,7 +29,17 @@
 	"BUTTON": {
 	  "ADD_TO_CART": "Añadir al Carrito",
 	  "OUT_OF_STOCK": "Agotado",
-	  "ADDED": "¡Añadido al carrito!"
+	  "ADDED": "¡Añadido al carrito!",
+	  "ADD_FAVORITE": "¡Añadido a favoritos!",
+	  "REMOVE_FAVORITE": "Eliminar de favoritos"
+	},
+	"PRODUCT": {
+    "ORIGINAL_PRICE": "Precio original",
+    "DISCOUNT": "Descuento",
+    "NO_DISCOUNT": "No hay descuento disponible",
+    "FINAL_PRICE": "Precio final",
+    "AVAILABILITY": "Disponibilidad",
+    "NOT_FOUND": "Producto no encontrado"
 	},
 	"FILTERS": {
     "TITLE": "Filtros",

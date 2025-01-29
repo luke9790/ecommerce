@@ -29,8 +29,18 @@
 	"BUTTON": {
 	  "ADD_TO_CART": "Add to Cart",
 	  "OUT_OF_STOCK": "Out of Stock",
-	  "ADDED": "Added to the Cart!"
+	  "ADDED": "Added to the Cart!",
+	  "ADD_FAVORITE": "Add to Favorites",
+	  "REMOVE_FAVORITE": "Remove from Favorites"
 	},
+	"PRODUCT": {
+    "ORIGINAL_PRICE": "Original Price",
+    "DISCOUNT": "Discount",
+    "NO_DISCOUNT": "No discount available",
+    "FINAL_PRICE": "Final Price",
+    "AVAILABILITY": "Availability",
+    "NOT_FOUND": "Product not found"
+  	},
 	"FILTERS": {
     "TITLE": "Filters",
     "CATEGORY": "Category",

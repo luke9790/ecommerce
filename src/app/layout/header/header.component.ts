@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   selectedLanguage = this.languages[0];
   isDropdownOpen = false;
   isAuthenticated = false; 
-  private authSubscription: Subscription | null = null; ;
+  private authSubscription: Subscription | null = null;
 
   constructor(
     private translate: TranslateService,
@@ -35,9 +35,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.isAuthenticated = isAuthenticated;
     });
 
-    const browserLang = this.translate.getBrowserLang();
-    const matchedLang = this.languages.find((lang) => lang.code === browserLang);
-    this.selectedLanguage = matchedLang || this.languages[0];
+    const storedLang = localStorage.getItem('selectedLanguage');
+    
+    if (storedLang && this.languages.some(lang => lang.code === storedLang)) {
+      this.selectedLanguage = this.languages.find(lang => lang.code === storedLang)!;
+    } else {
+      const browserLang = this.translate.getBrowserLang();
+      const matchedLang = this.languages.find((lang) => lang.code === browserLang);
+      this.selectedLanguage = matchedLang || this.languages[0];
+    }
+
     this.translate.use(this.selectedLanguage.code);
   }
 
@@ -56,6 +63,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.selectedLanguage = lang;
       this.isDropdownOpen = false;
       this.translate.use(lang.code);
+      
+      localStorage.setItem('selectedLanguage', lang.code);
     }
   }
 
