@@ -29,6 +29,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { ConditionsComponent } from './components/infos/conditions/conditions.component';
 import { PrivacyComponent } from './components/infos/privacy/privacy.component';
 import { WithdrawalComponent } from './components/infos/withdrawal/withdrawal.component';
+import { AddressComponent } from './components/address/address.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -55,6 +56,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ConditionsComponent,
     PrivacyComponent,
     WithdrawalComponent,
+    AddressComponent,
   ],
   imports: [
     BrowserModule,

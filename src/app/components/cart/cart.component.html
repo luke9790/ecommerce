@@ -57,15 +57,45 @@
 				</select>
 			  </div>
   
-			  <!-- Shipping Address Selection -->
-				<div *ngIf="isLoggedIn() && shippingAddresses.length > 0" class="mt-6">
-					<h3 class="text-md font-medium">{{ 'CART.SHIPPING_ADDRESS' | translate }}</h3>
-					<select class="w-full mt-2 p-2 border rounded-md">
+			  <!-- Sezione Indirizzo di Spedizione -->
+			  <div *ngIf="isLoggedIn(); else guestAddressForm" class="mt-6">
+				<h3 class="text-md font-medium">{{ 'CART.SHIPPING_ADDRESS' | translate }}</h3>
+  
+				<!-- Se ci sono indirizzi registrati -->
+				<div *ngIf="shippingAddresses.length > 0">
+				  <select class="w-full mt-2 p-2 border rounded-md">
 					<option *ngFor="let address of shippingAddresses" [value]="address.id">
-						{{ formatAddress(address) }}
+					  {{ formatAddress(address) }}
 					</option>
-					</select>
+				  </select>
+  
+				  <button
+					(click)="showAddressForm = true"
+					class="mt-4 w-full px-4 py-2 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-500 transition-colors">
+					{{ 'CART.ADD_NEW_ADDRESS' | translate }}
+				  </button>
 				</div>
+  
+				<!-- Form per aggiungere un nuovo indirizzo (solo se showAddressForm è true) -->
+				<div *ngIf="showAddressForm">
+				  <app-address (addressSaved)="addNewAddress($event)"></app-address>
+				  <button
+					(click)="showAddressForm = false"
+					class="mt-2 w-full px-4 py-2 bg-gray-500 text-white font-medium rounded-lg hover:bg-gray-600 transition-colors">
+					{{ 'CART.CANCEL' | translate }}
+				  </button>
+				</div>
+  
+				<!-- Se l'utente loggato non ha indirizzi salvati, mostra subito il form -->
+				<div *ngIf="shippingAddresses.length === 0">
+				  <app-address (addressSaved)="addNewAddress($event)"></app-address>
+				</div>
+			  </div>
+  
+			  <!-- Indirizzo per utenti non loggati -->
+			  <ng-template #guestAddressForm>
+				<app-address (addressSaved)="saveGuestAddress($event)"></app-address>
+			  </ng-template>
   
 			  <!-- Checkout Button -->
 			  <button

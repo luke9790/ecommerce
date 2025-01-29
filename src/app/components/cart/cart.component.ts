@@ -18,6 +18,8 @@ export class CartComponent implements OnInit, OnDestroy {
   cartQuantityMap: { [productId: number]: number } = {};
   products: Product[] = [];
   cartRetrieved: boolean = false;
+  showAddressForm: boolean = false;
+  guestAddress : any;
   totalPrice: number = 0;
   paymentMethods = ['Credit Card', 'PayPal', 'Bank Transfer', 'Amazon Pay'];
   selectedPaymentMethod: string = '';
@@ -147,6 +149,18 @@ export class CartComponent implements OnInit, OnDestroy {
     return `${address.address_line1}, ${address.address_line2 ? address.address_line2 + ', ' : ''}${address.city}, ${address.state} ${address.postal_code}, ${address.country}`;
   }
   
+  addNewAddress(address: ShippingAddress): void {
+    this.userService.addShippingAddress(address).subscribe({
+      next: (response) => {
+        this.shippingAddresses.push(response.shippingAddress);
+        this.showAddressForm = false; // Nasconde il form dopo il salvataggio
+      }
+    });
+  }
+  
+  saveGuestAddress(address: ShippingAddress): void {
+    this.guestAddress = address; // Memorizza l'indirizzo temporaneamente
+  }
 
   ngOnDestroy(): void {
     if (this.langChangeSubscription) {

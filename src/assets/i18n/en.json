@@ -34,33 +34,33 @@
 	  "REMOVE_FAVORITE": "Remove from Favorites"
 	},
 	"PRODUCT": {
-    "ORIGINAL_PRICE": "Original Price",
-    "DISCOUNT": "Discount",
-    "NO_DISCOUNT": "No discount available",
-    "FINAL_PRICE": "Final Price",
-    "AVAILABILITY": "Availability",
-    "NOT_FOUND": "Product not found"
+		"ORIGINAL_PRICE": "Original Price",
+		"DISCOUNT": "Discount",
+		"NO_DISCOUNT": "No discount available",
+		"FINAL_PRICE": "Final Price",
+		"AVAILABILITY": "Availability",
+		"NOT_FOUND": "Product not found"
   	},
 	"FILTERS": {
-    "TITLE": "Filters",
-    "CATEGORY": "Category",
-    "ALL_CATEGORIES": "All",
-    "TYPE": "Gender",
-    "ALL_TYPES": "All",
-    "TYPE_MALE": "Male",
-    "TYPE_FEMALE": "Female",
-    "TYPE_UNISEX": "Unisex",
-    "PRICE": "Price",
-    "MIN_PRICE": "Min",
-    "MAX_PRICE": "Max",
-    "HAS_DISCOUNT": "Has Discount",
-    "BRAND": "Brand",
-	"LABEL": "Label",
-    "ALL_BRANDS": "All",
-	"ALL_LABELS": "All",
-    "IS_FEATURED": "Featured",
-    "EXCLUDE_OUT_OF_STOCK": "Exclude Out of Stock",
-	"RESET": "Reset Filters"
+		"TITLE": "Filters",
+		"CATEGORY": "Category",
+		"ALL_CATEGORIES": "All",
+		"TYPE": "Gender",
+		"ALL_TYPES": "All",
+		"TYPE_MALE": "Male",
+		"TYPE_FEMALE": "Female",
+		"TYPE_UNISEX": "Unisex",
+		"PRICE": "Price",
+		"MIN_PRICE": "Min",
+		"MAX_PRICE": "Max",
+		"HAS_DISCOUNT": "Has Discount",
+		"BRAND": "Brand",
+		"LABEL": "Label",
+		"ALL_BRANDS": "All",
+		"ALL_LABELS": "All",
+		"IS_FEATURED": "Featured",
+		"EXCLUDE_OUT_OF_STOCK": "Exclude Out of Stock",
+		"RESET": "Reset Filters"
   },
   "CATEGORIES": {
     "MAIN": "Categories",
@@ -76,28 +76,28 @@
   	"ALL_SUB": "All Subcategories"
   },
   "SUBCATEGORIES": {
-    "BASIC": "Basic",
-    "FORMAL": "Formal",
-    "SPORTSWEAR": "Sportswear",
-    "JEANS": "Jeans",
-    "JOGGING PANTS": "Jogging Pants",
-    "SHORTS": "Shorts",
-    "SNEAKERS": "Sneakers",
-    "RUNNING SHOES": "Running Shoes",
-    "HIGH HEELS": "High Heels",
-    "HOODIES": "Hoodies",
-    "SWEATERS": "Sweaters",
-    "ZIPPER JACKETS": "Zipper Jackets",
-    "CAPS": "Caps",
-    "SCARVES": "Scarves",
-    "SUNGLASSES": "Sunglasses",
-    "WATCHES": "Watches",
-    "NECKLACES": "Necklaces",
-    "LEATHER JACKETS": "Leather Jackets",
-    "DENIM JACKETS": "Denim Jackets",
-    "WINTER COATS": "Winter Coats",
-    "RAIN JACKETS": "Rain Jackets",
-    "SUMMER DRESSES": "Summer Dresses"
+		"BASIC": "Basic",
+		"FORMAL": "Formal",
+		"SPORTSWEAR": "Sportswear",
+		"JEANS": "Jeans",
+		"JOGGING PANTS": "Jogging Pants",
+		"SHORTS": "Shorts",
+		"SNEAKERS": "Sneakers",
+		"RUNNING SHOES": "Running Shoes",
+		"HIGH HEELS": "High Heels",
+		"HOODIES": "Hoodies",
+		"SWEATERS": "Sweaters",
+		"ZIPPER JACKETS": "Zipper Jackets",
+		"CAPS": "Caps",
+		"SCARVES": "Scarves",
+		"SUNGLASSES": "Sunglasses",
+		"WATCHES": "Watches",
+		"NECKLACES": "Necklaces",
+		"LEATHER JACKETS": "Leather Jackets",
+		"DENIM JACKETS": "Denim Jackets",
+		"WINTER COATS": "Winter Coats",
+		"RAIN JACKETS": "Rain Jackets",
+		"SUMMER DRESSES": "Summer Dresses"
   	},
 	"GENERAL": {
 		"LOADING": "Loading..."
@@ -116,63 +116,77 @@
 		"NEXT": "Next"
 	},
 	"COMPANY": {
-	"FACTS_TITLE": "3 Facts About Compound",
-	"FACT_1_TITLE": "Handcrafted",
-	"FACT_1_DESCRIPTION": "Made by hand in Italy. Any imperfections are not considered defects, but proof of artisanal craftsmanship.",
-	"FACT_2_TITLE": "Eco Friendly",
-	"FACT_2_DESCRIPTION": "Made with organic and natural materials. The small amount of plastic you will find in me is recycled and processed sustainably.",
-	"FACT_3_TITLE": "Durable",
-	"FACT_3_DESCRIPTION": "Made to last a long time, to become your second skin. I use only the highest quality materials. Take care of me.",
-	"PHILOSOPHY_TITLE": "Our Promise",
-	"PHILOSOPHY_DESCRIPTION": "We create garments that speak about you. Each piece is an ethical and sustainable manifesto, designed to celebrate language, respect the planet, and endure over time. Because dressing is expressing who you are, without compromises."
+		"FACTS_TITLE": "3 Facts About Compound",
+		"FACT_1_TITLE": "Handcrafted",
+		"FACT_1_DESCRIPTION": "Made by hand in Italy. Any imperfections are not considered defects, but proof of artisanal craftsmanship.",
+		"FACT_2_TITLE": "Eco Friendly",
+		"FACT_2_DESCRIPTION": "Made with organic and natural materials. The small amount of plastic you will find in me is recycled and processed sustainably.",
+		"FACT_3_TITLE": "Durable",
+		"FACT_3_DESCRIPTION": "Made to last a long time, to become your second skin. I use only the highest quality materials. Take care of me.",
+		"PHILOSOPHY_TITLE": "Our Promise",
+		"PHILOSOPHY_DESCRIPTION": "We create garments that speak about you. Each piece is an ethical and sustainable manifesto, designed to celebrate language, respect the planet, and endure over time. Because dressing is expressing who you are, without compromises."
 	},
 	"FOOTER": {
-    "FOLLOW_US": "Follow Us",
-    "INFORMATION": "Information",
-    "TERMS": "Terms & Conditions",
-    "PRIVACY": "Privacy Policy",
-    "WITHDRAWAL": "Withdrawal Policy",
-    "WE_ACCEPT": "We Accept",
-    "COMPANY_INFO": "Compound Ltd. | VAT: 123456789 | Address: 123 E-commerce St., Milan, Italy"
+		"FOLLOW_US": "Follow Us",
+		"INFORMATION": "Information",
+		"TERMS": "Terms & Conditions",
+		"PRIVACY": "Privacy Policy",
+		"WITHDRAWAL": "Withdrawal Policy",
+		"WE_ACCEPT": "We Accept",
+		"COMPANY_INFO": "Compound Ltd. | VAT: 123456789 | Address: 123 E-commerce St., Milan, Italy"
 	},
 	"REGISTER": {
-	"TITLE": "Sign Up",
-	"EMAIL_LABEL": "Email",
-	"EMAIL_PLACEHOLDER": "Enter your email",
-	"PASSWORD_LABEL": "Password",
-	"PASSWORD_PLACEHOLDER": "Enter your password",
-	"CONFIRM_PASSWORD_LABEL": "Confirm Password",
-	"CONFIRM_PASSWORD_PLACEHOLDER": "Re-enter your password",
-	"BUTTON": "Sign Up",
-	"ALREADY_HAVE_ACCOUNT": "Already have an account?",
-	"LOGIN_LINK": "Log In"
+		"TITLE": "Sign Up",
+		"EMAIL_LABEL": "Email",
+		"EMAIL_PLACEHOLDER": "Enter your email",
+		"PASSWORD_LABEL": "Password",
+		"PASSWORD_PLACEHOLDER": "Enter your password",
+		"CONFIRM_PASSWORD_LABEL": "Confirm Password",
+		"CONFIRM_PASSWORD_PLACEHOLDER": "Re-enter your password",
+		"BUTTON": "Sign Up",
+		"ALREADY_HAVE_ACCOUNT": "Already have an account?",
+		"LOGIN_LINK": "Log In"
 	},
 	"LOGIN": {
-	"TITLE": "Log In",
-	"EMAIL_LABEL": "Email",
-	"EMAIL_PLACEHOLDER": "Enter your email",
-	"PASSWORD_LABEL": "Password",
-	"PASSWORD_PLACEHOLDER": "Enter your password",
-	"BUTTON": "Log In",
-	"NO_ACCOUNT": "Don't have an account?",
-	"REGISTER_LINK": "Sign Up"
+		"TITLE": "Log In",
+		"EMAIL_LABEL": "Email",
+		"EMAIL_PLACEHOLDER": "Enter your email",
+		"PASSWORD_LABEL": "Password",
+		"PASSWORD_PLACEHOLDER": "Enter your password",
+		"BUTTON": "Log In",
+		"NO_ACCOUNT": "Don't have an account?",
+		"REGISTER_LINK": "Sign Up"
 	},
 	"FAVORITES": {
-	"PRODUCTS": "Favorite Products",
-	"EMPTY_MESSAGE": "No products in your favorites.",
-	"EMPTY_SUBTEXT": "Explore our shop and add products to your favorites.",
-	"SHOP_NOW": "Go to shop"
+		"PRODUCTS": "Favorite Products",
+		"EMPTY_MESSAGE": "No products in your favorites.",
+		"EMPTY_SUBTEXT": "Explore our shop and add products to your favorites.",
+		"SHOP_NOW": "Go to shop"
 	},
 	"CART": {
-	"QUANTITY": "Quantity",
-	"TITLE": "Your Cart",
-	"EMPTY_MESSAGE": "Your cart is empty.",
-	"SHOP_NOW": "Go to shop",
-	"LOGIN_REQUIRED": "Login Required",
-	"LOGIN_PROMPT": "Please log in to view your cart.",
-	"LOGIN_NOW": "Log in now",
-	"LOADING": "Loading your cart...",
-	"REMOVE": "Remove from cart"
+		"TITLE": "Your Cart",
+		"QUANTITY": "Quantity",
+		"REMOVE": "Remove",
+		"ORDER_SUMMARY": "Order Summary",
+		"TOTAL": "Total",
+		"PAYMENT_METHOD": "Payment Method",
+		"SHIPPING_ADDRESS": "Shipping Address",
+		"ADD_NEW_ADDRESS": "Add a new address",
+		"ADDRESS_LINE1": "Address Line 1",
+		"ADDRESS_LINE2": "Address Line 2 (optional)",
+		"CITY": "City",
+		"STATE": "State/Province",
+		"POSTAL_CODE": "ZIP Code",
+		"COUNTRY": "Country",
+		"SAVE_ADDRESS": "Save Address",
+		"CANCEL": "Cancel",
+		"CHECKOUT": "Proceed to Checkout",
+		"EMPTY_MESSAGE": "Your cart is empty",
+		"SHOP_NOW": "Shop Now",
+		"LOADING": "Loading your cart...",
+		"LOGIN_REQUIRED": "Login Required",
+		"LOGIN_PROMPT": "You need to be logged in to proceed with your order.",
+		"LOGIN_NOW": "Login Now"
 	},
 	"TERMS": {
 		"TITLE": "Terms and Conditions",
@@ -234,13 +248,5 @@
 		"PARAGRAPH": "If you have any questions about our withdrawal policy, please contact us at support@example.com."
 		}
 	}
-	  
-	  
-	  
-	  
-
-
-
-
   }
   
