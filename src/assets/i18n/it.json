@@ -181,12 +181,20 @@
 		"SAVE_ADDRESS": "Salva Indirizzo",
 		"CANCEL": "Annulla",
 		"CHECKOUT": "Procedi al Checkout",
+		"PAYMENT_PROCESS": "Elaborazione del pagamento",
+		"CARD_NUMBER": "Numero della Carta",
+		"EXPIRY": "Data di Scadenza",
+		"CVV": "Codice di Sicurezza (CVV)",
 		"EMPTY_MESSAGE": "Il tuo carrello è vuoto",
 		"SHOP_NOW": "Vai al Negozio",
 		"LOADING": "Caricamento del carrello...",
 		"LOGIN_REQUIRED": "Accesso richiesto",
 		"LOGIN_PROMPT": "Devi essere loggato per procedere con l'ordine.",
-		"LOGIN_NOW": "Accedi ora"
+		"LOGIN_NOW": "Accedi ora",
+		"PAYMENT_ENTERING_DATA": "Inserimento dati...",
+		"PAYMENT_VALIDATING": "Verifica dei dati...",
+		"PAYMENT_AUTHORIZING": "Autorizzazione in corso...",
+		"PAYMENT_SUCCESS": "Pagamento completato! 🎉"
 	},
 	"TERMS": {
 		"TITLE": "Termini e Condizioni",

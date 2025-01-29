@@ -2,7 +2,6 @@
 	<h3 class="text-md font-semibold mb-4">{{ 'CART.ADD_NEW_ADDRESS' | translate }}</h3>
   
 	<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-	  <!-- Indirizzo Linea 1 -->
 	  <input
 		type="text"
 		placeholder="{{ 'CART.ADDRESS_LINE1' | translate }}"
@@ -10,7 +9,6 @@
 		class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
 	  />
   
-	  <!-- Indirizzo Linea 2 (opzionale) -->
 	  <input
 		type="text"
 		placeholder="{{ 'CART.ADDRESS_LINE2' | translate }}"
@@ -18,7 +16,6 @@
 		class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
 	  />
   
-	  <!-- Città -->
 	  <input
 		type="text"
 		placeholder="{{ 'CART.CITY' | translate }}"
@@ -26,7 +23,6 @@
 		class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
 	  />
   
-	  <!-- Stato/Provincia -->
 	  <input
 		type="text"
 		placeholder="{{ 'CART.STATE' | translate }}"
@@ -34,7 +30,6 @@
 		class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
 	  />
   
-	  <!-- CAP -->
 	  <input
 		type="text"
 		placeholder="{{ 'CART.POSTAL_CODE' | translate }}"
@@ -42,7 +37,6 @@
 		class="w-full p-3 border rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
 	  />
   
-	  <!-- Paese -->
 	  <input
 		type="text"
 		placeholder="{{ 'CART.COUNTRY' | translate }}"
@@ -51,7 +45,6 @@
 	  />
 	</div>
   
-	<!-- Pulsante di conferma -->
 	<button
 	  (click)="confirmAddress()"
 	  class="mt-6 w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-500 transition-colors"

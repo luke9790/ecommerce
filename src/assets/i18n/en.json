@@ -186,7 +186,15 @@
 		"LOADING": "Loading your cart...",
 		"LOGIN_REQUIRED": "Login Required",
 		"LOGIN_PROMPT": "You need to be logged in to proceed with your order.",
-		"LOGIN_NOW": "Login Now"
+		"LOGIN_NOW": "Login Now",
+		"PAYMENT_PROCESS": "Processing Payment",
+		"CARD_NUMBER": "Card Number",
+		"EXPIRY": "Expiry Date",
+		"CVV": "Security Code (CVV)",
+		"PAYMENT_ENTERING_DATA": "Entering data...",
+		"PAYMENT_VALIDATING": "Validating data...",
+		"PAYMENT_AUTHORIZING": "Authorizing payment...",
+		"PAYMENT_SUCCESS": "Payment completed! 🎉"
 	},
 	"TERMS": {
 		"TITLE": "Terms and Conditions",

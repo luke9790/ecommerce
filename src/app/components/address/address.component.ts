@@ -8,8 +8,8 @@ import { ShippingAddress } from '../../interfaces/interfaces';
   styleUrls: ['./address.component.scss']
 })
 export class AddressComponent {
-  @Input() address: ShippingAddress = this.getEmptyAddress(); // Permette di passare un indirizzo precompilato
-  @Output() addressSaved = new EventEmitter<ShippingAddress>(); // Evento per inviare il nuovo indirizzo
+  @Input() address: ShippingAddress = this.getEmptyAddress();
+  @Output() addressSaved = new EventEmitter<ShippingAddress>();
 
   confirmAddress(): void {
     if (!this.isAddressValid(this.address)) {
@@ -17,8 +17,8 @@ export class AddressComponent {
       return;
     }
 
-    this.addressSaved.emit(this.address); // Emissione dell'evento al parent
-    this.address = this.getEmptyAddress(); // Reset del form dopo il salvataggio
+    this.addressSaved.emit(this.address);
+    this.address = this.getEmptyAddress();
   }
 
   isAddressValid(address: ShippingAddress): boolean {

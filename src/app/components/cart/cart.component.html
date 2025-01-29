@@ -101,6 +101,7 @@
 			  <button
 				class="mt-6 w-full px-6 py-3 bg-green-600 text-white font-medium rounded-lg hover:bg-green-500 transition-colors"
 				[disabled]="!selectedPaymentMethod"
+				(click)="openPaymentPopup()"
 			  >
 				{{ 'CART.CHECKOUT' | translate }}
 			  </button>
@@ -142,3 +143,34 @@
 	</ng-template>
   </div>
   
+
+  <!-- Popup di pagamento -->
+<div *ngIf="showPaymentPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+	<div class="bg-white p-6 rounded-lg shadow-lg w-96">
+	  <h3 class="text-lg font-semibold">{{ 'CART.PAYMENT_PROCESS' | translate }}</h3>
+  
+	  <!-- Simulazione di inserimento dati -->
+	  <div class="mt-4">
+		<label class="block text-sm font-medium text-gray-700">{{ 'CART.CARD_NUMBER' | translate }}</label>
+		<input type="text" class="w-full mt-1 p-2 border rounded-md" [value]="maskedCardNumber" disabled />
+	  </div>
+  
+	  <div class="mt-2">
+		<label class="block text-sm font-medium text-gray-700">{{ 'CART.EXPIRY' | translate }}</label>
+		<input type="text" class="w-full mt-1 p-2 border rounded-md" [value]="maskedExpiry" disabled />
+	  </div>
+  
+	  <div class="mt-2">
+		<label class="block text-sm font-medium text-gray-700">{{ 'CART.CVV' | translate }}</label>
+		<input type="password" class="w-full mt-1 p-2 border rounded-md" [value]="maskedCVV" disabled />
+	  </div>
+  
+	  <!-- Stato del pagamento -->
+	  <p class="mt-4 text-sm text-gray-600">{{ paymentStatus }}</p>
+  
+	  <!-- Pulsante di chiusura -->
+	  <button (click)="closePaymentPopup()" class="mt-4 w-full px-4 py-2 bg-red-600 text-white font-medium rounded-lg hover:bg-red-500">
+		{{ 'CART.CANCEL' | translate }}
+	  </button>
+	</div>
+  </div>

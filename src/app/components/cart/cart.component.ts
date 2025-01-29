@@ -6,6 +6,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import { ShippingAddress } from '../../interfaces/interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -24,6 +25,12 @@ export class CartComponent implements OnInit, OnDestroy {
   paymentMethods = ['Credit Card', 'PayPal', 'Bank Transfer', 'Amazon Pay'];
   selectedPaymentMethod: string = '';
   shippingAddresses: ShippingAddress[] = [];
+  showPaymentPopup = false;
+  paymentStatus = '';
+  maskedCardNumber = '**** **** **** 1234';
+  maskedExpiry = '**/**';
+  maskedCVV = '***';
+
   private langChangeSubscription: Subscription = new Subscription();
 
   constructor(
@@ -31,6 +38,7 @@ export class CartComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private shopService: ShopService,
     private translate: TranslateService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -159,7 +167,40 @@ export class CartComponent implements OnInit, OnDestroy {
   }
   
   saveGuestAddress(address: ShippingAddress): void {
-    this.guestAddress = address; // Memorizza l'indirizzo temporaneamente
+    this.guestAddress = address;
+  }
+
+  openPaymentPopup(): void {
+    this.showPaymentPopup = true;
+
+    this.translate.get('CART.PAYMENT_ENTERING_DATA').subscribe((res) => {
+      this.paymentStatus = res;
+    });
+    setTimeout(() => {
+      this.translate.get('CART.PAYMENT_VALIDATING').subscribe((res) => {
+        this.paymentStatus = res;
+      });
+    }, 1500);
+    setTimeout(() => {
+      this.translate.get('CART.PAYMENT_AUTHORIZING').subscribe((res) => {
+        this.paymentStatus = res;
+      });
+    }, 3000);
+    setTimeout(() => {
+      this.translate.get('CART.PAYMENT_SUCCESS').subscribe((res) => {
+        this.paymentStatus = res;
+      });
+      setTimeout(() => this.redirectToOrderSummary(), 2000);
+    }, 4500);
+  }
+
+
+  closePaymentPopup(): void {
+    this.showPaymentPopup = false;
+  }
+
+  redirectToOrderSummary(): void {
+    this.router.navigate(['/order-summary']);
   }
 
   ngOnDestroy(): void {
