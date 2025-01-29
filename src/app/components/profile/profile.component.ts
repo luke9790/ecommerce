@@ -11,16 +11,19 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   user: any = null;
+  orders: any[] = [];
+  shippingAddresses: any[] = [];
+
   editFirstName = '';
   editLastName = '';
   editEmail = '';
-  editPassword = '';
-  editAddress = '';
-  editCity = '';
-  editState = '';
-  editPostalCode = '';
+  currentPassword = '';
+  newPassword = '';
+  confirmPassword = '';
   errorMessage = '';
   successMessage = '';
+
+  activeTab: string = 'profile';
 
   constructor(
     private userService: UserService,
@@ -39,11 +42,6 @@ export class ProfileComponent implements OnInit {
         this.editFirstName = this.user.first_name || '';
         this.editLastName = this.user.last_name || '';
         this.editEmail = this.user.email || '';
-        this.editAddress = this.user.ShippingAddress?.address || '';
-        this.editCity = this.user.ShippingAddress?.city || '';
-        this.editState = this.user.ShippingAddress?.state || '';
-        this.editPostalCode = this.user.ShippingAddress?.postal_code || '';
-        this.errorMessage = '';
       },
       error: (err) => {
         console.error('Errore nel recupero del profilo:', err);
@@ -52,33 +50,89 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  getUserOrders(): void {
+    this.userService.getUserOrders().subscribe({
+      next: (orders) => {
+        this.orders = orders;
+      },
+      error: (err) => {
+        console.error('Errore nel recupero degli ordini:', err);
+        this.orders = [];
+      },
+    });
+  }
+
+  getUserAddresses(): void {
+    this.userService.getUserAddresses().subscribe({
+      next: (addresses) => {
+        this.shippingAddresses = addresses;
+      },
+      error: (err) => {
+        console.error('Errore nel recupero degli indirizzi:', err);
+        this.shippingAddresses = [];
+      },
+    });
+  }
+
+  switchTab(tab: string): void {
+    this.activeTab = tab;
+    if (tab === 'orders' && this.orders.length === 0) {
+      this.getUserOrders();
+    }
+    if (tab === 'addresses' && this.shippingAddresses.length === 0) {
+      this.getUserAddresses();
+    }
+  }
+
   onUpdateProfile(): void {
     const updatedData = {
       first_name: this.editFirstName,
       last_name: this.editLastName,
       email: this.editEmail,
-      password: this.editPassword,
-      address: this.editAddress,
-      city: this.editCity,
-      state: this.editState,
-      postal_code: this.editPostalCode,
     };
-
+  
     this.userService.updateUserProfile(updatedData).subscribe({
       next: () => {
         this.successMessage = 'Profilo aggiornato con successo!';
-        this.getUserProfile(); // Ricarica i dati aggiornati
-        setTimeout(() => (this.successMessage = ''), 3000); // Rimuove il messaggio di successo dopo 3 secondi
+        this.getUserProfile();
+        setTimeout(() => (this.successMessage = ''), 3000);
       },
       error: (err) => {
-        console.error('Errore nell\'aggiornamento del profilo:', err);
+        console.error("Errore nell'aggiornamento del profilo:", err);
         this.errorMessage = err.error?.message || 'Errore durante l\'aggiornamento. Riprova.';
       },
     });
   }
 
+  onChangePassword(): void {
+    if (this.newPassword !== this.confirmPassword) {
+      this.errorMessage = 'Le password non corrispondono.';
+      return;
+    }
+
+    const passwordData = {
+      currentPassword: this.currentPassword,
+      newPassword: this.newPassword,
+      confirmPassword: this.confirmPassword,
+    };
+
+    this.userService.updateUserProfile(passwordData).subscribe({
+      next: () => {
+        this.successMessage = 'Password aggiornata con successo! Effettua di nuovo il login.';
+        setTimeout(() => {
+          this.authService.logout();
+          this.router.navigate(['/login']);
+        }, 3000);
+      },
+      error: (err) => {
+        this.errorMessage = err.error?.message || 'Errore nel cambio password. Riprova.';
+      },
+    });
+  }
+
+
   onLogout(): void {
-    this.authService.logout(); // Rimuove i token e reimposta lo stato
-    this.router.navigate(['/login']); // Reindirizza alla pagina di login
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
