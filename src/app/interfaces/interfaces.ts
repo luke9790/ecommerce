@@ -26,6 +26,7 @@ export interface Product {
   }
 
   export interface Order {
+	id?: number;
 	cartItems: { product_id: number; quantity: number; price: number }[];
 	total_price: number;
 	payment_method: string;

@@ -22,11 +22,14 @@ export class OrderSummaryComponent implements OnInit {
   loadLastOrder(): void {
     this.userService.getUserOrders().subscribe({
       next: (orders) => {
-        if (orders.length > 0) {
-          this.lastOrder = orders[orders.length - 1]; // Prendiamo l'ultimo ordine
-        } else {
+        if (orders.length === 0) {
           this.errorMessage = 'Nessun ordine trovato.';
+        } else {
+          this.lastOrder = orders.reduce((latest, order) =>
+            order.id! > latest.id! ? order : latest
+          );
         }
+  
         this.loading = false;
       },
       error: () => {
@@ -35,6 +38,8 @@ export class OrderSummaryComponent implements OnInit {
       },
     });
   }
+  
+  
 
   goToShop(): void {
     this.router.navigate(['/shop']);

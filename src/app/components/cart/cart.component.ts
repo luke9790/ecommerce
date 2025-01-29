@@ -175,7 +175,7 @@ export class CartComponent implements OnInit, OnDestroy {
       return;
     }
   
-    this.createOrder()?.subscribe({
+    this.createOrder()!.subscribe({
       next: (response) => {
         if (response && response.order_id) {
           localStorage.setItem('lastOrderId', response.order_id.toString());
@@ -217,21 +217,16 @@ export class CartComponent implements OnInit, OnDestroy {
   }
   
   
-  createOrder() {
-    console.log("🔍 Creazione ordine...");
-  
+  createOrder() {  
     const selectedAddressObj = this.shippingAddresses.find(addr => addr.id === Number(this.selectedShippingAddress));
-  
     if (!selectedAddressObj) {
       console.error('Indirizzo di spedizione non trovato.');
       return;
     }
-  
     if (!this.cartItems || this.cartItems.length === 0) {
       console.error("ERRORE: cartItems è vuoto o undefined!");
       return;
     }
-  
     const orderData: Order = {
       total_price: this.totalPrice,
       payment_method: this.selectedPaymentMethod,
