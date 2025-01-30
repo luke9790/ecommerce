@@ -145,7 +145,17 @@
 		"CONFIRM_PASSWORD_PLACEHOLDER": "Re-enter your password",
 		"BUTTON": "Sign Up",
 		"ALREADY_HAVE_ACCOUNT": "Already have an account?",
-		"LOGIN_LINK": "Log In"
+		"LOGIN_LINK": "Log In",
+		"SUCCESS": "Registration successful! You can now log in.",
+		"ERROR": {
+		"EMAIL_REQUIRED": "Email is required.",
+		"EMAIL_INVALID": "Enter a valid email.",
+		"PASSWORD_REQUIRED": "Password is required.",
+		"PASSWORD_MIN_LENGTH": "Password must be at least 6 characters long.",
+		"CONFIRM_PASSWORD_REQUIRED": "Confirm your password.",
+		"PASSWORD_MISMATCH": "Passwords do not match.",
+		"GENERAL": "Error during registration. Please try again later."
+		}
 	},
 	"LOGIN": {
 		"TITLE": "Log In",

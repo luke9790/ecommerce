@@ -145,7 +145,17 @@
 	"CONFIRM_PASSWORD_PLACEHOLDER": "Reinserisci la tua password",
 	"BUTTON": "Registrati",
 	"ALREADY_HAVE_ACCOUNT": "Hai già un account?",
-	"LOGIN_LINK": "Accedi"
+	"LOGIN_LINK": "Accedi",
+	"SUCCESS": "Registrazione completata! Ora puoi accedere.",
+    "ERROR": {
+      "EMAIL_REQUIRED": "L'email è obbligatoria.",
+      "EMAIL_INVALID": "Inserisci un'email valida.",
+      "PASSWORD_REQUIRED": "La password è obbligatoria.",
+      "PASSWORD_MIN_LENGTH": "La password deve contenere almeno 6 caratteri.",
+      "CONFIRM_PASSWORD_REQUIRED": "Conferma la password.",
+      "PASSWORD_MISMATCH": "Le password non corrispondono.",
+      "GENERAL": "Errore durante la registrazione. Riprova più tardi."
+    }
 	},
 	"LOGIN": {
 	"TITLE": "Accedi",

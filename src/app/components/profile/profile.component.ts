@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { ShippingAddress } from '../../interfaces/interfaces';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-profile',
@@ -27,6 +28,15 @@ export class ProfileComponent implements OnInit {
   activeTab: string = 'profile';
   showAddressForm: boolean = false;
 
+  errorCurrentPassword = '';
+  errorNewPassword = '';
+  errorConfirmPassword = '';
+  showCurrentPassword = false;
+  showNewPassword = false;
+  showConfirmPassword = false;
+  faEye = faEye;
+  faEyeSlash = faEyeSlash;
+
   constructor(
     private userService: UserService,
     private authService: AuthService,
@@ -36,7 +46,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.getUserProfile();
   }
-
 
 
   getUserProfile(): void {
@@ -105,8 +114,27 @@ export class ProfileComponent implements OnInit {
   }
 
   onChangePassword(): void {
+    this.errorMessage = '';
+    this.errorCurrentPassword = '';
+    this.errorNewPassword = '';
+    this.errorConfirmPassword = '';
+
+    if (!this.currentPassword) {
+      this.errorCurrentPassword = 'Inserisci la password attuale.';
+    }
+    if (!this.newPassword) {
+      this.errorNewPassword = 'Inserisci una nuova password.';
+    }
+    if (!this.confirmPassword) {
+      this.errorConfirmPassword = 'Conferma la nuova password.';
+    }
+    if (this.newPassword && this.newPassword.length < 6) {
+      this.errorNewPassword = 'La nuova password deve avere almeno 6 caratteri.';
+    }
     if (this.newPassword !== this.confirmPassword) {
-      this.errorMessage = 'Le password non corrispondono.';
+      this.errorConfirmPassword = 'Le password non corrispondono.';
+    }
+    if (this.errorCurrentPassword || this.errorNewPassword || this.errorConfirmPassword) {
       return;
     }
 
@@ -129,6 +157,7 @@ export class ProfileComponent implements OnInit {
       },
     });
   }
+
 
   addNewAddress(address: ShippingAddress): void {
     this.userService.addShippingAddress(address).subscribe({
@@ -155,6 +184,16 @@ export class ProfileComponent implements OnInit {
         this.errorMessage = err.error?.message || 'Errore durante la rimozione dell\'indirizzo. Riprova.';
       },
     });
+  }
+
+  togglePasswordVisibility(field: string): void {
+    if (field === 'current') {
+      this.showCurrentPassword = !this.showCurrentPassword;
+    } else if (field === 'new') {
+      this.showNewPassword = !this.showNewPassword;
+    } else if (field === 'confirm') {
+      this.showConfirmPassword = !this.showConfirmPassword;
+    }
   }
 
   onLogout(): void {
