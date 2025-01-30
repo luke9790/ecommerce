@@ -72,8 +72,8 @@ export class RegisterComponent {
           this.router.navigate(['/login']);
         }, 2000);
       },
-      error: (err) => {
-        this.errorMessage = err.error?.message || this.translate.instant('REGISTER.ERROR.GENERAL');
+      error: () => {
+        this.errorMessage = this.translate.instant('REGISTER.ERROR.GENERAL');
       },
     });
   }

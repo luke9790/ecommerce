@@ -154,7 +154,7 @@
       "PASSWORD_MIN_LENGTH": "La contraseña debe tener al menos 6 caracteres.",
       "CONFIRM_PASSWORD_REQUIRED": "Confirma tu contraseña.",
       "PASSWORD_MISMATCH": "Las contraseñas no coinciden.",
-      "GENERAL": "Error durante el registro. Inténtalo de nuevo más tarde."
+      "GENERAL": "Se produjo un error durante el registro. Es posible que el correo ya esté en uso."
     }
 	},
 	"LOGIN": {
@@ -165,7 +165,8 @@
 	"PASSWORD_PLACEHOLDER": "Introduce tu contraseña",
 	"BUTTON": "Iniciar sesión",
 	"NO_ACCOUNT": "¿No tienes una cuenta?",
-	"REGISTER_LINK": "Regístrate"
+	"REGISTER_LINK": "Regístrate",
+	"GENERAL": "Error de inicio de sesión. Correo o contraseña incorrectos."
 	},	
 	"FAVORITES": {
 	"PRODUCTS": "Productos favoritos",

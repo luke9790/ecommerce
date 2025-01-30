@@ -154,7 +154,7 @@
       "PASSWORD_MIN_LENGTH": "La password deve contenere almeno 6 caratteri.",
       "CONFIRM_PASSWORD_REQUIRED": "Conferma la password.",
       "PASSWORD_MISMATCH": "Le password non corrispondono.",
-      "GENERAL": "Errore durante la registrazione. Riprova più tardi."
+      "GENERAL": "Si è verificato un errore durante la registrazione. L'email potrebbe essere già in uso."
     }
 	},
 	"LOGIN": {
@@ -165,7 +165,8 @@
 	"PASSWORD_PLACEHOLDER": "Inserisci la tua password",
 	"BUTTON": "Accedi",
 	"NO_ACCOUNT": "Non hai un account?",
-	"REGISTER_LINK": "Registrati"
+	"REGISTER_LINK": "Registrati",
+	"GENERAL": "Accesso fallito. Email o password errati."
 	},
 	"PROFILE": {
 		"TITLE": "Il Tuo Profilo",
