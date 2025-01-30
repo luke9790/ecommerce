@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FavoritesService } from '../../services/favorites.service';
 import { CartService } from '../../services/cart.service';
+import { AuthService } from '../../services/auth.service'; // Importa AuthService
 
 @Component({
   selector: 'app-product-card',
@@ -24,10 +25,12 @@ export class ProductCardComponent {
 
   isFavorite: boolean = false;
   isAddedToCart: boolean = false;
+  isAuthenticated: boolean = false;
 
   constructor(
     private favoritesService: FavoritesService,
-    private cartService: CartService
+    private cartService: CartService,
+    private authService: AuthService // Iniettiamo AuthService
   ) {}
 
   get originalPrice(): number {
@@ -35,20 +38,35 @@ export class ProductCardComponent {
   }
 
   ngOnInit(): void {
-    this.checkIfFavorite();
+    // Controlla se l'utente è autenticato
+    this.isAuthenticated = this.authService.isLoggedIn();
+
+    // Se l'utente è autenticato, controlla se il prodotto è tra i preferiti
+    if (this.isAuthenticated) {
+      this.checkIfFavorite();
+    }
   }
 
   checkIfFavorite(): void {
-    this.favoritesService.getFavorites().subscribe((favorites) => {
-      this.isFavorite = favorites.includes(this.id);
+    this.favoritesService.getFavorites().subscribe({
+      next: (favorites) => {
+        this.isFavorite = favorites.includes(this.id);
+      },
+      error: (err) => {
+        console.error('Errore nel recupero dei preferiti:', err);
+      }
     });
   }
 
   toggleFavorite(): void {
+    if (!this.isAuthenticated) {
+      return;
+    }
+
     if (this.isFavorite) {
       this.favoritesService.removeFavorite(this.id).subscribe(() => {
         this.isFavorite = false;
-        this.remove.emit(this.id); 
+        this.remove.emit(this.id);
       });
     } else {
       this.favoritesService.addFavorite(this.id).subscribe(() => {
@@ -61,14 +79,10 @@ export class ProductCardComponent {
     if (this.stock > 0) {
       this.cartService.addToCart(this.id, 1).subscribe({
         next: () => {
-          this.isAddedToCart = true; 
+          this.isAddedToCart = true;
           setTimeout(() => (this.isAddedToCart = false), 2000);
         },
       });
     }
   }
-  
-  
-
 }
-

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { tap, catchError, switchMap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +13,15 @@ export class AuthService {
   private isAuthenticated = new BehaviorSubject<boolean>(this.isLoggedIn());
   isAuthenticated$ = this.isAuthenticated.asObservable();
 
-  constructor(private http: HttpClient) {}
+  private isRefreshing = false;
+  private refreshTokenSubject: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(null);
+
+  constructor(private http: HttpClient, private router: Router) {}
+
 
   register(email: string, password: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, { email, password });
-  }  
+  }
 
   login(credentials: { email: string; password: string }): Observable<any> {
     return this.http.post(`${this.apiUrl}/login`, credentials).pipe(
@@ -26,19 +31,54 @@ export class AuthService {
       })
     );
   }
-  
+
   logout(): void {
+    const currentUrl = this.router.url;
     this.clearTokens();
     this.isAuthenticated.next(false);
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate([currentUrl]);
+    });
   }
 
   refreshToken(): Observable<any> {
     const refreshToken = this.getRefreshToken();
-    return this.http.post(`${this.apiUrl}/refresh-token`, { refreshToken }).pipe(
-      tap((response: any) => {
-        this.saveTokens(response.accessToken, response.refreshToken);
-      })
-    );
+
+    if (!refreshToken || this.isTokenExpired(refreshToken)) {
+      this.logout();
+      return throwError(() => new Error('Refresh token expired'));
+    }
+
+    if (!this.isRefreshing) {
+      this.isRefreshing = true;
+      this.refreshTokenSubject.next(null);
+
+      return this.http.post(`${this.apiUrl}/refresh`, { refreshToken }).pipe(
+        tap((response: any) => {
+          this.isRefreshing = false;
+          this.refreshTokenSubject.next(response.accessToken);
+          this.saveTokens(response.accessToken, response.refreshToken);
+        }),
+        catchError((error) => {
+          this.isRefreshing = false;
+          this.logout();
+          return throwError(() => error);
+        })
+      );
+    } else {
+      return this.refreshTokenSubject.pipe(
+        switchMap((accessToken) => {
+          if (accessToken) {
+            return new Observable(observer => {
+              observer.next({ accessToken });
+              observer.complete();
+            });
+          } else {
+            return throwError(() => new Error('No token available'));
+          }
+        })
+      );
+    }
   }
 
   getAccessToken(): string | null {
@@ -49,7 +89,7 @@ export class AuthService {
     return localStorage.getItem('refreshToken');
   }
 
-  private saveTokens(accessToken: string, refreshToken: string): void {
+  saveTokens(accessToken: string, refreshToken: string): void {
     localStorage.setItem('accessToken', accessToken);
     localStorage.setItem('refreshToken', refreshToken);
   }
@@ -60,12 +100,13 @@ export class AuthService {
   }
 
   private isTokenExpired(token: string): boolean {
-    if (!token) {
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      const currentTime = Math.floor(Date.now() / 1000);
+      return payload.exp < currentTime;
+    } catch (e) {
       return true;
     }
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    const currentTime = Math.floor(Date.now() / 1000);
-    return payload.exp < currentTime;
   }
 
   public isLoggedIn(): boolean {

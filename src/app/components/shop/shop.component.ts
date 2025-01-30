@@ -36,7 +36,7 @@ export class ShopComponent implements OnInit, OnDestroy {
 
   sliderOptions = {
     floor: 0,
-    ceil: 5000,
+    ceil: 400,
     step: 1,
     showSelectionBar: true,
     getSelectionBarColor: () => '#2196F3',

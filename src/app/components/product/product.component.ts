@@ -6,6 +6,7 @@ import { FavoritesService } from '../../services/favorites.service';
 import { CartService } from '../../services/cart.service';
 import { Subscription } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-product',
@@ -19,6 +20,7 @@ export class ProductComponent implements OnInit, OnDestroy {
   isLoading: boolean = true;
   isFavorite: boolean = false;
   isAddedToCart: boolean = false;
+  isAuthenticated: boolean = false;
   private langChangeSubscription: Subscription = new Subscription();
 
   constructor(
@@ -26,7 +28,8 @@ export class ProductComponent implements OnInit, OnDestroy {
     private shopService: ShopService,
     private favoritesService: FavoritesService,
     private cartService: CartService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -44,9 +47,13 @@ export class ProductComponent implements OnInit, OnDestroy {
 
     this.shopService.getProductById(currentLang, productId).subscribe({
       next: (product: Product) => {
+        console.log(product);
         this.product = product;
         this.isLoading = false;
-        this.checkIfFavorite();
+        this.isAuthenticated = this.authService.isLoggedIn();
+        if (this.isAuthenticated) {
+          this.checkIfFavorite();
+        }
       },
       error: () => {
         this.isLoading = false;
