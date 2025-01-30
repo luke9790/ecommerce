@@ -39,7 +39,11 @@
     "NO_DISCOUNT": "No hay descuento disponible",
     "FINAL_PRICE": "Precio final",
     "AVAILABILITY": "Disponibilidad",
-    "NOT_FOUND": "Producto no encontrado"
+    "NOT_FOUND": "Producto no encontrado",
+    "BRAND": "Marca del producto",
+    "LABEL": "Etiqueta del producto",
+    "TYPE": "Género",
+    "CATEGORY": "Categoría"
 	},
 	"FILTERS": {
     "TITLE": "Filtros",

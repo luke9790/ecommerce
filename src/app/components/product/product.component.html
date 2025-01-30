@@ -1,67 +1,123 @@
 <div *ngIf="product" class="container min-h-[75vh] mx-auto px-4 py-8">
 	<div class="flex flex-col lg:flex-row gap-8 lg:gap-16 justify-between">
-	  
-	  <div class="flex-1 mb-8 lg:mb-0">
-		<img *ngIf="product.image" [src]="product.image" [alt]="product.name" class="w-full h-auto rounded-lg shadow-lg" />
+  
+	  <div class="flex-1 mx-8 lg:mb-0">
+		<img 
+		  *ngIf="product.image"
+		  [src]="product.image"
+		  [alt]="product.name"
+		  class="w-full h-auto rounded-lg shadow-lg mt-10"
+		/>
 	  </div>
   
-	  <div class="flex-1 flex flex-col gap-10 items-center">
-		<h1 class="text-4xl font-bold text-gray-900 text-center">{{ product.name }}</h1>
+	  <div class="flex-1 flex flex-col gap-4 items-center">
+		<h1 class="text-4xl font-bold text-gray-900 text-center">
+		  {{ product.name }}
+		</h1>
+		<p class="text-lg text-gray-600 text-center">
+		  {{ product.description }}
+		</p>
   
-		<p class="text-lg text-gray-600 text-center">{{ product.description }}</p>
-  
-		<div class="w-full text-center flex flex-col items-center space-y-4">
+		<div class="w-full text-center flex flex-col items-center space-y-2">
 		  <div class="w-full flex flex-col items-center">
-			<h3 class="text-lg font-semibold text-gray-900">{{ 'PRODUCT.ORIGINAL_PRICE' | translate }}:</h3>
-			<p class="text-lg text-gray-600">{{ product.price | currency: product.currency }}</p>
-		  </div>
-  
-		  <div class="w-full flex flex-col items-center">
-			<h3 class="text-lg font-semibold text-gray-900">{{ 'PRODUCT.DISCOUNT' | translate }}:</h3>
+			<h3 class="text-lg font-semibold text-gray-900">
+			  {{ 'PRODUCT.ORIGINAL_PRICE' | translate }}:
+			</h3>
 			<p class="text-lg text-gray-600">
-			  <span *ngIf="product.discount > 0">{{ product.discount }}%</span>
-			  <span *ngIf="product.discount === 0">{{ 'PRODUCT.NO_DISCOUNT' | translate }}</span>
+			  {{ product.price | currency: product.currency }}
 			</p>
 		  </div>
-  
 		  <div class="w-full flex flex-col items-center">
-			<h3 class="text-lg font-semibold text-gray-900">{{ 'PRODUCT.FINAL_PRICE' | translate }}:</h3>
-			<p class="text-2xl font-bold text-red-600">{{ originalPrice | currency: product.currency }}</p>
+			<h3 class="text-lg font-semibold text-gray-900">
+			  {{ 'PRODUCT.DISCOUNT' | translate }}:
+			</h3>
+			<p class="text-lg text-gray-600">
+			  <span *ngIf="product.discount > 0">{{ product.discount }}%</span>
+			  <span *ngIf="product.discount === 0">
+				{{ 'PRODUCT.NO_DISCOUNT' | translate }}
+			  </span>
+			</p>
+		  </div>
+		  <div class="w-full flex flex-col items-center">
+			<h3 class="text-lg font-semibold text-gray-900">
+			  {{ 'PRODUCT.FINAL_PRICE' | translate }}:
+			</h3>
+			<p class="text-2xl font-bold text-red-600">
+			  {{ originalPrice | currency: product.currency }}
+			</p>
 		  </div>
 		</div>
   
+		<div class="w-full text-center flex flex-col items-center space-y-2">
+		  <div class="w-full flex flex-col items-center">
+			<h3 class="text-lg font-semibold text-gray-900">
+			  {{ 'PRODUCT.BRAND' | translate }}
+			</h3>
+			<p class="text-lg text-gray-600">{{ product.brand }}</p>
+		  </div>
+		  <div class="w-full flex flex-col items-center">
+			<h3 class="text-lg font-semibold text-gray-900">
+			  {{ 'PRODUCT.LABEL' | translate }}
+			</h3>
+			<p class="text-lg text-gray-600">{{ product.label }}</p>
+		  </div>
+		  <div class="w-full flex flex-col items-center">
+			<h3 class="text-lg font-semibold text-gray-900">
+			  {{ 'PRODUCT.TYPE' | translate }}
+			</h3>
+			<p class="text-lg text-gray-600">{{ product.type }}</p>
+		  </div>
+		  <div class="w-full flex flex-col items-center">
+          <h3 class="text-lg font-semibold text-gray-900">{{ 'PRODUCT.CATEGORY' | translate }}</h3>
+          <p class="text-lg text-gray-600">
+            {{ categoryName }} <span *ngIf="subCategoryName !== 'Unknown'"> / {{ subCategoryName }}</span>
+          </p>
+        </div>
+		</div>
+  
 		<div class="w-full text-center">
-		  <h3 class="text-lg font-semibold text-gray-900">{{ 'PRODUCT.AVAILABILITY' | translate }}:</h3>
-		  <p class="text-lg font-semibold"
+		  <h3 class="text-lg font-semibold text-gray-900">
+			{{ 'PRODUCT.AVAILABILITY' | translate }}:
+		  </h3>
+		  <p
+			class="text-lg font-semibold"
 			[class.text-green-600]="product.stock > 0"
-			[class.text-red-600]="product.stock === 0">
+			[class.text-red-600]="product.stock === 0"
+		  >
 			{{ product.stock > 0 ? ('STOCK.AVAILABLE' | translate) : ('STOCK.OUT_OF_STOCK' | translate) }}
 		  </p>
 		</div>
   
-		<div class="flex flex-col gap-4 mt-6 w-full items-center">
-			<button
-			  (click)="toggleFavorite()"
-			  class="bg-gray-200 text-gray-700 text-base font-semibold px-8 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-300 transition-colors duration-300 w-64 whitespace-nowrap">
-			  <fa-icon [icon]="['fas', 'heart']" [class.text-red-600]="isFavorite"></fa-icon>
-			  <span class="text-center">{{ isFavorite ? ('BUTTON.REMOVE_FAVORITE' | translate) : ('BUTTON.ADD_FAVORITE' | translate) }}</span>
-			</button>
-		  
-			<button
-			  (click)="addToCart()"
-			  [class.bg-red-600]="product.stock > 0"
-			  [class.hover\:bg-red-500]="product.stock > 0"
-			  [class.bg-gray-400]="product.stock === 0"
-			  [class.cursor-not-allowed]="product.stock === 0"
-			  class="text-white text-base font-semibold px-8 py-3 rounded-lg flex items-center justify-center gap-2 transition-colors duration-300 w-64 whitespace-nowrap"
-			  [disabled]="product.stock === 0">
-			  <fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
-			  <span class="text-center">{{ product.stock > 0 ? ('BUTTON.ADD_TO_CART' | translate) : ('BUTTON.OUT_OF_STOCK' | translate) }}</span>
-			</button>
-		  
-		  
+		<div class="flex flex-col gap-4 mt-2 w-full items-center">
+		  <button
+			(click)="toggleFavorite()"
+			class="bg-gray-200 text-gray-700 text-base font-semibold px-8 py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-300 transition-colors duration-300 w-64 whitespace-nowrap"
+		  >
+			<fa-icon
+			  [icon]="['fas', 'heart']"
+			  [class.text-red-600]="isFavorite"
+			></fa-icon>
+			<span class="text-center">
+			  {{ isFavorite ? ('BUTTON.REMOVE_FAVORITE' | translate) : ('BUTTON.ADD_FAVORITE' | translate) }}
+			</span>
+		  </button>
   
-		  <div *ngIf="isAddedToCart" class="text-sm text-green-600">
+		  <button
+			(click)="addToCart()"
+			[class.bg-red-600]="product.stock > 0"
+			[class.hover\\:bg-red-500]="product.stock > 0"
+			[class.bg-gray-400]="product.stock === 0"
+			[class.cursor-not-allowed]="product.stock === 0"
+			class="text-white text-base font-semibold px-8 py-3 rounded-lg flex items-center justify-center gap-2 transition-colors duration-300 w-64 whitespace-nowrap"
+			[disabled]="product.stock === 0"
+		  >
+			<fa-icon [icon]="['fas', 'shopping-cart']"></fa-icon>
+			<span class="text-center">
+			  {{ product.stock > 0 ? ('BUTTON.ADD_TO_CART' | translate) : ('BUTTON.OUT_OF_STOCK' | translate) }}
+			</span>
+		  </button>
+  
+		  <div *ngIf="isAddedToCart" class="text-sm text-green-600" >
 			{{ 'BUTTON.ADDED' | translate }}
 		  </div>
 		</div>
@@ -69,7 +125,7 @@
 	</div>
   </div>
   
-  <div *ngIf="!product" class="text-center text-red-600">
+  <div 	*ngIf="!product" class="text-center text-red-600">
 	<p>{{ 'PRODUCT.NOT_FOUND' | translate }}</p>
   </div>
   

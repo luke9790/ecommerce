@@ -39,7 +39,11 @@
 		"NO_DISCOUNT": "No discount available",
 		"FINAL_PRICE": "Final Price",
 		"AVAILABILITY": "Availability",
-		"NOT_FOUND": "Product not found"
+		"NOT_FOUND": "Product not found",
+		"BRAND": "Product Brand",
+		"LABEL": "Product Label",
+		"TYPE": "Gender",
+		"CATEGORY": "Category"
   	},
 	"FILTERS": {
 		"TITLE": "Filters",
