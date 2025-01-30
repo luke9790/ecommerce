@@ -157,6 +157,47 @@
 	"NO_ACCOUNT": "Non hai un account?",
 	"REGISTER_LINK": "Registrati"
 	},
+	"PROFILE": {
+		"TITLE": "Il Tuo Profilo",
+		"TABS": {
+		"INFORMATION": "Informazioni",
+		"ORDERS": "Ordini",
+		"ADDRESSES": "Indirizzi"
+		},
+		"ORDERS": {
+		"TITLE": "I tuoi Ordini",
+		"ORDER_NUMBER": "Ordine",
+		"TOTAL": "Totale",
+		"PAYMENT_METHOD": "Metodo di Pagamento",
+		"SHIPPING_ADDRESS": "Indirizzo di Spedizione",
+		"NO_ORDERS": "Nessun ordine effettuato."
+		},
+		"ADDRESSES": {
+		"TITLE": "Indirizzi di Spedizione",
+		"DELETE": "Elimina",
+		"NO_ADDRESSES": "Nessun indirizzo registrato.",
+		"ADD_NEW": "Aggiungi Nuovo Indirizzo"
+		},
+		"EMAIL": "Email",
+		"FIRST_NAME": "Nome",
+		"LAST_NAME": "Cognome",
+		"CUSTOMER_SINCE": "Cliente da:",
+		"SAVE_CHANGES": "Salva Modifiche",
+		"CHANGE_PASSWORD": "Cambia Password",
+		"CURRENT_PASSWORD": "Password Attuale",
+		"NEW_PASSWORD": "Nuova Password",
+		"CONFIRM_NEW_PASSWORD": "Conferma Nuova Password",
+		"UPDATE_PASSWORD": "Aggiorna Password",
+		"LOGOUT": "Logout",
+		"PLACEHOLDER": {
+		"EMAIL": "Inserisci la tua email",
+		"FIRST_NAME": "Inserisci il tuo nome",
+		"LAST_NAME": "Inserisci il tuo cognome",
+		"CURRENT_PASSWORD": "Inserisci la password attuale",
+		"NEW_PASSWORD": "Inserisci la nuova password",
+		"CONFIRM_NEW_PASSWORD": "Conferma la nuova password"
+		}
+	},	  
 	"FAVORITES": {
 	"PRODUCTS": "Prodotti preferiti",
 	"EMPTY_MESSAGE": "Nessun prodotto nei tuoi preferiti.",

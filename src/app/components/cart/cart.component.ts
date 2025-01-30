@@ -180,7 +180,13 @@ export class CartComponent implements OnInit, OnDestroy {
         if (response && response.order_id) {
           localStorage.setItem('lastOrderId', response.order_id.toString());
   
-          this.cartService.updateCart([]);
+          this.cartService.updateCart([]).subscribe({
+            next: () => {
+            },
+            error: () => {
+              return;
+            }
+          });
   
           this.showPaymentPopup = true;
           this.translate.get('CART.PAYMENT_ENTERING_DATA').subscribe((res) => {

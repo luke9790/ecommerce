@@ -163,6 +163,47 @@
 	"EMPTY_SUBTEXT": "Explora nuestra tienda y añade productos a tus favoritos.",
 	"SHOP_NOW": "Ir a la tienda"
 	},
+	"PROFILE": {
+		"TITLE": "Tu Perfil",
+		"TABS": {
+		"INFORMATION": "Información",
+		"ORDERS": "Pedidos",
+		"ADDRESSES": "Direcciones"
+		},
+		"ORDERS": {
+		"TITLE": "Tus Pedidos",
+		"ORDER_NUMBER": "Pedido",
+		"TOTAL": "Total",
+		"PAYMENT_METHOD": "Método de Pago",
+		"SHIPPING_ADDRESS": "Dirección de Envío",
+		"NO_ORDERS": "No has realizado ningún pedido."
+		},
+		"ADDRESSES": {
+		"TITLE": "Direcciones de Envío",
+		"DELETE": "Eliminar",
+		"NO_ADDRESSES": "No hay direcciones registradas.",
+		"ADD_NEW": "Añadir Nueva Dirección"
+		},
+		"EMAIL": "Correo Electrónico",
+		"FIRST_NAME": "Nombre",
+		"LAST_NAME": "Apellido",
+		"CUSTOMER_SINCE": "Cliente desde:",
+		"SAVE_CHANGES": "Guardar Cambios",
+		"CHANGE_PASSWORD": "Cambiar Contraseña",
+		"CURRENT_PASSWORD": "Contraseña Actual",
+		"NEW_PASSWORD": "Nueva Contraseña",
+		"CONFIRM_NEW_PASSWORD": "Confirmar Nueva Contraseña",
+		"UPDATE_PASSWORD": "Actualizar Contraseña",
+		"LOGOUT": "Cerrar Sesión",
+		"PLACEHOLDER": {
+		"EMAIL": "Ingresa tu correo electrónico",
+		"FIRST_NAME": "Ingresa tu nombre",
+		"LAST_NAME": "Ingresa tu apellido",
+		"CURRENT_PASSWORD": "Ingresa tu contraseña actual",
+		"NEW_PASSWORD": "Ingresa la nueva contraseña",
+		"CONFIRM_NEW_PASSWORD": "Confirma la nueva contraseña"
+		}
+	},	  
 	"CART": {
 		"TITLE": "Tu carrito",
 		"QUANTITY": "Cantidad",

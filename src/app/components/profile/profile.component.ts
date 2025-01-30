@@ -47,8 +47,7 @@ export class ProfileComponent implements OnInit {
         this.editLastName = this.user.last_name || '';
         this.editEmail = this.user.email || '';
       },
-      error: (err) => {
-        console.error('Errore nel recupero del profilo:', err);
+      error: () => {
         this.errorMessage = 'Errore nel recupero dei dati. Riprova più tardi.';
       },
     });
@@ -59,8 +58,7 @@ export class ProfileComponent implements OnInit {
       next: (orders) => {
         this.orders = orders;
       },
-      error: (err) => {
-        console.error('Errore nel recupero degli ordini:', err);
+      error: () => {
         this.orders = [];
       },
     });
@@ -71,8 +69,7 @@ export class ProfileComponent implements OnInit {
       next: (addresses) => {
         this.shippingAddresses = addresses;
       },
-      error: (err) => {
-        console.error('Errore nel recupero degli indirizzi:', err);
+      error: () => {
         this.shippingAddresses = [];
       },
     });
@@ -102,7 +99,6 @@ export class ProfileComponent implements OnInit {
         setTimeout(() => (this.successMessage = ''), 3000);
       },
       error: (err) => {
-        console.error("Errore nell'aggiornamento del profilo:", err);
         this.errorMessage = err.error?.message || 'Errore durante l\'aggiornamento. Riprova.';
       },
     });
@@ -143,8 +139,7 @@ export class ProfileComponent implements OnInit {
         setTimeout(() => (this.successMessage = ''), 3000);
       },
       error: (err) => {
-        console.error('Errore nell\'aggiunta dell\'indirizzo:', err);
-        this.errorMessage = 'Errore durante l\'aggiunta dell\'indirizzo. Riprova.';
+        this.errorMessage = err.error?.message || 'Errore durante l\'aggiunta dell\'indirizzo. Riprova.';
       },
     });
   }
@@ -157,8 +152,7 @@ export class ProfileComponent implements OnInit {
         setTimeout(() => (this.successMessage = ''), 3000);
       },
       error: (err) => {
-        console.error('Errore nella rimozione dell\'indirizzo:', err);
-        this.errorMessage = 'Errore durante la rimozione dell\'indirizzo. Riprova.';
+        this.errorMessage = err.error?.message || 'Errore durante la rimozione dell\'indirizzo. Riprova.';
       },
     });
   }

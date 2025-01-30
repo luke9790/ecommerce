@@ -4,9 +4,7 @@
 		<h1 class="text-3xl font-bold mb-6">{{ 'CART.TITLE' | translate }}</h1>
   
 		<div *ngIf="products.length > 0; else emptyCart">
-		  <!-- Grid layout per separare la lista prodotti (sinistra) dal riepilogo ordine (destra) -->
 		  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-			<!-- Sezione a sinistra: Lista dei prodotti -->
 			<div class="lg:col-span-2 space-y-6">
 			  <div *ngFor="let product of products" class="flex items-center space-x-6 border-b pb-4">
 				<img [src]="product.image" alt="{{ product.name }}" class="w-24 h-24 object-cover rounded-lg" />
@@ -37,7 +35,6 @@
 			  </div>
 			</div>
   
-			<!-- Sezione a destra: Riepilogo ordine -->
 			<div class="p-6 border rounded-lg bg-gray-50 shadow-md">
 			  <h2 class="text-xl font-semibold">{{ 'CART.ORDER_SUMMARY' | translate }}</h2>
   
@@ -47,7 +44,6 @@
 				</p>
 			  </div>
   
-			  <!-- Payment Methods -->
 			  <div class="mt-6">
 				<h3 class="text-md font-medium">{{ 'CART.PAYMENT_METHOD' | translate }}</h3>
 				<select [(ngModel)]="selectedPaymentMethod" class="w-full mt-2 p-2 border rounded-md">
@@ -57,11 +53,9 @@
 				</select>
 			  </div>
   
-			  <!-- Sezione Indirizzo di Spedizione -->
 			  <div *ngIf="isLoggedIn(); else guestAddressForm" class="mt-6">
 				<h3 class="text-md font-medium">{{ 'CART.SHIPPING_ADDRESS' | translate }}</h3>
   
-				<!-- Se ci sono indirizzi registrati -->
 				<div *ngIf="shippingAddresses.length > 0">
 				  <select [(ngModel)]="selectedShippingAddress" class="w-full mt-2 p-2 border rounded-md">
 					<option value="" disabled selected>Seleziona un indirizzo</option>
@@ -77,7 +71,6 @@
 				  </button>
 				</div>
   
-				<!-- Form per aggiungere un nuovo indirizzo (solo se showAddressForm è true) -->
 				<div *ngIf="showAddressForm">
 				  <app-address (addressSaved)="addNewAddress($event)"></app-address>
 				  <button
@@ -87,13 +80,11 @@
 				  </button>
 				</div>
   
-				<!-- Se l'utente loggato non ha indirizzi salvati, mostra subito il form -->
 				<div *ngIf="shippingAddresses.length === 0">
 				  <app-address (addressSaved)="addNewAddress($event)"></app-address>
 				</div>
 			  </div>
   
-			  <!-- Indirizzo per utenti non loggati -->
 			  <ng-template #guestAddressForm>
 				<app-address (addressSaved)="saveGuestAddress($event)"></app-address>
 			  </ng-template>
@@ -101,7 +92,7 @@
 			  <p *ngIf="checkoutErrorMessage" class="mt-2 text-red-600 text-sm">
 				{{ checkoutErrorMessage }}
 			  </p>
-			  <!-- Checkout Button -->
+
 			  <button class="mt-6 w-full px-6 py-3 font-medium rounded-lg transition-colors"
 				[ngClass]="{
 					'bg-gray-400 cursor-not-allowed': !isCheckoutReady,
@@ -151,12 +142,10 @@
   </div>
   
 
-  <!-- Popup di pagamento -->
 <div *ngIf="showPaymentPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
 	<div class="bg-white p-6 rounded-lg shadow-lg w-96">
 	  <h3 class="text-lg font-semibold">{{ 'CART.PAYMENT_PROCESS' | translate }}</h3>
   
-	  <!-- Simulazione di inserimento dati -->
 	  <div class="mt-4">
 		<label class="block text-sm font-medium text-gray-700">{{ 'CART.CARD_NUMBER' | translate }}</label>
 		<input type="text" class="w-full mt-1 p-2 border rounded-md" [value]="maskedCardNumber" disabled />
@@ -172,10 +161,8 @@
 		<input type="password" class="w-full mt-1 p-2 border rounded-md" [value]="maskedCVV" disabled />
 	  </div>
   
-	  <!-- Stato del pagamento -->
 	  <p class="mt-4 text-sm text-gray-600">{{ paymentStatus }}</p>
   
-	  <!-- Pulsante di chiusura -->
 	  <button (click)="closePaymentPopup()" class="mt-4 w-full px-4 py-2 bg-red-600 text-white font-medium rounded-lg hover:bg-red-500">
 		{{ 'CART.CANCEL' | translate }}
 	  </button>
