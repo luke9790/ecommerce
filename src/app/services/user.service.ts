@@ -3,12 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { ShippingAddress, Order } from '../interfaces/interfaces';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private apiUrl = 'http://localhost:5000/api/protected';
+  private apiUrl = environment.apiEndpoints.user;
 
   constructor(private http: HttpClient) {}
 

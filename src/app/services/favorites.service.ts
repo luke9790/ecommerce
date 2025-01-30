@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable, tap } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
-  private baseUrl = `http://localhost:5000/api/protected/favorites`;  // Assicurati di usare il corretto dominio e porta
+  private baseUrl = environment.apiEndpoints.favorites;
 
 
   constructor(private http: HttpClient) {}

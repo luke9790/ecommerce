@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from '../interfaces/interfaces';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +16,7 @@ export class ShopService {
     'es': 'EUR',
   };
 
-  private apiUrl = "http://localhost:5000/api/products";
+  private apiUrl = environment.apiEndpoints.products;
 
   constructor(private http: HttpClient) {}
 
