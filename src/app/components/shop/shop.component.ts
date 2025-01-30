@@ -17,6 +17,7 @@ export class ShopComponent implements OnInit, OnDestroy {
   brands: string[] = [];
   labels: string[] = [];
   isLoading = false;
+  showOnlyFeatured = false;
   lastAppliedCategoryId: number | null = null;
   debounceTimer: any;
 
@@ -66,6 +67,10 @@ export class ShopComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.showOnlyFeatured = history.state?.showOnlyFeatured || false;
+    if(this.showOnlyFeatured == true){
+      this.filters.isFeatured = true;
+    }
     this.loadProducts();
     this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
       this.loadProducts();

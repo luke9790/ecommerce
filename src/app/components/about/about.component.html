@@ -1,0 +1,43 @@
+<div class="about-container">
+
+	<section class="relative w-full h-[60vh] flex items-center justify-center">
+	  <img [src]="heroImage" alt="Hero Image" class="absolute w-full h-full object-cover">
+	  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+		<h1 class="text-white text-4xl font-bold text-center px-4">{{ 'ABOUT.TITLE' | translate }}</h1>
+	  </div>
+	</section>
+  
+	<section class="flex flex-col md:flex-row items-center gap-8 px-6 py-12 max-w-7xl mx-auto">
+	  <div class="w-full md:w-1/2">
+		<h2 class="text-3xl font-semibold text-gray-800">{{ 'ABOUT.WHO_WE_ARE.TITLE' | translate }}</h2>
+		<p class="text-gray-600 mt-4">{{ 'ABOUT.WHO_WE_ARE.TEXT' | translate }}</p>
+	  </div>
+	  <img [src]="storyImage" alt="Brand Story Image" class="w-full md:w-1/2 rounded-lg shadow-lg">
+	</section>
+  
+	<section class="bg-gray-100 py-12 px-6">
+	  <h2 class="text-center text-3xl font-bold text-gray-800">{{ 'ABOUT.WHY_US.TITLE' | translate }}</h2>
+	  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 max-w-6xl mx-auto">
+		<div *ngFor="let item of whyUsIcons" class="p-6 bg-white rounded-lg shadow-md flex flex-col items-center text-center">
+		  <i [class]="item.icon + ' text-4xl text-red-600'"></i>
+		  <h3 class="text-xl font-semibold text-gray-700 mt-4">{{ item.title | translate }}</h3>
+		  <p class="text-gray-500">{{ item.text | translate }}</p>
+		</div>
+	  </div>
+	</section>
+  
+	<section class="flex flex-col md:flex-row items-center gap-8 px-6 py-12 max-w-7xl mx-auto">
+	  <img [src]="qualityImage" alt="Quality Image" class="w-full md:w-1/2 rounded-lg shadow-lg">
+	  <div class="w-full md:w-1/2">
+		<h2 class="text-3xl font-semibold text-gray-800">{{ 'ABOUT.QUALITY.TITLE' | translate }}</h2>
+		<p class="text-gray-600 mt-4">{{ 'ABOUT.QUALITY.TEXT' | translate }}</p>
+	  </div>
+	</section>
+  
+	<section class="bg-gray-900 text-white text-center py-16 px-6">
+	  <h2 class="text-3xl font-bold">{{ 'ABOUT.VISION.TITLE' | translate }}</h2>
+	  <p class="mt-4 text-lg max-w-4xl mx-auto">{{ 'ABOUT.VISION.TEXT' | translate }}</p>
+	</section>
+  
+  </div>
+  

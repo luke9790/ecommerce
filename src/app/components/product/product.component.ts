@@ -15,7 +15,7 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class ProductComponent implements OnInit, OnDestroy {
   product!: Product;
-  selectedSize: string = ''; // Memorizza la taglia selezionata
+  selectedSize: string = '';
   isLoading: boolean = true;
   isFavorite: boolean = false;
   isAddedToCart: boolean = false;

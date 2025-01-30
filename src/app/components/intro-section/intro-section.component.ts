@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-intro-section',
@@ -20,4 +21,12 @@ export class IntroSectionComponent {
     { src: 'assets/images/intro-section/image5.jpg', alt: 'Model 5', span: 'col-span-2 row-span-1', position: 'bottom' },
     { src: 'assets/images/intro-section/image6.jpg', alt: 'Model 6', span: 'col-span-1 row-span-1', position: 'top' }
   ];
+
+  constructor(
+    private router: Router,
+  ){}
+
+  onClicked(){
+    this.router.navigate(['/about']);
+  }
 }

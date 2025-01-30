@@ -261,6 +261,30 @@
 		"PRODUCTS": "Productos",
 		"SHOP_MORE": "Seguir Comprando"
 	},
+	"ABOUT": {
+    "TITLE": "Descubre Quiénes Somos",
+    "WHO_WE_ARE": {
+      "TITLE": "Nuestra Historia",
+      "TEXT": "Somos una plataforma de comercio electrónico internacional dedicada a ofrecer productos de alta calidad a los mejores precios."
+    },
+    "WHY_US": {
+      "TITLE": "¿Por qué elegirnos?",
+      "FAST_SHIPPING": "Envío rápido",
+      "FAST_SHIPPING_TEXT": "Entrega rápida en todo el mundo, directamente a tu puerta.",
+      "QUALITY": "Calidad garantizada",
+      "QUALITY_TEXT": "Seleccionamos cuidadosamente solo los mejores productos para nuestros clientes.",
+      "WORLDWIDE": "Disponible en todas partes",
+      "WORLDWIDE_TEXT": "Operamos en más de 50 países."
+    },
+    "QUALITY": {
+      "TITLE": "Innovación y Calidad",
+      "TEXT": "Utilizamos materiales de alta calidad y procesos innovadores para garantizar la máxima satisfacción."
+    },
+    "VISION": {
+      "TITLE": "Nuestra Visión",
+      "TEXT": "Nuestro objetivo es redefinir la experiencia de compra en línea ofreciendo productos únicos y un servicio excelente."
+    }
+  	},
 	"TERMS": {
 		"TITLE": "Términos y Condiciones",
 		"INTRODUCTION": "Bienvenido a nuestro sitio web. Al acceder o utilizar nuestro sitio, aceptas los siguientes términos y condiciones.",

@@ -31,6 +31,7 @@ import { PrivacyComponent } from './components/infos/privacy/privacy.component';
 import { WithdrawalComponent } from './components/infos/withdrawal/withdrawal.component';
 import { AddressComponent } from './components/address/address.component';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -59,6 +60,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     WithdrawalComponent,
     AddressComponent,
     OrderSummaryComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

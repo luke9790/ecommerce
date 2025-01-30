@@ -49,8 +49,8 @@
 
   <div *ngIf="!isLoading" class="mt-8 text-center">
     <button
-      class="px-6 py-3 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-500 transition-colors duration-300"
-    >
+      (click)="viewAll()"
+      class="px-6 py-3 bg-red-600 text-white text-sm font-semibold rounded-lg hover:bg-red-500 transition-colors duration-300">
       {{ 'FEATURED.VIEW_ALL' | translate }}
     </button>
   </div>

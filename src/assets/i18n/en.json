@@ -261,6 +261,30 @@
 		"PRODUCTS": "Products",
 		"SHOP_MORE": "Continue Shopping"
 	},
+	"ABOUT": {
+		"TITLE": "Discover Who We Are",
+		"WHO_WE_ARE": {
+		  "TITLE": "Our Story",
+		  "TEXT": "We are an international e-commerce platform dedicated to offering high-quality products at the best prices."
+		},
+		"WHY_US": {
+		  "TITLE": "Why Choose Us?",
+		  "FAST_SHIPPING": "Fast Shipping",
+		  "FAST_SHIPPING_TEXT": "Worldwide fast delivery, straight to your door.",
+		  "QUALITY": "Guaranteed Quality",
+		  "QUALITY_TEXT": "We carefully select only the best products for our customers.",
+		  "WORLDWIDE": "Available Everywhere",
+		  "WORLDWIDE_TEXT": "We operate in over 50 countries."
+		},
+		"QUALITY": {
+		  "TITLE": "Innovation & Quality",
+		  "TEXT": "We use high-quality materials and innovative processes to ensure maximum satisfaction."
+		},
+		"VISION": {
+		  "TITLE": "Our Vision",
+		  "TEXT": "We aim to redefine the online shopping experience by offering unique products and excellent service."
+		}
+	  },
 	"TERMS": {
 		"TITLE": "Terms and Conditions",
 		"INTRODUCTION": "Welcome to our website. By accessing or using our site, you agree to the following terms and conditions.",
@@ -321,5 +345,6 @@
 		"PARAGRAPH": "If you have any questions about our withdrawal policy, please contact us at support@example.com."
 		}
 	}
+
   }
   

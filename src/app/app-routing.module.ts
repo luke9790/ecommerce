@@ -13,6 +13,7 @@ import { ConditionsComponent } from './components/infos/conditions/conditions.co
 import { PrivacyComponent } from './components/infos/privacy/privacy.component';
 import { WithdrawalComponent } from './components/infos/withdrawal/withdrawal.component';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'cart', component: CartComponent },
+  { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'product/:id', component: ProductComponent },

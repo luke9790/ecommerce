@@ -3,6 +3,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ShopService } from '../../services/shop.service';
 import { Product } from '../../interfaces/interfaces';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-featured-products',
@@ -15,7 +16,11 @@ export class FeaturedProductsComponent implements OnInit {
   isLoading: boolean = true;
   private langChangeSubscription: Subscription = new Subscription();
 
-  constructor(private translate: TranslateService, private shopService: ShopService) {}
+  constructor(
+    private translate: TranslateService,
+    private shopService: ShopService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.loadFeaturedProducts();
@@ -28,21 +33,22 @@ export class FeaturedProductsComponent implements OnInit {
     this.isLoading = true;
     const currentLang = this.translate.currentLang || this.translate.defaultLang;
     
-    // Passa la lingua e i filtri al servizio
     this.shopService.getFeaturedProducts(currentLang).subscribe({
       next: (featuredProducts: Product[]) => {
-        this.products = featuredProducts.slice(0, 8); // Limita a 8 prodotti
+        this.products = featuredProducts.slice(0, 8);
         this.isLoading = false;
       },
       error: () => {
         this.isLoading = false;
-        // Gestisci gli errori se necessario, per esempio mostrando un messaggio all'utente
       }
     });
   }
 
+  viewAll(): void {
+    this.router.navigate(['/shop'], { state: { showOnlyFeatured: true } });
+  }
+
   ngOnDestroy(): void {
-    // Assicurati di annullare l'abbonamento quando il componente viene distrutto
     if (this.langChangeSubscription) {
       this.langChangeSubscription.unsubscribe();
     }
