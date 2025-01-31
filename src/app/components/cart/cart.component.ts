@@ -245,11 +245,6 @@ export class CartComponent implements OnInit, OnDestroy {
     };  
     return this.userService.createOrder(orderData);
   }
-  
-
-  closePaymentPopup(): void {
-    this.showPaymentPopup = false;
-  }
 
   redirectToOrderSummary(): void {
     this.router.navigate(['/order-summary']);

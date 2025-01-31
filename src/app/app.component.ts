@@ -9,8 +9,4 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent {
   title = 'ecommerce';
-
-  constructor() {
-    console.log('Current API URL:', environment.apiEndpoints.user);
-  }
 }

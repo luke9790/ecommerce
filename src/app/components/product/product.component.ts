@@ -57,7 +57,6 @@ export class ProductComponent implements OnInit, OnDestroy {
 
     this.shopService.getProductById(currentLang, productId).subscribe({
       next: (product: Product) => {
-        console.log(product);
         this.product = product;
         this.isLoading = false;
         this.isAuthenticated = this.authService.isLoggedIn();

@@ -18,7 +18,7 @@ describe('AuthGuard', () => {
         AuthGuard,
         { provide: AuthService, useValue: authSpy },
         { provide: Router, useValue: routerSpy },
-        provideRouter([]) // Nuovo metodo per fornire il router nei test
+        provideRouter([])
       ],
     });
 

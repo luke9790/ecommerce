@@ -5,7 +5,7 @@
   
 		<div *ngIf="products.length > 0; else emptyCart">
 		  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-			<div class="lg:col-span-2 space-y-6">
+			<div class="lg:col-span-2 space-y-6 max-h-[70vh] overflow-y-auto px-8">
 			  <div *ngFor="let product of products" class="flex items-center space-x-6 border-b pb-4">
 				<img [src]="product.image" alt="{{ product.name }}" class="w-24 h-24 object-cover rounded-lg" />
   
@@ -163,8 +163,5 @@
   
 	  <p class="mt-4 text-sm text-gray-600">{{ paymentStatus }}</p>
   
-	  <button (click)="closePaymentPopup()" class="mt-4 w-full px-4 py-2 bg-red-600 text-white font-medium rounded-lg hover:bg-red-500">
-		{{ 'CART.CANCEL' | translate }}
-	  </button>
 	</div>
   </div>

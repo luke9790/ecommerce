@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from '../interfaces/interfaces';
-import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 
@@ -48,8 +48,9 @@ export class ShopService {
       }
     }
 
-    return this.http.get<{ message: string, products: any[] }>(apiUrlWithParams).pipe(
-      map(response => response.products.map(this.transformProduct))
+    return this.http.get<{ message: string; products: any[] }>(apiUrlWithParams).pipe(
+      map(response => response.products.map(this.transformProduct)),
+      catchError(error => throwError(() => error))
     );
   }
 
@@ -57,8 +58,9 @@ export class ShopService {
     const resolvedCurrency = currency || this.getDefaultCurrency(language);
     const apiUrlWithParams = `${this.apiUrl}?isFeatured=true&language=${language}&currency=${resolvedCurrency}`;
 
-    return this.http.get<{ message: string, products: any[] }>(apiUrlWithParams).pipe(
-      map(response => response.products.map(this.transformProduct))
+    return this.http.get<{ message: string; products: any[] }>(apiUrlWithParams).pipe(
+      map(response => response.products.map(this.transformProduct)),
+      catchError(error => throwError(() => error))
     );
   }
 
@@ -66,10 +68,9 @@ export class ShopService {
     const resolvedCurrency = currency || this.getDefaultCurrency(language);
     const apiUrlWithParams = `${this.apiUrl}/?id=${id}&language=${language}&currency=${resolvedCurrency}`;
 
-    return this.http.get<{ message: string, products: any[] }>(apiUrlWithParams).pipe(
-      map(response => {
-        return this.transformProduct(response.products[0]);
-      })
+    return this.http.get<{ message: string; products: any[] }>(apiUrlWithParams).pipe(
+      map(response => this.transformProduct(response.products[0])),
+      catchError(error => throwError(() => error))
     );
   }
 
@@ -77,8 +78,9 @@ export class ShopService {
     const resolvedCurrency = currency || this.getDefaultCurrency(language);
     const apiUrlWithParams = `${this.apiUrl}/by-ids/?language=${language}&currency=${resolvedCurrency}&ids=${productIds.join(',')}`;
 
-    return this.http.get<{ message: string, products: any[] }>(apiUrlWithParams).pipe(
-      map(response => response.products.map(this.transformProduct))
+    return this.http.get<{ message: string; products: any[] }>(apiUrlWithParams).pipe(
+      map(response => response.products.map(this.transformProduct)),
+      catchError(error => throwError(() => error))
     );
   }
 

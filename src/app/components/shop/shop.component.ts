@@ -140,6 +140,7 @@ export class ShopComponent implements OnInit, OnDestroy {
     if (this.filters.excludeOutOfStock) {
       filtered = filtered.filter((product) => product.stock > 0);
     }
+    this.currentPage = 1;
 
     this.applySorting(filtered);
   }

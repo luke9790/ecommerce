@@ -4,6 +4,7 @@ import { ShopService } from '../../services/shop.service';
 import { Product } from '../../interfaces/interfaces';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-featured-products',
@@ -19,12 +20,16 @@ export class FeaturedProductsComponent implements OnInit {
   constructor(
     private translate: TranslateService,
     private shopService: ShopService,
-    private router: Router
+    private router: Router,
+    private authService: AuthService 
   ) {}
 
   ngOnInit(): void {
     this.loadFeaturedProducts();
     this.langChangeSubscription = this.translate.onLangChange.subscribe(() => {
+      this.loadFeaturedProducts();
+    });
+    this.authService.isAuthenticated$.subscribe(() => {
       this.loadFeaturedProducts();
     });
   }
