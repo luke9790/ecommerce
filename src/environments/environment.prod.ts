@@ -1,11 +1,11 @@
 export const environment = {
 	production: true,
 	apiEndpoints: {
-	  auth: 'https://api.miosito.com/api/auth',
-	  cart: 'https://api.miosito.com/api/protected/cart',
-	  favorites: 'https://api.miosito.com/api/protected/favorites',
-	  products: 'https://api.miosito.com/api/products',
-	  user: 'https://api.miosito.com/api/protected'
-	}
-  };
+		auth: 'http://backend-production-62bc.up.railway.app:5000/api/auth',
+		cart: 'http://backend-production-62bc.up.railway.app:5000/api/protected/cart',
+		favorites: 'http://backend-production-62bc.up.railway.app:5000/api/protected/favorites',
+		products: 'http://backend-production-62bc.up.railway.app:5000/api/products',
+		user: 'http://backend-production-62bc.up.railway.app:5000/api/protected'
+	  }
+	};
   
