@@ -58,6 +58,3 @@ Il backend (incluso il database) è deployato su **Railway**, mentre il frontend
 Contributi
 Contributi, suggerimenti e feedback sono sempre benvenuti!
 Se desideri contribuire al progetto, apri una issue o invia una pull request.
-
-Contatti
-Per ulteriori informazioni o domande, puoi contattarmi via email a tuo.email@esempio.com o aprire una issue nel repository.
